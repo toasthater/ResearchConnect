@@ -11,6 +11,17 @@ body.main {
   color: #fff;
 }
 
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($bg,25%);
+  }
+}
+
 header.top {
   background-color:$primary;
   height: 70px;
@@ -89,7 +100,7 @@ div.main_content {
     color: $clrLikerList;
   }
 
- .centered {
+.centered {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -107,6 +118,19 @@ div.main_content {
     height:100%;
     background:#000;
     opacity:0.6;
+}
+
+button.connect{
+    margin-top:20px;
+    position:relative;
+    width:100% !important;
+    height: 35px;
+    text-align:center;
+    font-weight:bold;
+    text-transform: uppercase;
+    background: $primary;
+    border-radius: 8px;
+    @include button-bg($primary);
 }
 
 }

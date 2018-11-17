@@ -9,33 +9,33 @@ body.main {
   color: #fff;
 }
 
-/* line 14, ../sass/_main.scss */
+/* line 25, ../sass/_main.scss */
 header.top {
   background-color: #67C896;
   height: 70px;
 }
 
-/* line 19, ../sass/_main.scss */
+/* line 30, ../sass/_main.scss */
 main.content {
   padding-left: 100px;
   padding-right: 100px;
   width: 100%;
 }
 
-/* line 25, ../sass/_main.scss */
+/* line 36, ../sass/_main.scss */
 div.onboard {
   margin-top: 200px;
   text-align: center;
 }
 
-/* line 29, ../sass/_main.scss */
+/* line 40, ../sass/_main.scss */
 div.onboard_form {
   background-color: #39444C;
   border-radius: 8px;
   margin-left: 30px;
 }
 
-/* line 35, ../sass/_main.scss */
+/* line 46, ../sass/_main.scss */
 div.divider {
   top: 220px;
   position: absolute;
@@ -44,7 +44,7 @@ div.divider {
   background-color: #39444C;
 }
 
-/* line 43, ../sass/_main.scss */
+/* line 54, ../sass/_main.scss */
 h2.logo {
   font-size: 24px;
   margin-top: 50px;
@@ -52,46 +52,46 @@ h2.logo {
   margin-left: 20px;
 }
 
-/* line 50, ../sass/_main.scss */
+/* line 61, ../sass/_main.scss */
 .colorful {
   color: #bb8833;
 }
 
-/* line 54, ../sass/_main.scss */
+/* line 65, ../sass/_main.scss */
 div.main_content {
   padding: 16px;
 }
-/* line 57, ../sass/_main.scss */
+/* line 68, ../sass/_main.scss */
 div.main_content div.form_row {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-/* line 62, ../sass/_main.scss */
+/* line 73, ../sass/_main.scss */
 div.main_content div.post_div {
   margin: 10px;
   border: 1px black solid;
   background-color: #eeeeee;
   padding: 10px;
 }
-/* line 67, ../sass/_main.scss */
+/* line 78, ../sass/_main.scss */
 div.main_content div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
-/* line 80, ../sass/_main.scss */
+/* line 91, ../sass/_main.scss */
 div.main_content i {
   cursor: pointer;
 }
-/* line 84, ../sass/_main.scss */
+/* line 95, ../sass/_main.scss */
 div.main_content i.changed {
   color: #777777;
 }
-/* line 88, ../sass/_main.scss */
+/* line 99, ../sass/_main.scss */
 div.main_content span.likers_list {
   color: #7777cc;
 }
-/* line 92, ../sass/_main.scss */
+/* line 103, ../sass/_main.scss */
 div.main_content .centered {
   position: fixed;
   top: 50%;
@@ -100,7 +100,7 @@ div.main_content .centered {
   background-color: #2A363F;
   opacity: 1;
 }
-/* line 102, ../sass/_main.scss */
+/* line 113, ../sass/_main.scss */
 div.main_content .signup_form_container {
   position: fixed;
   top: 0;
@@ -109,4 +109,26 @@ div.main_content .signup_form_container {
   height: 100%;
   background: #000;
   opacity: 0.6;
+}
+/* line 123, ../sass/_main.scss */
+div.main_content button.connect {
+  margin-top: 20px;
+  position: relative;
+  width: 100% !important;
+  height: 35px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: #67C896;
+  border-radius: 8px;
+  background: #67C896;
+}
+/* line 16, ../sass/_main.scss */
+div.main_content button.connect:hover {
+  background: #49bd81;
+  transition: all 0.3s ease;
+}
+/* line 20, ../sass/_main.scss */
+div.main_content button.connect:active {
+  background: #2f8156;
 }
