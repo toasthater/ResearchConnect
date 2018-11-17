@@ -183,20 +183,6 @@ var app = function () {
         self.vue.showing_sign_up_form = false;
     };
 
-    Vue.directive('click-outside', {
-        bind: function (el, binding, vnode) {
-          this.event = function (event) {
-            if (!(el == event.target || el.contains(event.target))) {
-              vnode.context[binding.expression](event);
-            }
-          };
-          document.body.addEventListener('click', this.event)
-        },
-        unbind: function (el) {
-          document.body.removeEventListener('click', this.event)
-        },
-      });
-
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -231,6 +217,7 @@ var app = function () {
     self.get_posts();
     $("#add_post").hide();
     $("#toggle_form_button").show();
+
     return self;
 };
 
@@ -242,3 +229,9 @@ var APP = null;
 // This will make everything accessible from the js console;
 // for instance, self.x above would be accessible as APP.x
 jQuery(function () { APP = app(); });
+
+$( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) { // ESC
+        APP.vue.showing_sign_up_form = false;
+    }
+    });

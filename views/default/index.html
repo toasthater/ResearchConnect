@@ -13,6 +13,12 @@
 
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
 
+    $( document ).on( 'keydown', function ( e ) {
+    if ( e.keyCode === 27 ) { // ESC
+        $( "#signup" ).hide();
+    }
+    });
+
 </script>
 {{end}}
 
@@ -49,7 +55,7 @@
                             <a class="link" id="show_signup_form" v-on:click="show_sign_up()">Sign Up</a>
                         </div>
 
-                        <div v-if="showing_sign_up_form" >
+                        <div id="signup" v-if="showing_sign_up_form" >
                             <div class="signup_form_container" ></div>
                             <div id="web2py_signup_form" class="centered login">
                                 {{form=auth.register()}}

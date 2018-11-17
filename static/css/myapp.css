@@ -148,7 +148,7 @@ div.main_content .centered {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #2a363f;
-  max-width: 200px !important;
+  max-width: 400px !important;
 }
 /* line 176, ../sass/_main.scss */
 div.main_content .signup_form_container {
