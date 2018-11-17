@@ -75,6 +75,55 @@ div.error {
 
 .navbar-icon {
     height: 50px !important;
+}
+
+/* line 273, ../sass/_main.scss */
+.search-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  /* line 279, ../sass/_main.scss */
+  input#search-bar {
+    margin: 0 auto;
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 1rem;
+    background: #2a363f;
+    opacity: 0.6;
+    border: 0 !important;
+    outline: none;
+  }
+  /* line 287, ../sass/_main.scss */
+  input#search-bar:focus {
+    
+    transition: 0.35s ease;
+  }
+  /* line 291, ../sass/_main.scss */
+  input#search-bar:focus::-webkit-input-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+  /* line 295, ../sass/_main.scss */
+  input#search-bar:focus::-moz-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+  /* line 299, ../sass/_main.scss */
+  input#search-bar:focus:-ms-placeholder {
+    transition: opacity 0.45s ease;
+    opacity: 0;
+  }
+  
+  /* line 306, ../sass/_main.scss */
+  .search-icon {
+    position: relative;
+    float: right;
+    width: 75px;
+    height: 75px;
+    top: -62px;
+    right: -65px;
   }
 
 

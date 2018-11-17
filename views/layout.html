@@ -30,7 +30,10 @@
           <input type="checkbox" id="menu" />
           {{if auth.user is not None:}}
           <div>
-              {{=MENU(response.menu,_class='menu')}}
+              {{=MENU(response.menu,_class='menu left')}}
+              <form class="search-container menu center">
+                  <input type="text" id="search-bar" placeholder="What can I help you with today?">
+                </form>
           </div>
           {{pass}}
           
