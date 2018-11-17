@@ -1,3 +1,41 @@
+$dark: #2A363F;
+$primary: #67C896;
+
+body.main {
+  background-color:$dark;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+}
+
+header.top {
+  background-color:$primary;
+  height: 70px;
+}
+
+main.content {
+  padding-left: 100px;
+  padding-right: 100px;
+  width:100%;
+}
+
+div.onboard {
+  margin-top: 200px;
+  text-align: center;
+}
+div.onboard_form {
+  background-color: #39444C;
+  border-radius: 8px;
+}
+
+div.divider {
+  top:220px;
+  position: absolute;
+  width: 2px;
+  height: 300px;
+  background-color: #39444C;
+  display: inline-block;
+}
+
 .colorful {
   color: $clrHilight;
 }

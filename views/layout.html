@@ -10,16 +10,17 @@
     <link href="{{=URL('static','css/web2py.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{=URL('static','css/myapp.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{{=URL('static', 'font-awesome-4.6.3/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans">
     {{include "web2py_ajax.html"}}
     {{block head}}{{end}}
   </head>
-  <body class="black">
+  <body class="main">
     {{if response.flash:}}
     <div class="w2p_flash">
       {{=response.flash}}
     </div>
     {{pass}}
-    <header class="black padded">
+    <header class="top padded">
       <div class="container middle max900">
         <div class="fill middle">
           <label class="ham padded fa fa-bars" for="menu"></label>
@@ -35,22 +36,13 @@
         </div>
       </div>
     </header>
-    <main class="white">
+    
+    <main class = "content">
       {{include}}
     </main>
-    <footer class="black">
-      <div class="silver center padded social">
-        <a class="fa fa-facebook" href="https://www.facebook.com/sharer/sharer.php?u={url}"></a>
-        <a class="fa fa-twitter" href="https://twitter.com/home?status={url}"></a>
-        <a class="fa fa-google" href="https://plus.google.com/share?url={url}"></a>
-      </div>
-      <div class="container padded max900">
-        <div class="fill">
-          Copyright @ 2016
-        </div>
-      </div>
-    </footer>
+      
   </body>
+
   <script src="{{=URL('static','js/marked.min.js')}}"></script>
   <script src="{{=URL('static','js/vue.min.js')}}"></script>
   {{block bottomjs}}{{end}}

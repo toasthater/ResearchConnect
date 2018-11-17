@@ -51,4 +51,8 @@ def call():
     """
     return service()
 
-
+import os
+def serve_file():
+    filename = request.args(0)
+    path = os.path.join(request.folder, 'private', 'file_subfolder',filename)
+    return response.stream(path)

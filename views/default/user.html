@@ -1,12 +1,13 @@
 {{extend 'layout.html'}}
 
-<h2>
-{{=T('Sign Up') if request.args(0) == 'register' else T('Log In') if request.args(0) == 'login' else T(request.args(0).replace('_',' ').title())}}
-</h2>
-
-<div class="container">
-    <div class="row">
-        <div id="web2py_user_form" class="col-lg-6">
+<div class="container onboard">
+    <div class="container third">
+            <img src="{{=URL('static', 'images', args='Logo.png')}}"/>
+    </div>
+    <div class="divider">
+    </div>
+    <div class="third" style="padding-left: 40px;">
+        <div id="web2py_user_form" class="onboard_form col-lg-6">
         {{
         if request.args(0)=='login':
             if not 'register' in auth.settings.actions_disabled:
