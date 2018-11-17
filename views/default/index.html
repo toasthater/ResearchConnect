@@ -1,6 +1,7 @@
 {{extend 'layout.html'}}
 
 {{block head}}
+<link rel="shortcut icon" href="../../static/images/favicon.ico">
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
     var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";

@@ -1,52 +1,61 @@
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="{{=URL('static','css/stupid.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{=URL('static','css/custom.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{=URL('static','css/calendar.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{=URL('static','css/web2py.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{=URL('static','css/myapp.css')}}" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="{{=URL('static', 'font-awesome-4.6.3/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans">
-    {{include "web2py_ajax.html"}}
-    {{block head}}{{end}}
-  </head>
-  <body class="main">
-    {{if response.flash:}}
-    <div class="w2p_flash">
-      {{=response.flash}}
-    </div>
-    {{pass}}
-    <header class="top padded">
-      <div class="container middle max900">
-        <div class="fill middle">
-          <label class="ham padded fa fa-bars" for="menu"></label>
-          <div class="burger accordion">
-            <input type="checkbox" id="menu"/>
-            {{=MENU(response.menu,_class='menu')}}
-            <ul class="menu right">
-              <li>
-                {{=auth.navbar(mode='dropdown', referrer_actions=None)}}
-              </li>
-            </ul>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link href="{{=URL('static','css/stupid.css')}}" rel="stylesheet" type="text/css" />
+  <link href="{{=URL('static','css/custom.css')}}" rel="stylesheet" type="text/css" />
+  <link href="{{=URL('static','css/calendar.css')}}" rel="stylesheet" type="text/css" />
+  <link href="{{=URL('static','css/web2py.css')}}" rel="stylesheet" type="text/css" />
+  <link href="{{=URL('static','css/myapp.css')}}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{{=URL('static', 'font-awesome-4.6.3/css/font-awesome.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans">
+  {{include "web2py_ajax.html"}}
+  {{block head}}{{end}}
+</head>
+
+<body class="main">
+  {{if response.flash:}}
+  <div class="w2p_flash">
+    {{=response.flash}}
+  </div>
+  {{pass}}
+  <header class="top padded">
+    <div class="container middle max900">
+      <div class="fill middle">
+        <label class="ham padded fa fa-bars" for="menu"></label>
+        <div class="burger accordion">
+          <input type="checkbox" id="menu" />
+          {{if auth.user is not None:}}
+          <div>
+              {{=MENU(response.menu,_class='menu')}}
           </div>
+          {{pass}}
+          
+      
+          <ul class="menu right">
+            <li>
+              {{=auth.navbar(mode='dropdown', referrer_actions=None)}}
+            </li>
+          </ul>
         </div>
       </div>
-    </header>
-    
-    <main class = "content">
-      {{include}}
-    </main>
-      
-  </body>
+    </div>
+  </header>
 
-  <script src="{{=URL('static','js/marked.min.js')}}"></script>
-  <script src="{{=URL('static','js/vue.min.js')}}"></script>
-  {{block bottomjs}}{{end}}
-  <script>
-    jQuery('.social a').each(function(){var t=jQuery(this); t.attr('href',t.attr('href').replace('{url}',encodeURIComponent(window.location.href)));});
-  </script>
+  <main class="content">
+    {{include}}
+  </main>
+
+</body>
+
+<script src="{{=URL('static','js/marked.min.js')}}"></script>
+<script src="{{=URL('static','js/vue.min.js')}}"></script>
+{{block bottomjs}}{{end}}
+<script>
+  jQuery('.social a').each(function () { var t = jQuery(this); t.attr('href', t.attr('href').replace('{url}', encodeURIComponent(window.location.href))); });
+</script>
+
 </html>
