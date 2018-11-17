@@ -1,21 +1,21 @@
 // This is the js for the default/index.html view.
-var app = function() {
+
+
+var app = function () {
 
     var self = {};
 
     Vue.config.silent = false; // show all warnings
 
-
-
     // Extends an array
-    self.extend = function(a, b) {
+    self.extend = function (a, b) {
         for (var i = 0; i < b.length; i++) {
             a.push(b[i]);
         }
     };
 
     // Enumerates an array.
-    var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
+    var enumerate = function (v) { var k = 0; return v.map(function (e) { e._idx = k++; }); };
 
     self.toggle_form = function () {
         $("#add_post").show();
@@ -56,9 +56,9 @@ var app = function() {
         // If you put code here, it is run BEFORE the call comes back.
     };
 
-    self.get_posts = function() {
+    self.get_posts = function () {
         $.getJSON(get_post_list_url,
-            function(data) {
+            function (data) {
                 // I am assuming here that the server gives me a nice list
                 // of posts, all ready for display.
                 self.vue.post_list = data.post_list;
@@ -68,7 +68,7 @@ var app = function() {
         );
     };
 
-    self.process_posts = function() {
+    self.process_posts = function () {
         // This function is used to post-process posts, after the list has been modified
         // or after we have gotten new posts. 
         // We add the _idx attribute to the posts. 
@@ -81,12 +81,12 @@ var app = function() {
             // Replace it with the appropriate code for thumbs. 
             // // Did I like it? 
             // // If I do e._smile = e.like, then Vue won't see the changes to e._smile .
-             Vue.set(e, '_thumb', e.thumb);
-             Vue.set(e, '_over_up', false);
-             Vue.set(e, '_over_down', false);
-             Vue.set(e, '_thumbs_up', e.thumb == 'u' ? true : false);
-             Vue.set(e, '_thumbs_down', e.thumb == 'd' ? true : false);
-             Vue.set(e, '_score', e.score);
+            Vue.set(e, '_thumb', e.thumb);
+            Vue.set(e, '_over_up', false);
+            Vue.set(e, '_over_down', false);
+            Vue.set(e, '_thumbs_up', e.thumb == 'u' ? true : false);
+            Vue.set(e, '_thumbs_down', e.thumb == 'd' ? true : false);
+            Vue.set(e, '_score', e.score);
 
         });
     };
@@ -117,7 +117,7 @@ var app = function() {
 
     self.thumbs_up_click = function (post_idx) {
         var p = self.vue.post_list[post_idx];
-        switch (p._thumb){
+        switch (p._thumb) {
             case 'u':
                 p._score--;
                 break;
@@ -144,7 +144,7 @@ var app = function() {
 
     self.thumbs_down_click = function (post_idx) {
         var p = self.vue.post_list[post_idx];
-                switch (p._thumb){
+        switch (p._thumb) {
             case 'u':
                 p._score -= 2;
                 break;
@@ -169,17 +169,34 @@ var app = function() {
     };
 
     self.thumbs_count = function (post_idx) {
-       var p = self.vue.post_list[post_idx];
-       $.getJSON(get_score_url, {post_id: p.id}, function (data) {
-                p.score = data.score;
-       })
+        var p = self.vue.post_list[post_idx];
+        $.getJSON(get_score_url, { post_id: p.id }, function (data) {
+            p.score = data.score;
+        })
     };
 
-    self.show_sign_up = function() {
+    self.show_sign_up = function () {
         self.vue.showing_sign_up_form = true;
     };
 
-    // Complete as needed.
+    self.hide_sign_up = function () {
+        self.vue.showing_sign_up_form = false;
+    };
+
+    Vue.directive('click-outside', {
+        bind: function (el, binding, vnode) {
+          this.event = function (event) {
+            if (!(el == event.target || el.contains(event.target))) {
+              vnode.context[binding.expression](event);
+            }
+          };
+          document.body.addEventListener('click', this.event)
+        },
+        unbind: function (el) {
+          document.body.removeEventListener('click', this.event)
+        },
+      });
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -200,9 +217,9 @@ var app = function() {
             thumbs_down_click: self.thumbs_down_click,
             thumbs_count: self.thumbs_count,
             toggle_form: self.toggle_form,
-            show_sign_up: self.show_sign_up
+            show_sign_up: self.show_sign_up,
+            hide_sign_up: self.hide_sign_up
         }
-
     });
 
     // If we are logged in, shows the form to add posts.
@@ -224,4 +241,4 @@ var APP = null;
 
 // This will make everything accessible from the js console;
 // for instance, self.x above would be accessible as APP.x
-jQuery(function(){APP = app();});
+jQuery(function () { APP = app(); });

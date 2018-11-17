@@ -1,13 +1,13 @@
-$dark: #2A363F;
-$primary: #67C896;
-$white: #FFFFFF;
+$dark: #2a363f;
+$primary: #67c896;
+$white: #ffffff;
 
-body{
-    font-family: 'Open Sans', sans-serif;
+body {
+  font-family: "Open Sans", sans-serif;
 }
 
 body.main {
-  background-color:$dark;
+  background-color: $dark;
 
   color: #fff;
 }
@@ -15,23 +15,23 @@ body.main {
 @mixin button-bg($bg) {
   background: $bg;
   &:hover {
-    background:darken($bg,8%);
+    background: darken($bg, 8%);
     transition: all 0.3s ease;
   }
   &:active {
-    background:darken($bg,25%);
+    background: darken($bg, 25%);
   }
 }
 
 header.top {
-  background-color:$primary;
+  background-color: $primary;
   height: 70px;
 }
 
 main.content {
   padding-left: 100px;
   padding-right: 100px;
-  width:100%;
+  width: 100%;
 }
 
 div.onboard {
@@ -39,17 +39,17 @@ div.onboard {
   text-align: center;
 }
 div.onboard_form {
-  background-color: #39444C;
+  background-color: #39444c;
   border-radius: 8px;
   margin-left: 30px;
 }
 
 div.divider {
-  top:220px;
+  top: 220px;
   position: absolute;
   width: 2px;
   height: 300px;
-  background-color: #39444C;
+  background-color: #39444c;
 }
 
 h2.logo {
@@ -95,8 +95,8 @@ div.main_content {
   }
 
   i.changed {
-        color: $clrUnconfirmed;
-    }
+    color: $clrUnconfirmed;
+  }
 
   span.likers_list {
     color: $clrLikerList;
@@ -106,99 +106,98 @@ div.main_content {
     position: relative;
     text-align: center;
   }
-  
-    .section-header:before {
-    content: '';
+
+  .section-header:before {
+    content: "";
     z-index: 1;
-  
+
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-  
+
     width: 100%;
     height: 1px;
-  
+
     background: #dddddd;
   }
-  
-    .section-header__title {
-      position: relative;
-      z-index: 2;
-  
-      padding: 5px 20px;
-  
-      font-weight: 700;
-      font-size: 20px;
-      text-transform: uppercase;
-          background: $primary;
-      display: inline-block;
-  
-      color: #174750;
-    }
 
-    .section-header__subtitle {
-      position: relative;
-      z-index: 2;
-  
-      padding: 5px 20px;
-  
-      font-weight: 700;
-      font-size: 10px;
-      text-transform: uppercase;
-          background: #EEEEEE;
-      display: inline-block;
-  
-      color: #174750;
-    }
-  
-    .section-header__container {
-      position: relative;
-      z-index: 2;
-  
-      padding: 5px 20px;
-  
-      text-transform: uppercase;
-          background: $primary;
-    }
+  .section-header__title {
+    position: relative;
+    z-index: 2;
 
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color:$dark;
-  opacity:1;
+    padding: 5px 20px;
 
-}
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    background: $primary;
+    display: inline-block;
 
-.signup_form_container{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#000;
-    opacity:0.6;
-}
+    color: #174750;
+  }
 
-  button.connect{
-      margin-top:20px;
-      position:relative;
-      width:100% !important;
-      height: 35px;
-      text-align:center;
-      font-weight:bold;
-      text-transform: uppercase;
-      background: $primary;
-      border-radius: 8px;
-      @include button-bg($primary);
+  .section-header__subtitle {
+    position: relative;
+    z-index: 2;
+
+    padding: 5px 20px;
+
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    background: #eeeeee;
+    display: inline-block;
+
+    color: #174750;
+  }
+
+  .section-header__container {
+    position: relative;
+    z-index: 2;
+
+    padding: 5px 20px;
+
+    text-transform: uppercase;
+    background: $primary;
+  }
+
+  .centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $dark;
+    max-width: 200px !important;
+  }
+
+  .signup_form_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.6;
+  }
+
+  button.connect {
+    margin-top: 20px;
+    position: relative;
+    width: 100% !important;
+    height: 35px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: $primary;
+    border-radius: 8px;
+    @include button-bg($primary);
   }
 }
 
 input {
   border: none;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5em;
   padding: 0;
@@ -252,20 +251,19 @@ input {
   padding: 0 16px;
   width: 235px;
   height: 50px;
-
 }
 
-label{
+label {
   display: inline-block;
 }
 
-  a.link{
-    text-decoration:none;
-    color:$white !important;
-    float:right;
-    font-size:12px;
-    margin-bottom:15px;
-    &:hover{
-      text-decoration: underline;
-    }
+a.link {
+  text-decoration: none;
+  color: $white !important;
+  float: right;
+  font-size: 12px;
+  margin-bottom: 15px;
+  &:hover {
+    text-decoration: underline;
   }
+}

@@ -16,13 +16,12 @@
 {{end}}
 
 <div class="main_content">
-
     <div id="vue-div" class="display:none">
         <!-- IF USER IS NOT LOGGED IN -> SHOW LOGIN FORM -->
         <div v-if="!is_logged_in">
             <div class="container onboard">
                 <div class="container third" style="text-align: right;">
-                    <img src="{{=URL('static', 'images', args='Logo.png')}}"/>
+                    <img src="{{=URL('static', 'images', args='Logo.png')}}" />
                     <div class="half" style="padding-right: 0px">
                         <h2 class="logo">
                             Research <br>Connect
@@ -36,124 +35,46 @@
                         <div v-if="!showing_sign_up_form" id="web2py_user_form" class="col-lg-6 login" style="padding-left: 20px;">
                             {{form=auth.login()}}
                             {{=form.custom.begin}}
-                                <label>
+                            <label>
                                 <span><i class="fa fa-envelope-o"></i></span>
                                 {{form.custom.widget.email['_placeholder'] = 'Email'}}
                                 {{=form.custom.widget.email}}
-                                </label>
-                                <span><i class="fa fa-lock"></i></span>
-                                {{form.custom.widget.password['_placeholder'] = 'Password'}}
-                                {{=form.custom.widget.password}}
+                            </label>
+                            <span><i class="fa fa-lock"></i></span>
+                            {{form.custom.widget.password['_placeholder'] = 'Password'}}
+                            {{=form.custom.widget.password}}
                             <button class="connect">Connect</button>
                             {{=form.custom.end}}
                             <a class="link" id="show_signup_form" v-on:click="show_sign_up()">Sign Up</a>
                         </div>
 
-                        <div v-if="showing_sign_up_form"  class="signup_form_container" style="padding-left: 20px;">
-                            <div id="web2py_user_form"  class="centered">
-                            {{form=auth.register()}}
-                            {{=form.custom.begin}}
-                            First name:
-                            {{=form.custom.widget.first_name}}
-                            </br>
-                            Last name:
-                            {{=form.custom.widget.last_name}}
-                            </br>
-                            Email:
-                            {{=form.custom.widget.email}}
-                            </br>
-                            Password:
-                            {{=form.custom.widget.password}}
-                            Repeat password
-                            {{=form.custom.widget.password_two}}
-                            </br>
-                            {{=form.custom.submit}}
-                            {{=form.custom.end}}
-                        </div>
+                        <div v-if="showing_sign_up_form" >
+                            <div class="signup_form_container" ></div>
+                            <div id="web2py_signup_form" class="centered login">
+                                {{form=auth.register()}}
+                                {{=form.custom.begin}}
+                                {{form.custom.widget.first_name['_placeholder'] = 'First name'}}
+                                {{=form.custom.widget.first_name}}
+                                {{form.custom.widget.last_name['_placeholder'] = 'Last name'}}
+                                {{=form.custom.widget.last_name}}
+                                {{form.custom.widget.email['_placeholder'] = 'Email'}}
+                                {{=form.custom.widget.email}}
+                                {{form.custom.widget.password['_placeholder'] = 'Password'}}
+                                {{=form.custom.widget.password}}
+                                {{form.custom.widget.password_two['_placeholder'] = 'Repeat Password'}}
+                                {{=form.custom.widget.password_two}}
+                                <button class="connect">Sign up</button>
+                                {{=form.custom.end}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- END IF USER IS NOT LOGGED IN -> SHOW LOGIN FORM -->
-        <!-- ELSE SHOW HOME PAGE -->
-        <div v-if="is_logged_in">
-            <div id="add_post" style="display:none">
-                <div class="container form_row">
-                    <div class="label quarter">
-                        Title:
-                    </div>
-                    <div class="form threequarters">
-                        <input v-model="form_title" placeholder="Enter the post title"/>
-                    </div>
-                </div>
-                <div class="container form_row">
-                    <div class="label quarter">
-                        Content:
-                    </div>
-                    <div class="form threequarters">
-                        <textarea v-model="form_content" placeholder="Enter the content of your post"></textarea>
-                    </div>
-                </div>
-                <div class="container form_row">
-                    <div class="quarter"></div>
-                    <div class="threequarters">
-                        <div class="submit">
-                            <button id="add-post" v-on:click="add_post">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button v-if="is_logged_in" id="toggle_form_button" v-on:click="toggle_form">Add post <i
-                    class="fa fa-plus-circle"></i></button>
-            <!-- Message in case there are no posts. -->
-            <div v-if="post_list.length === 0">There are no posts.</div>
-
-            <!-- We display the posts. -->
-            <div id="post_list">
-                <div class="post_div" v-for="post in post_list">
-                    <div class="post_title">${post.post_title}</div>
-                    <div class="post_content">${post.post_content}</div>
-                    <div class="attributes">
-
-                        <!-- Code for Thumbs. -->
-                        <div v-if="is_logged_in" class="thumbs">
-                <span class="thumbs-up"
-                      v-on:mouseover="thumb_up_mouseover(post._idx)"
-                      v-on:mouseout="thumb_up_mouseout(post._idx)"
-                      v-on:click="thumbs_up_click(post._idx)">
-                  <i class="fa "
-                     v-bind:class="{changed: post._over_up  && !(post._thumb === 'u'), 'fa-thumbs-o-up': ((!post._over_up && post._thumb !== 'u') || post._over_down), 'fa-thumbs-up': !((!post._over_up && post._thumb !== 'u') || post._over_down)}"></i>
-                </span>
-                            <span class="thumbs-down"
-                                  v-on:mouseover="thumb_down_mouseover(post._idx)"
-                                  v-on:mouseout="thumb_down_mouseout(post._idx)"
-                                  v-on:click="thumbs_down_click(post._idx)">
-                  <i class="fa "
-                     v-bind:class="{changed: post._over_down && !(post._thumb === 'd'), 'fa-thumbs-o-down': ((!post._over_down && post._thumb !== 'd') || post._over_up), 'fa-thumbs-down': !((!post._over_down && post._thumb !== 'd') || post._over_up)}"></i>
-                </span>
-                        </div>
-                        <div v-if="is_logged_in" class="thumbs_count">
-                            ${post._score}
-                        </div>
-                        <!-- END Code for Thumbs. -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END ELSE SHOW HOME PAGE -->
     </div>
 
 </div>
 
-<script>
-        jQuery("#web2py_user_form input:visible:enabled:first").focus();
-    {{if request.args(0)=='register':}}
-        web2py_validate_entropy(jQuery('#auth_user_password'),100);
-    {{elif request.args(0)=='change_password':}}
-        web2py_validate_entropy(jQuery('#no_table_new_password'),100);
-    {{pass}}
-</script>
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>
