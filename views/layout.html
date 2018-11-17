@@ -35,14 +35,8 @@
                   <input type="text" id="search-bar" placeholder="What can I help you with today?">
                 </form>
           </div>
+          {{=MENU(response.menu_profile,_class='menu right')}}
           {{pass}}
-          
-      
-          <ul class="menu right">
-            <li>
-              {{=auth.navbar(mode='dropdown', referrer_actions=None)}}
-            </li>
-          </ul>
         </div>
       </div>
     </div>
