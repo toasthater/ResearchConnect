@@ -29,7 +29,7 @@ response.google_analytics_id = None
 # ----------------------------------------------------------------------------------------------------------------------
 
 response.menu = [
-    (T('Home'), False, URL('main'), [])
+    (IMG(_src=URL('static', 'images/home.png'), _class="navbar-icon"), False, URL('main'), [])
 ]
 
 DEVELOPMENT_MENU = True

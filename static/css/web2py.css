@@ -73,6 +73,11 @@ div.error {
 
 #navbar {float:right; padding:5px; /* same as superfish */}
 
+.navbar-icon {
+    height: 50px !important;
+  }
+
+
 .statusbar {
     background-color:#F5F5F5;
     margin-top:1em;
