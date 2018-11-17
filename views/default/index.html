@@ -33,7 +33,8 @@
                     <div class="divider">
                     </div>
                     <div class="onboard_form threequarters">
-                        <div id="web2py_user_form" class="col-lg-6" style="padding-left: 20px;">
+
+                        <div v-if="!showing_sign_up_form" id="web2py_user_form" class="col-lg-6" style="padding-left: 20px;">
                             {{form=auth.login()}}
                             {{=form.custom.begin}}
                             Email:
@@ -43,6 +44,30 @@
                             {{=form.custom.widget.password}}
                             {{=form.custom.submit}}
                             {{=form.custom.end}}
+                            <button id="show_signup_form" v-on:click="show_sign_up()">Sign Up</button>
+                        </div>
+
+                        <div v-if="showing_sign_up_form"  class="signup_form_container" style="padding-left: 20px;">
+                            <div id="web2py_user_form"  class="centered">
+                            {{form=auth.register()}}
+                            {{=form.custom.begin}}
+                            First name:
+                            {{=form.custom.widget.first_name}}
+                            </br>
+                            Last name:
+                            {{=form.custom.widget.last_name}}
+                            </br>
+                            Email:
+                            {{=form.custom.widget.email}}
+                            </br>
+                            Password:
+                            {{=form.custom.widget.password}}
+                            Repeat password
+                            {{=form.custom.widget.password_two}}
+                            </br>
+                            {{=form.custom.submit}}
+                            {{=form.custom.end}}
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -115,6 +140,7 @@
                 </div>
             </div>
         </div>
+        <!-- END ELSE SHOW HOME PAGE -->
     </div>
 
 </div>

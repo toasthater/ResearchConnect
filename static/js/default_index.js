@@ -175,6 +175,9 @@ var app = function() {
        })
     };
 
+    self.show_sign_up = function() {
+        self.vue.showing_sign_up_form = true;
+    };
 
     // Complete as needed.
     self.vue = new Vue({
@@ -184,7 +187,8 @@ var app = function() {
         data: {
             form_title: "",
             form_content: "",
-            post_list: []
+            post_list: [],
+            showing_sign_up_form: false
         },
         methods: {
             add_post: self.add_post,
@@ -195,7 +199,8 @@ var app = function() {
             thumbs_up_click: self.thumbs_up_click,
             thumbs_down_click: self.thumbs_down_click,
             thumbs_count: self.thumbs_count,
-            toggle_form: self.toggle_form
+            toggle_form: self.toggle_form,
+            show_sign_up: self.show_sign_up
         }
 
     });

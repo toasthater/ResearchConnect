@@ -91,3 +91,22 @@ div.main_content i.changed {
 div.main_content span.likers_list {
   color: #7777cc;
 }
+/* line 92, ../sass/_main.scss */
+div.main_content .centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #2A363F;
+  opacity: 1;
+}
+/* line 102, ../sass/_main.scss */
+div.main_content .signup_form_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.6;
+}
