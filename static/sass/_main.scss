@@ -74,7 +74,8 @@ div.main_content {
   div.post_div {
     margin: 10px;
     border: 1px black solid;
-    background-color: $clrLight;
+    background-color: $primary;
+    border-radius: 5px;
     padding: 10px;
     .post_title {
       font-size: 120%;
@@ -100,6 +101,66 @@ div.main_content {
   span.likers_list {
     color: $clrLikerList;
   }
+
+  .section-header {
+    position: relative;
+    text-align: center;
+  }
+  
+    .section-header:before {
+    content: '';
+    z-index: 1;
+  
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  
+    width: 100%;
+    height: 1px;
+  
+    background: #dddddd;
+  }
+  
+    .section-header__title {
+      position: relative;
+      z-index: 2;
+  
+      padding: 5px 20px;
+  
+      font-weight: 700;
+      font-size: 20px;
+      text-transform: uppercase;
+          background: $primary;
+      display: inline-block;
+  
+      color: #174750;
+    }
+
+    .section-header__subtitle {
+      position: relative;
+      z-index: 2;
+  
+      padding: 5px 20px;
+  
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+          background: #EEEEEE;
+      display: inline-block;
+  
+      color: #174750;
+    }
+  
+    .section-header__container {
+      position: relative;
+      z-index: 2;
+  
+      padding: 5px 20px;
+  
+      text-transform: uppercase;
+          background: $primary;
+    }
 
 .centered {
   position: fixed;
@@ -169,11 +230,15 @@ input {
   height: 50px;
 }
 
+.login input {
+  border: 0 !important;
+}
+
 .login form input[type="text"] {
   background-color: #3b4148;
   border-radius: 0px 3px 3px 0px;
   color: #a9a9a9;
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
   padding: 0 16px;
   width: 235px;
   height: 50px;
@@ -183,7 +248,7 @@ input {
   background-color: #3b4148;
   border-radius: 0px 3px 3px 0px;
   color: #a9a9a9;
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
   padding: 0 16px;
   width: 235px;
   height: 50px;

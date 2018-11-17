@@ -70,28 +70,78 @@ div.main_content div.form_row {
 div.main_content div.post_div {
   margin: 10px;
   border: 1px black solid;
-  background-color: #eeeeee;
+  background-color: #67C896;
+  border-radius: 5px;
   padding: 10px;
 }
-/* line 79, ../sass/_main.scss */
+/* line 80, ../sass/_main.scss */
 div.main_content div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
-/* line 92, ../sass/_main.scss */
+/* line 93, ../sass/_main.scss */
 div.main_content i {
   cursor: pointer;
 }
-/* line 96, ../sass/_main.scss */
+/* line 97, ../sass/_main.scss */
 div.main_content i.changed {
   color: #777777;
 }
-/* line 100, ../sass/_main.scss */
+/* line 101, ../sass/_main.scss */
 div.main_content span.likers_list {
   color: #7777cc;
 }
-/* line 104, ../sass/_main.scss */
+/* line 105, ../sass/_main.scss */
+div.main_content .section-header {
+  position: relative;
+  text-align: center;
+}
+/* line 110, ../sass/_main.scss */
+div.main_content .section-header:before {
+  content: '';
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 1px;
+  background: #dddddd;
+}
+/* line 125, ../sass/_main.scss */
+div.main_content .section-header__title {
+  position: relative;
+  z-index: 2;
+  padding: 5px 20px;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  background: #67C896;
+  display: inline-block;
+  color: #174750;
+}
+/* line 140, ../sass/_main.scss */
+div.main_content .section-header__subtitle {
+  position: relative;
+  z-index: 2;
+  padding: 5px 20px;
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  background: #EEEEEE;
+  display: inline-block;
+  color: #174750;
+}
+/* line 155, ../sass/_main.scss */
+div.main_content .section-header__container {
+  position: relative;
+  z-index: 2;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  background: #67C896;
+}
+/* line 165, ../sass/_main.scss */
 div.main_content .centered {
   position: fixed;
   top: 50%;
@@ -100,7 +150,7 @@ div.main_content .centered {
   background-color: #2A363F;
   opacity: 1;
 }
-/* line 114, ../sass/_main.scss */
+/* line 175, ../sass/_main.scss */
 div.main_content .signup_form_container {
   position: fixed;
   top: 0;
@@ -110,7 +160,7 @@ div.main_content .signup_form_container {
   background: #000;
   opacity: 0.6;
 }
-/* line 124, ../sass/_main.scss */
+/* line 185, ../sass/_main.scss */
 div.main_content button.connect {
   margin-top: 20px;
   position: relative;
@@ -133,7 +183,7 @@ div.main_content button.connect:active {
   background: #2f8156;
 }
 
-/* line 138, ../sass/_main.scss */
+/* line 199, ../sass/_main.scss */
 input {
   border: none;
   font-family: 'Open Sans', Arial, sans-serif;
@@ -143,13 +193,13 @@ input {
   -webkit-appearance: none;
 }
 
-/* line 147, ../sass/_main.scss */
+/* line 208, ../sass/_main.scss */
 .login {
   margin: 50px auto;
   display: block !important;
 }
 
-/* line 152, ../sass/_main.scss */
+/* line 213, ../sass/_main.scss */
 .login form {
   margin: auto;
   padding: 22px 22px 22px 22px;
@@ -157,7 +207,7 @@ input {
   display: block;
 }
 
-/* line 159, ../sass/_main.scss */
+/* line 220, ../sass/_main.scss */
 .login form span {
   background-color: #363b41;
   border-radius: 3px 0px 0px 3px;
@@ -171,34 +221,39 @@ input {
   height: 50px;
 }
 
-/* line 172, ../sass/_main.scss */
+/* line 233, ../sass/_main.scss */
+.login input {
+  border: 0 !important;
+}
+
+/* line 237, ../sass/_main.scss */
 .login form input[type="text"] {
   background-color: #3b4148;
   border-radius: 0px 3px 3px 0px;
   color: #a9a9a9;
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
   padding: 0 16px;
   width: 235px;
   height: 50px;
 }
 
-/* line 182, ../sass/_main.scss */
+/* line 247, ../sass/_main.scss */
 .login form input[type="password"] {
   background-color: #3b4148;
   border-radius: 0px 3px 3px 0px;
   color: #a9a9a9;
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
   padding: 0 16px;
   width: 235px;
   height: 50px;
 }
 
-/* line 193, ../sass/_main.scss */
+/* line 258, ../sass/_main.scss */
 label {
   display: inline-block;
 }
 
-/* line 197, ../sass/_main.scss */
+/* line 262, ../sass/_main.scss */
 a.link {
   text-decoration: none;
   color: #FFFFFF !important;
@@ -206,7 +261,7 @@ a.link {
   font-size: 12px;
   margin-bottom: 15px;
 }
-/* line 203, ../sass/_main.scss */
+/* line 268, ../sass/_main.scss */
 a.link:hover {
   text-decoration: underline;
 }

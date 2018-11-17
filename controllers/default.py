@@ -13,6 +13,9 @@ def index():
     # We just want to expand the template.
     return dict()
 
+def main():
+    # We just want to expand the template.
+    return dict()
 
 def user():
     """
@@ -30,7 +33,13 @@ def user():
     to decorate functions that need access control
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
-    return dict(form=auth())
+    if request.args(0) == 'register':
+        form = auth.register(next=auth.settings.register_next)
+    elif request.args(0) == 'login':
+        form = auth.login(next=auth.settings.login_next)
+    else:
+        form = auth()
+    return dict(form=form)
 
 
 @cache.action()

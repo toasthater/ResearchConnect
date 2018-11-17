@@ -62,6 +62,7 @@ from gluon.tools import Auth, Service, PluginManager
 
 # host names must be a list of allowed host names (glob syntax allowed)
 auth = Auth(db, host_names=myconf.get('host.names'))
+
 service = Service()
 plugins = PluginManager()
 
@@ -77,9 +78,13 @@ mail.settings.tls = myconf.get('smtp.tls') or False
 mail.settings.ssl = myconf.get('smtp.ssl') or False
 
 # configure auth policy
+auth.next = None
 auth.settings.registration_requires_verification = False
+auth.settings.login_next = URL('main')
+auth.settings.register_next = URL('main')
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
+
 
 # More API examples for controllers:
 #
