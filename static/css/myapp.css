@@ -28,54 +28,62 @@ div.onboard {
 div.onboard_form {
   background-color: #39444C;
   border-radius: 8px;
+  margin-left: 30px;
 }
 
-/* line 30, ../sass/_main.scss */
+/* line 31, ../sass/_main.scss */
 div.divider {
   top: 220px;
   position: absolute;
   width: 2px;
   height: 300px;
   background-color: #39444C;
-  display: inline-block;
 }
 
 /* line 39, ../sass/_main.scss */
+h2.logo {
+  font-size: 24px;
+  margin-top: 50px;
+  text-align: left;
+  margin-left: 20px;
+}
+
+/* line 46, ../sass/_main.scss */
 .colorful {
   color: #bb8833;
 }
 
-/* line 43, ../sass/_main.scss */
+/* line 50, ../sass/_main.scss */
 div.main_content {
   padding: 16px;
 }
-/* line 46, ../sass/_main.scss */
+/* line 53, ../sass/_main.scss */
 div.main_content div.form_row {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-/* line 51, ../sass/_main.scss */
+/* line 58, ../sass/_main.scss */
 div.main_content div.post_div {
   margin: 10px;
   border: 1px black solid;
   background-color: #eeeeee;
   padding: 10px;
 }
-/* line 56, ../sass/_main.scss */
+/* line 63, ../sass/_main.scss */
 div.main_content div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
-/* line 69, ../sass/_main.scss */
+/* line 76, ../sass/_main.scss */
 div.main_content i {
   cursor: pointer;
 }
-/* line 73, ../sass/_main.scss */
+/* line 80, ../sass/_main.scss */
 div.main_content i.changed {
   color: #777777;
 }
-/* line 77, ../sass/_main.scss */
+/* line 84, ../sass/_main.scss */
 div.main_content span.likers_list {
   color: #7777cc;
 }

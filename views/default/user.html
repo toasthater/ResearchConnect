@@ -1,24 +1,31 @@
 {{extend 'layout.html'}}
 
 <div class="container onboard">
-    <div class="container third">
+    <div class="container third" style="text-align: right;">
             <img src="{{=URL('static', 'images', args='Logo.png')}}"/>
+            <div class = "half" style= "padding-right: 0px">
+                <h2 class = "logo">
+                    Research <br>Connect
+                </h2>
+            </div>
     </div>
-    <div class="divider">
-    </div>
-    <div class="third" style="padding-left: 40px;">
-        <div id="web2py_user_form" class="onboard_form col-lg-6">
-        {{
-        if request.args(0)=='login':
-            if not 'register' in auth.settings.actions_disabled:
-                form.add_button(T('Sign Up'),URL(args='register', vars={'_next': request.vars._next} if request.vars._next else None),_class='btn btn-default')
+    <div class="third container">
+        <div class="divider">
+        </div>
+        <div class = "onboard_form threequarters">
+            <div id="web2py_user_form" class="col-lg-6" style="padding-left: 20px;">
+            {{
+            if request.args(0)=='login':
+                if not 'register' in auth.settings.actions_disabled:
+                    form.add_button(T('Sign Up'),URL(args='register', vars={'_next': request.vars._next} if request.vars._next else None),_class='btn btn-default')
+                pass
+                if not 'request_reset_password' in auth.settings.actions_disabled:
+                    form.add_button(T('Lost Password'),URL(args='request_reset_password'),_class='btn btn-default')
+                pass
             pass
-            if not 'request_reset_password' in auth.settings.actions_disabled:
-                form.add_button(T('Lost Password'),URL(args='request_reset_password'),_class='btn btn-default')
-            pass
-        pass
-        =form
-        }}
+            =form
+            }}
+            </div>
         </div>
     </div>
 </div>
