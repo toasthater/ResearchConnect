@@ -230,8 +230,9 @@ var APP = null;
 // for instance, self.x above would be accessible as APP.x
 jQuery(function () { APP = app(); });
 
-$( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) { // ESC
+$(document).on('keydown', function (e) {
+    if (e.keyCode === 27) { // ESC
         APP.vue.showing_sign_up_form = false;
     }
-    });
+});
+
