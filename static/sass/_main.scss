@@ -1,9 +1,13 @@
 $dark: #2A363F;
 $primary: #67C896;
 
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
 body.main {
   background-color:$dark;
-  font-family: 'Open Sans', sans-serif;
+
   color: #fff;
 }
 

@@ -1,37 +1,41 @@
 /* line 4, ../sass/_main.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* line 8, ../sass/_main.scss */
 body.main {
   background-color: #2A363F;
-  font-family: 'Open Sans', sans-serif;
   color: #fff;
 }
 
-/* line 10, ../sass/_main.scss */
+/* line 14, ../sass/_main.scss */
 header.top {
   background-color: #67C896;
   height: 70px;
 }
 
-/* line 15, ../sass/_main.scss */
+/* line 19, ../sass/_main.scss */
 main.content {
   padding-left: 100px;
   padding-right: 100px;
   width: 100%;
 }
 
-/* line 21, ../sass/_main.scss */
+/* line 25, ../sass/_main.scss */
 div.onboard {
   margin-top: 200px;
   text-align: center;
 }
 
-/* line 25, ../sass/_main.scss */
+/* line 29, ../sass/_main.scss */
 div.onboard_form {
   background-color: #39444C;
   border-radius: 8px;
   margin-left: 30px;
 }
 
-/* line 31, ../sass/_main.scss */
+/* line 35, ../sass/_main.scss */
 div.divider {
   top: 220px;
   position: absolute;
@@ -40,7 +44,7 @@ div.divider {
   background-color: #39444C;
 }
 
-/* line 39, ../sass/_main.scss */
+/* line 43, ../sass/_main.scss */
 h2.logo {
   font-size: 24px;
   margin-top: 50px;
@@ -48,42 +52,42 @@ h2.logo {
   margin-left: 20px;
 }
 
-/* line 46, ../sass/_main.scss */
+/* line 50, ../sass/_main.scss */
 .colorful {
   color: #bb8833;
 }
 
-/* line 50, ../sass/_main.scss */
+/* line 54, ../sass/_main.scss */
 div.main_content {
   padding: 16px;
 }
-/* line 53, ../sass/_main.scss */
+/* line 57, ../sass/_main.scss */
 div.main_content div.form_row {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-/* line 58, ../sass/_main.scss */
+/* line 62, ../sass/_main.scss */
 div.main_content div.post_div {
   margin: 10px;
   border: 1px black solid;
   background-color: #eeeeee;
   padding: 10px;
 }
-/* line 63, ../sass/_main.scss */
+/* line 67, ../sass/_main.scss */
 div.main_content div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
-/* line 76, ../sass/_main.scss */
+/* line 80, ../sass/_main.scss */
 div.main_content i {
   cursor: pointer;
 }
-/* line 80, ../sass/_main.scss */
+/* line 84, ../sass/_main.scss */
 div.main_content i.changed {
   color: #777777;
 }
-/* line 84, ../sass/_main.scss */
+/* line 88, ../sass/_main.scss */
 div.main_content span.likers_list {
   color: #7777cc;
 }
