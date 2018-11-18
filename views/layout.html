@@ -22,17 +22,18 @@
     {{=response.flash}}
   </div>
   {{pass}}
-  <header class="navbar">
-    <div class="container">
-      
-      {{if auth.user is not None:}}
+  <nav class="navbar navbar-light bg-light">
+        {{if auth.user is not None:}}
+        {{=MENU(response.menu)}}
+          <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
         {{=MENU(response.menu_profile)}}
-        <form class="input-group">
-            <input type="text" class="form-control" id="search-bar" placeholder="Search">
-        </form>
+
       {{pass}}
-    </div>
-  </header>
+    </a>
+  </nav>
 
   <main class="content">
     {{include}}
