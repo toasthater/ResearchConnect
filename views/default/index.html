@@ -22,38 +22,48 @@
 </script>
 {{end}}
 
-<div class="main_content">
+<div class="container">
     <div id="vue-div" class="display:none">
         <!-- IF USER IS NOT LOGGED IN -> SHOW LOGIN FORM -->
-        <div v-if="!is_logged_in">
-            <div class="container onboard">
-                <div class="container third" style="text-align: right;">
-                    <img src="{{=URL('static', 'images', args='Logo.png')}}" />
-                    <div class="half" style="padding-right: 0px">
-                        <h2 class="logo">
+        <div v-if="!is_logged_in" class="onboard">
+            <div class="row">
+                <div class="col-md" id="big_logo">
+                    <div class="row">
+                        <div class="col-sm">
+                            <img src="{{=URL('static', 'images', args='Logo.png')}}" />
+                        </div>
+                        <h2 class="col-sm">
                             Research <br>Connect
                         </h2>
                     </div>
                 </div>
-                <div class="third container">
-                    <div class="divider">
-                    </div>
-                    <div class="onboard_form threequarters">
-                        <div v-if="!showing_sign_up_form" id="web2py_user_form" class="col-lg-6 login" style="padding-left: 20px;">
+                <div class="col-md">
+                    <div class="onboard-form">
+                        <form v-if="!showing_sign_up_form" id="web2py_user_form login">
                             {{form=auth.login()}}
                             {{=form.custom.begin}}
-                            <label>
-                                <span><i class="fa fa-envelope-o"></i></span>
-                                {{form.custom.widget.email['_placeholder'] = 'Email'}}
-                                {{=form.custom.widget.email}}
-                            </label>
-                            <span><i class="fa fa-lock"></i></span>
-                            {{form.custom.widget.password['_placeholder'] = 'Password'}}
-                            {{=form.custom.widget.password}}
-                            <button class="connect">Connect</button>
+                                <div class="input-group mb-3" id="email_form">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">perm_identity</i></span>
+                                    </div>
+                                    {{form.custom.widget.email['_class'] = 'form-control'}}
+                                    {{form.custom.widget.email['_placeholder'] = 'Email'}}
+                                    {{=form.custom.widget.email}}
+                                </div>
+
+                                <div class="input-group mb-3" id="pass_form">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="material-icons">lock</i></span>
+                                    </div>
+                                    {{form.custom.widget.email['_class'] = 'form-control'}}
+                                    {{form.custom.widget.password['_placeholder'] = 'Password'}}
+                                    {{=form.custom.widget.password}}
+                                </div>
+                                <button class="btn btn-lg btn-block">Connect</button>
                             {{=form.custom.end}}
+                            
                             <a class="link" id="show_signup_form" v-on:click="show_sign_up()">Sign Up</a>
-                        </div>
+                        </form>
 
                         <div id="signup" v-if="showing_sign_up_form" >
                             <div class="signup_form_container" ></div>

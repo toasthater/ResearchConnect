@@ -10,9 +10,9 @@
   <link href="{{=URL('static','css/calendar.css')}}" rel="stylesheet" type="text/css" />
   <link href="{{=URL('static','css/web2py.css')}}" rel="stylesheet" type="text/css" />
   <link href="{{=URL('static','css/myapp.css')}}" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="{{=URL('static', 'font-awesome-4.6.3/css/font-awesome.min.css')}}">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans">
   <link rel="stylesheet" type="text/css" href="{{=URL('static', 'bootstrap-4.1.3/css/bootstrap.min.css')}}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   {{include "web2py_ajax.html"}}
   {{block head}}{{end}}
 </head>
@@ -23,23 +23,15 @@
     {{=response.flash}}
   </div>
   {{pass}}
-  <header class="top padded">
-    <div class="container middle max900">
-      <div class="fill middle">
-        <label class="ham padded fa fa-bars" for="menu"></label>
-        <div class="burger accordion">
-          <input type="checkbox" id="menu" />
-          {{if auth.user is not None:}}
-          <div>
-              {{=MENU(response.menu,_class='menu left')}}
-              <form class="search-container menu center">
-                  <input type="text" id="search-bar" placeholder="What can I help you with today?">
-                </form>
-          </div>
-          {{=MENU(response.menu_profile,_class='menu right')}}
-          {{pass}}
-        </div>
-      </div>
+  <header class="navbar">
+    <div class="container">
+      
+      {{if auth.user is not None:}}
+        {{=MENU(response.menu_profile)}}
+        <form class="input-group">
+            <input type="text" class="form-control" id="search-bar" placeholder="Search">
+        </form>
+      {{pass}}
     </div>
   </header>
 
