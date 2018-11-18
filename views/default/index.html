@@ -22,7 +22,7 @@
 </script>
 {{end}}
 
-<div class="container">
+<div class="main_content container">
     <div id="vue-div" class="display:none">
         <!-- IF USER IS NOT LOGGED IN -> SHOW LOGIN FORM -->
         <div v-if="!is_logged_in" class="onboard">
@@ -39,14 +39,13 @@
                 </div>
                 <div class="col-md">
                     <div class="onboard-form">
-                        <form v-if="!showing_sign_up_form" id="web2py_user_form login">
+                        <div v-if="!showing_sign_up_form" id="web2py_user_form login">
                             {{form=auth.login()}}
                             {{=form.custom.begin}}
                                 <div class="input-group mb-3" id="email_form">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="material-icons">perm_identity</i></span>
                                     </div>
-                                    {{form.custom.widget.email['_class'] = 'form-control'}}
                                     {{form.custom.widget.email['_placeholder'] = 'Email'}}
                                     {{=form.custom.widget.email}}
                                 </div>
@@ -55,7 +54,6 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="material-icons">lock</i></span>
                                     </div>
-                                    {{form.custom.widget.email['_class'] = 'form-control'}}
                                     {{form.custom.widget.password['_placeholder'] = 'Password'}}
                                     {{=form.custom.widget.password}}
                                 </div>
@@ -63,7 +61,7 @@
                             {{=form.custom.end}}
                             
                             <a class="link" id="show_signup_form" v-on:click="show_sign_up()">Sign Up</a>
-                        </form>
+                        </div>
 
                         <div id="signup" v-if="showing_sign_up_form" >
                             <div class="signup_form_container" ></div>
