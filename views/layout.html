@@ -22,12 +22,21 @@
     {{=response.flash}}
   </div>
   {{pass}}
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-custom">
         {{if auth.user is not None:}}
         {{=MENU(response.menu)}}
           <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <div class="input-group" id="pass_form">
+                <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">search</i></button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Research</a>
+                  <a class="dropdown-item" href="#">Professor</a>
+                  <a class="dropdown-item" href="#">Student</a>
+                </div>
+                </div>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              </div>
       </form>
         {{=MENU(response.menu_profile)}}
 
