@@ -1,4 +1,10 @@
-$clrHilight: #bb8833;
-$clrLight: #eeeeee;
-$clrUnconfirmed: #777777;
-$clrLikerList: #7777cc;
+
+$color-dark: #2a363f;
+$color-light: #ffffff;
+$color-primary: #67c896;
+
+$font-sans: "Open Sans", sans-serif;
+
+.bg-dark { background-color: $color-dark; }
+.bg-light { background-color: $color-light; }
+.bg-primary { background-color: $color-primary; }
