@@ -38,13 +38,13 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="onboard-form">
-                        <div v-if="!showing_sign_up_form" id="web2py_user_form login">
+                    <div class="onboard-form login p-3">
+                        <div v-if="!showing_sign_up_form" id="web2py_user_form">
                             {{form=auth.login()}}
                             {{=form.custom.begin}}
                                 <div class="input-group mb-3" id="email_form">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="material-icons">perm_identity</i></span>
+                                        <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
                                     </div>
                                     {{form.custom.widget.email['_placeholder'] = 'Email'}}
                                     {{=form.custom.widget.email}}
@@ -52,12 +52,12 @@
 
                                 <div class="input-group mb-3" id="pass_form">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="material-icons">lock</i></span>
+                                        <span class="input-group-text black"><i class="material-icons">lock</i></span>
                                     </div>
                                     {{form.custom.widget.password['_placeholder'] = 'Password'}}
                                     {{=form.custom.widget.password}}
                                 </div>
-                                <button class="btn btn-lg btn-block">Connect</button>
+                                <button class="btn btn-lg btn-block connect">Connect</button>
                             {{=form.custom.end}}
                             
                             <a class="link" id="show_signup_form" v-on:click="show_sign_up()">Sign Up</a>
