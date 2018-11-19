@@ -36,48 +36,52 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="login p-3">
-                        <div id="web2py_user_form">
-                            {{form=auth.login()}}
-                            {{=form.custom.begin}}
-                                <div class="input-group mb-3" id="email_form">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
+                    <div class = "row">
+                        <div class = "divider">
+                        </div>
+                        <div class="login p-3">
+                            <div id="web2py_user_form">
+                                {{form=auth.login()}}
+                                {{=form.custom.begin}}
+                                    <div class="input-group mb-3" id="email_form">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
+                                        </div>
+                                        {{form.custom.widget.email['_placeholder'] = 'Email'}}
+                                        {{=form.custom.widget.email}}
                                     </div>
+
+                                    <div class="input-group mb-3" id="pass_form">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text black"><i class="material-icons">lock</i></span>
+                                        </div>
+                                        {{form.custom.widget.password['_placeholder'] = 'Password'}}
+                                        {{=form.custom.widget.password}}
+                                    </div>
+                                    <button class="btn btn-lg btn-block connect">Connect</button>
+                                {{=form.custom.end}}
+                                <a class="link">Forgot Password?</a>
+                                <a class="link" id="show_signup_form" v-on:click="show_sign_up()" style="float: right;">Sign Up</a>
+                            </div>
+
+                            <div id="signup" v-if="showing_sign_up_form" >
+                                <div class="signup_form_container" ></div>
+                                <div id="web2py_signup_form" class="centered login p-3">
+                                    {{form=auth.register()}}
+                                    {{=form.custom.begin}}
+                                    {{form.custom.widget.first_name['_placeholder'] = 'First name'}}
+                                    {{=form.custom.widget.first_name}}
+                                    {{form.custom.widget.last_name['_placeholder'] = 'Last name'}}
+                                    {{=form.custom.widget.last_name}}
                                     {{form.custom.widget.email['_placeholder'] = 'Email'}}
                                     {{=form.custom.widget.email}}
-                                </div>
-
-                                <div class="input-group mb-3" id="pass_form">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text black"><i class="material-icons">lock</i></span>
-                                    </div>
                                     {{form.custom.widget.password['_placeholder'] = 'Password'}}
                                     {{=form.custom.widget.password}}
+                                    {{form.custom.widget.password_two['_placeholder'] = 'Repeat Password'}}
+                                    {{=form.custom.widget.password_two}}
+                                    <button class="connect">Sign up</button>
+                                    {{=form.custom.end}}
                                 </div>
-                                <button class="btn btn-lg btn-block connect">Connect</button>
-                            {{=form.custom.end}}
-                            <a class="link">Forgot Password?</a>
-                            <a class="link" id="show_signup_form" v-on:click="show_sign_up()" style="float: right;">Sign Up</a>
-                        </div>
-
-                        <div id="signup" v-if="showing_sign_up_form" >
-                            <div class="signup_form_container" ></div>
-                            <div id="web2py_signup_form" class="centered login p-3">
-                                {{form=auth.register()}}
-                                {{=form.custom.begin}}
-                                {{form.custom.widget.first_name['_placeholder'] = 'First name'}}
-                                {{=form.custom.widget.first_name}}
-                                {{form.custom.widget.last_name['_placeholder'] = 'Last name'}}
-                                {{=form.custom.widget.last_name}}
-                                {{form.custom.widget.email['_placeholder'] = 'Email'}}
-                                {{=form.custom.widget.email}}
-                                {{form.custom.widget.password['_placeholder'] = 'Password'}}
-                                {{=form.custom.widget.password}}
-                                {{form.custom.widget.password_two['_placeholder'] = 'Repeat Password'}}
-                                {{=form.custom.widget.password_two}}
-                                <button class="connect">Sign up</button>
-                                {{=form.custom.end}}
                             </div>
                         </div>
                     </div>
