@@ -52,8 +52,7 @@ div.onboard {
 
 div.divider {
   width: 2px;
-  height: 330px;
-  margin-top: 30px;
+  height: 360px;
   background-color: #39444c;
 }
 
@@ -248,7 +247,7 @@ button.connect {
   }
 
 .login {
-  margin: 50px auto;
+  margin: auto;
   background-color: $loginBackground;
   border-radius: 5px;
   display: block !important;
