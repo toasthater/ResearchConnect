@@ -2,7 +2,9 @@ $dark: #2a363f;
 $primary: #67c896;
 $white: #ffffff;
 $loginInputBackground: #4D575E;
-$loginBackground: rgba(196, 196, 196, 0.2);
+$loginBackground: #3A454D;
+$loginIconColor: #C4C4C4;
+$loginIconBackground: #687178;
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -217,11 +219,11 @@ button.connect {
 }
 
 .login form span {
-  background-color: #363b41;
+  background-color: $loginIconBackground !important;
   border-radius: 3px 0px 0px 3px;
   border: 0px;
   border-right: 3px solid #434a52;
-  color: #606468 !important;
+  color: $loginIconColor !important;
   line-height: 50px;
   text-align: center;
   width: 50px;
