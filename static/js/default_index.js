@@ -183,6 +183,14 @@ var app = function () {
         self.vue.showing_sign_up_form = false;
     };
 
+    self.show_forgot_password = function () {
+        self.vue.showing_forgot_password_form = true;
+    };
+
+    self.hide_forgot_password = function () {
+        self.vue.showing_forgot_password_form = false;
+    };
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -191,7 +199,8 @@ var app = function () {
             form_title: "",
             form_content: "",
             post_list: [],
-            showing_sign_up_form: false
+            showing_sign_up_form: false,
+            showing_forgot_password_form: false
         },
         methods: {
             add_post: self.add_post,
@@ -204,7 +213,9 @@ var app = function () {
             thumbs_count: self.thumbs_count,
             toggle_form: self.toggle_form,
             show_sign_up: self.show_sign_up,
-            hide_sign_up: self.hide_sign_up
+            hide_sign_up: self.hide_sign_up,
+            show_forgot_password: self.show_forgot_password,
+            hide_forgot_password: self.hide_forgot_password
         }
     });
 
@@ -233,6 +244,7 @@ jQuery(function () { APP = app(); });
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) { // ESC
         APP.vue.showing_sign_up_form = false;
+        APP.vue.showing_forgot_password_form = false;
     }
 });
 

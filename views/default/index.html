@@ -60,7 +60,7 @@
                                     </div>
                                     <button class="btn btn-lg btn-block connect">Connect</button>
                                 {{=form.custom.end}}
-                                <a class="link">Forgot Password?</a>
+                                <a class="link"  v-on:click="show_forgot_password()">Forgot Password?</a>
                                 <a class="link" id="show_signup_form" v-on:click="show_sign_up()" style="float: right;">Sign Up</a>
                             </div>
 
@@ -80,6 +80,22 @@
                                     {{form.custom.widget.password_two['_placeholder'] = 'Repeat Password'}}
                                     {{=form.custom.widget.password_two}}
                                     <button class="connect">Sign up</button>
+                                    {{=form.custom.end}}
+                                </div>
+                            </div>
+                            <div id="forgotpassword" v-if="showing_forgot_password_form" >
+                                <div class="signup_form_container" ></div>
+                                <div id="web2py_forgot_password_form" class="centered login p-3">
+                                    {{form=auth.request_reset_password()}}
+                                    {{=form.custom.begin}}
+                                    <div class="input-group mb-3" id="email_form">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
+                                        </div>
+                                        {{form.custom.widget.email['_placeholder'] = 'Email'}}
+                                        {{=form.custom.widget.email}}
+                                    </div>
+                                    <button class="connect">Reset Password</button>
                                     {{=form.custom.end}}
                                 </div>
                             </div>
