@@ -1,42 +1,41 @@
-/* line 12, ../sass/_main.scss */
+/* line 10, ../sass/_main.scss */
 body {
   font-family: "Open Sans", sans-serif;
 }
 
-/* line 16, ../sass/_main.scss */
+/* line 14, ../sass/_main.scss */
 body.main {
   background-color: #2a363f;
   color: #fff;
 }
 
-/* line 34, ../sass/_main.scss */
+/* line 30, ../sass/_main.scss */
 header.top {
   background-color: #67c896;
   height: 70px;
 }
 
-/* line 39, ../sass/_main.scss */
+/* line 35, ../sass/_main.scss */
 main.content {
   padding-left: 100px;
   padding-right: 100px;
   width: 100%;
 }
 
-/* line 45, ../sass/_main.scss */
+/* line 41, ../sass/_main.scss */
 div.onboard {
   margin-top: 200px;
 }
 
-/* line 49, ../sass/_main.scss */
+/* line 45, ../sass/_main.scss */
 div.divider {
-  top: 220px;
-  position: absolute;
   width: 2px;
   height: 300px;
+  margin-top: 30px;
   background-color: #39444c;
 }
 
-/* line 57, ../sass/_main.scss */
+/* line 52, ../sass/_main.scss */
 h2.logo {
   font-size: 24px;
   margin-top: 50px;
@@ -44,62 +43,21 @@ h2.logo {
   margin-left: 20px;
 }
 
-/* line 64, ../sass/_main.scss */
-h2 {
-  font-family: "Open Sans", Arial, sans-serif !important;
-}
-
-/* line 68, ../sass/_main.scss */
-.vertical-center {
-  min-height: 100%;
-  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh;
-  /* These two lines are counted as one :-)       */
-  display: flex;
-  align-items: center;
-}
-
-/* line 76, ../sass/_main.scss */
-.search-bar {
-  font-family: "Open Sans", Arial, sans-serif !important;
-}
-/* line 79, ../sass/_main.scss */
-.search-bar input {
-  background: #4C866E;
-  color: #ffffff !important;
-  border: 0px !important;
-  border-radius: 0px !important;
-}
-/* line 86, ../sass/_main.scss */
-.search-bar i {
-  color: #ffffff !important;
-}
-/* line 90, ../sass/_main.scss */
-.search-bar button {
-  background: #3B5E56 !important;
-  border-radius: 0px !important;
-  border: 0px !important;
-}
-/* line 96, ../sass/_main.scss */
-.search-bar a {
-  background: #4C866E;
-}
-
-/* line 104, ../sass/_main.scss */
+/* line 59, ../sass/_main.scss */
 .colorful {
   color: #bb8833;
 }
 
-/* line 108, ../sass/_main.scss */
+/* line 63, ../sass/_main.scss */
 div.main_content {
   padding: 16px;
 }
-/* line 111, ../sass/_main.scss */
+/* line 66, ../sass/_main.scss */
 div.main_content div.form_row {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-/* line 116, ../sass/_main.scss */
+/* line 71, ../sass/_main.scss */
 div.main_content div.post_div {
   margin: 10px;
   border: 1px black solid;
@@ -107,30 +65,30 @@ div.main_content div.post_div {
   border-radius: 5px;
   padding: 10px;
 }
-/* line 122, ../sass/_main.scss */
+/* line 77, ../sass/_main.scss */
 div.main_content div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
-/* line 135, ../sass/_main.scss */
+/* line 90, ../sass/_main.scss */
 div.main_content i {
   cursor: pointer;
 }
-/* line 139, ../sass/_main.scss */
+/* line 94, ../sass/_main.scss */
 div.main_content i.changed {
   color: #777777;
 }
-/* line 143, ../sass/_main.scss */
+/* line 98, ../sass/_main.scss */
 div.main_content span.likers_list {
   color: #7777cc;
 }
-/* line 147, ../sass/_main.scss */
+/* line 102, ../sass/_main.scss */
 div.main_content .section-header {
   position: relative;
   text-align: center;
 }
-/* line 152, ../sass/_main.scss */
+/* line 107, ../sass/_main.scss */
 div.main_content .section-header:before {
   content: "";
   z-index: 1;
@@ -142,7 +100,7 @@ div.main_content .section-header:before {
   height: 1px;
   background: #dddddd;
 }
-/* line 167, ../sass/_main.scss */
+/* line 122, ../sass/_main.scss */
 div.main_content .section-header__title {
   position: relative;
   z-index: 2;
@@ -154,7 +112,7 @@ div.main_content .section-header__title {
   display: inline-block;
   color: #174750;
 }
-/* line 182, ../sass/_main.scss */
+/* line 137, ../sass/_main.scss */
 div.main_content .section-header__subtitle {
   position: relative;
   z-index: 2;
@@ -166,7 +124,7 @@ div.main_content .section-header__subtitle {
   display: inline-block;
   color: #174750;
 }
-/* line 197, ../sass/_main.scss */
+/* line 152, ../sass/_main.scss */
 div.main_content .section-header__container {
   position: relative;
   z-index: 2;
@@ -174,7 +132,7 @@ div.main_content .section-header__container {
   text-transform: uppercase;
   background: #67c896;
 }
-/* line 207, ../sass/_main.scss */
+/* line 162, ../sass/_main.scss */
 div.main_content .centered {
   position: fixed;
   top: 50%;
@@ -183,7 +141,7 @@ div.main_content .centered {
   background-color: #2a363f;
   max-width: 400px !important;
 }
-/* line 216, ../sass/_main.scss */
+/* line 171, ../sass/_main.scss */
 div.main_content .signup_form_container {
   position: fixed;
   top: 0;
@@ -194,7 +152,7 @@ div.main_content .signup_form_container {
   opacity: 0.6;
 }
 
-/* line 229, ../sass/_main.scss */
+/* line 184, ../sass/_main.scss */
 button.connect {
   font-family: "Open Sans", Arial, sans-serif;
   text-align: center;
@@ -205,17 +163,17 @@ button.connect {
   margin-bottom: 10px;
   background: #67c896;
 }
-/* line 25, ../sass/_main.scss */
+/* line 21, ../sass/_main.scss */
 button.connect:hover {
   background: #49bd81;
   transition: all 0.3s ease;
 }
-/* line 29, ../sass/_main.scss */
+/* line 25, ../sass/_main.scss */
 button.connect:active {
   background: #2f8156;
 }
 
-/* line 240, ../sass/_main.scss */
+/* line 195, ../sass/_main.scss */
 .login {
   margin: 50px auto;
   background-color: #3A454D;
@@ -226,19 +184,19 @@ button.connect:active {
   padding: 15px;
 }
 
-/* line 250, ../sass/_main.scss */
+/* line 205, ../sass/_main.scss */
 .login form {
   margin: auto;
   width: 100%;
 }
 
-/* line 255, ../sass/_main.scss */
+/* line 210, ../sass/_main.scss */
 .black {
   background-color: #363b41 !important;
   color: #ffffff !important;
 }
 
-/* line 260, ../sass/_main.scss */
+/* line 215, ../sass/_main.scss */
 .login form span {
   background-color: #687178 !important;
   border-radius: 3px 0px 0px 3px;
@@ -251,12 +209,12 @@ button.connect:active {
   height: 50px;
 }
 
-/* line 272, ../sass/_main.scss */
+/* line 227, ../sass/_main.scss */
 .login input {
   border: 0 !important;
 }
 
-/* line 276, ../sass/_main.scss */
+/* line 231, ../sass/_main.scss */
 .login form input[type="text"] {
   background-color: #4D575E;
   border-radius: 0px 3px 3px 0px;
@@ -269,7 +227,7 @@ button.connect:active {
   height: 50px;
 }
 
-/* line 288, ../sass/_main.scss */
+/* line 243, ../sass/_main.scss */
 .login form input[type="password"] {
   background-color: #4D575E;
   border-radius: 0px 3px 3px 0px;
@@ -282,19 +240,33 @@ button.connect:active {
   height: 50px;
 }
 
-/* line 300, ../sass/_main.scss */
+/* line 255, ../sass/_main.scss */
 label {
   display: inline-block;
 }
 
-/* line 304, ../sass/_main.scss */
+/* line 259, ../sass/_main.scss */
 a.link {
   text-decoration: underline;
   cursor: pointer;
   color: #ffffff !important;
   font-size: 12px;
 }
-/* line 309, ../sass/_main.scss */
+/* line 264, ../sass/_main.scss */
 a.link:hover {
   text-decoration: underline !important;
+}
+
+/* line 269, ../sass/_main.scss */
+.big_logo {
+  margin: 70px auto;
+  padding: 15px;
+}
+
+/* line 274, ../sass/_main.scss */
+h2.logo_text {
+  margin-top: 40px;
+  overflow: ellipse;
+  font-size: 2em;
+  text-overflow: ellipsis;
 }
