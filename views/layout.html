@@ -59,9 +59,29 @@
           <img src="{{=URL('static', 'images/profile.png')}}" class='navbar-icon' alt="">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">
+                  <i class="material-icons">perm_identity</i>
+                      <div style = "display: inline-block; vertical-align: top;">
+                        Profile
+                      </div>
+                  </a>
+            <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="#">
+                      <i class="material-icons">settings</i>
+                      <div style = "display: inline-block; vertical-align: top;">
+                        Settings
+                      </div>
+              </a>
+            </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{{=URL('default', 'user', args='logout')}}">Logout</a>
+          <a class="dropdown-item" href="{{=URL('default', 'user', args='logout')}}">
+              <a class="dropdown-item" href="#">
+                      <i class="material-icons">lock</i>
+                      <div style = "display: inline-block; vertical-align: top;">
+                        Logout
+                      </div>
+              </a>
+          </a>
         </div>
       </li>
         {{pass}}
