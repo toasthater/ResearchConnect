@@ -1,41 +1,41 @@
-/* line 9, ../sass/_main.scss */
+/* line 10, ../sass/_main.scss */
 body {
   font-family: "Open Sans", sans-serif;
 }
 
-/* line 13, ../sass/_main.scss */
+/* line 14, ../sass/_main.scss */
 body.main {
   background-color: #2a363f;
   color: #fff;
 }
 
-/* line 32, ../sass/_main.scss */
+/* line 33, ../sass/_main.scss */
 header.top {
   background-color: #67c896;
   height: 70px;
 }
 
-/* line 37, ../sass/_main.scss */
+/* line 38, ../sass/_main.scss */
 main.content {
   padding-left: 100px;
   padding-right: 100px;
   width: 100%;
 }
 
-/* line 43, ../sass/_main.scss */
+/* line 44, ../sass/_main.scss */
 div.onboard {
   margin-top: 200px;
   text-align: center;
 }
 
-/* line 47, ../sass/_main.scss */
+/* line 48, ../sass/_main.scss */
 div.onboard_form {
   background-color: #39444c;
   border-radius: 8px;
   margin-left: 30px;
 }
 
-/* line 53, ../sass/_main.scss */
+/* line 54, ../sass/_main.scss */
 div.divider {
   top: 220px;
   position: absolute;
@@ -44,7 +44,7 @@ div.divider {
   background-color: #39444c;
 }
 
-/* line 61, ../sass/_main.scss */
+/* line 62, ../sass/_main.scss */
 h2.logo {
   font-size: 24px;
   margin-top: 50px;
@@ -52,21 +52,21 @@ h2.logo {
   margin-left: 20px;
 }
 
-/* line 68, ../sass/_main.scss */
+/* line 69, ../sass/_main.scss */
 .colorful {
   color: #bb8833;
 }
 
-/* line 72, ../sass/_main.scss */
+/* line 73, ../sass/_main.scss */
 div.main_content {
   padding: 16px;
 }
-/* line 75, ../sass/_main.scss */
+/* line 76, ../sass/_main.scss */
 div.main_content div.form_row {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-/* line 80, ../sass/_main.scss */
+/* line 81, ../sass/_main.scss */
 div.main_content div.post_div {
   margin: 10px;
   border: 1px black solid;
@@ -74,30 +74,30 @@ div.main_content div.post_div {
   border-radius: 5px;
   padding: 10px;
 }
-/* line 86, ../sass/_main.scss */
+/* line 87, ../sass/_main.scss */
 div.main_content div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
-/* line 99, ../sass/_main.scss */
+/* line 100, ../sass/_main.scss */
 div.main_content i {
   cursor: pointer;
 }
-/* line 103, ../sass/_main.scss */
+/* line 104, ../sass/_main.scss */
 div.main_content i.changed {
   color: #777777;
 }
-/* line 107, ../sass/_main.scss */
+/* line 108, ../sass/_main.scss */
 div.main_content span.likers_list {
   color: #7777cc;
 }
-/* line 111, ../sass/_main.scss */
+/* line 112, ../sass/_main.scss */
 div.main_content .section-header {
   position: relative;
   text-align: center;
 }
-/* line 116, ../sass/_main.scss */
+/* line 117, ../sass/_main.scss */
 div.main_content .section-header:before {
   content: "";
   z-index: 1;
@@ -109,7 +109,7 @@ div.main_content .section-header:before {
   height: 1px;
   background: #dddddd;
 }
-/* line 131, ../sass/_main.scss */
+/* line 132, ../sass/_main.scss */
 div.main_content .section-header__title {
   position: relative;
   z-index: 2;
@@ -121,7 +121,7 @@ div.main_content .section-header__title {
   display: inline-block;
   color: #174750;
 }
-/* line 146, ../sass/_main.scss */
+/* line 147, ../sass/_main.scss */
 div.main_content .section-header__subtitle {
   position: relative;
   z-index: 2;
@@ -133,7 +133,7 @@ div.main_content .section-header__subtitle {
   display: inline-block;
   color: #174750;
 }
-/* line 161, ../sass/_main.scss */
+/* line 162, ../sass/_main.scss */
 div.main_content .section-header__container {
   position: relative;
   z-index: 2;
@@ -141,7 +141,7 @@ div.main_content .section-header__container {
   text-transform: uppercase;
   background: #67c896;
 }
-/* line 171, ../sass/_main.scss */
+/* line 172, ../sass/_main.scss */
 div.main_content .centered {
   position: fixed;
   top: 50%;
@@ -150,7 +150,7 @@ div.main_content .centered {
   background-color: #2a363f;
   max-width: 400px !important;
 }
-/* line 180, ../sass/_main.scss */
+/* line 181, ../sass/_main.scss */
 div.main_content .signup_form_container {
   position: fixed;
   top: 0;
@@ -161,7 +161,7 @@ div.main_content .signup_form_container {
   opacity: 0.6;
 }
 
-/* line 193, ../sass/_main.scss */
+/* line 194, ../sass/_main.scss */
 button.connect {
   font-family: "Open Sans", Arial, sans-serif;
   text-align: center;
@@ -172,17 +172,17 @@ button.connect {
   margin-bottom: 10px;
   background: #67c896;
 }
-/* line 23, ../sass/_main.scss */
+/* line 24, ../sass/_main.scss */
 button.connect:hover {
   background: #49bd81;
   transition: all 0.3s ease;
 }
-/* line 27, ../sass/_main.scss */
+/* line 28, ../sass/_main.scss */
 button.connect:active {
   background: #2f8156;
 }
 
-/* line 204, ../sass/_main.scss */
+/* line 205, ../sass/_main.scss */
 .login {
   margin: 50px auto;
   background-color: #3A454D;
@@ -190,19 +190,19 @@ button.connect:active {
   display: block !important;
 }
 
-/* line 211, ../sass/_main.scss */
+/* line 212, ../sass/_main.scss */
 .login form {
   margin: auto;
   width: 100%;
 }
 
-/* line 216, ../sass/_main.scss */
+/* line 217, ../sass/_main.scss */
 .black {
   background-color: #363b41 !important;
   color: #ffffff !important;
 }
 
-/* line 221, ../sass/_main.scss */
+/* line 222, ../sass/_main.scss */
 .login form span {
   background-color: #687178 !important;
   border-radius: 3px 0px 0px 3px;
@@ -215,43 +215,43 @@ button.connect:active {
   height: 50px;
 }
 
-/* line 233, ../sass/_main.scss */
+/* line 234, ../sass/_main.scss */
 .login input {
   border: 0 !important;
 }
 
-/* line 237, ../sass/_main.scss */
+/* line 238, ../sass/_main.scss */
 .login form input[type="text"] {
-  background-color: #3b4148;
+  background-color: #4D575E;
   border-radius: 0px 3px 3px 0px;
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.8rem;
-  color: #a9a9a9;
+  color: #7A7F84;
   margin-bottom: 1em !important;
   padding: 0 16px;
   width: 235px;
   height: 50px;
 }
 
-/* line 249, ../sass/_main.scss */
+/* line 250, ../sass/_main.scss */
 .login form input[type="password"] {
-  background-color: #3b4148;
+  background-color: #4D575E;
   border-radius: 0px 3px 3px 0px;
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.8rem;
-  color: #a9a9a9;
+  color: #7A7F84;
   margin-bottom: 1em !important;
   padding: 0 16px;
   width: 235px;
   height: 50px;
 }
 
-/* line 261, ../sass/_main.scss */
+/* line 262, ../sass/_main.scss */
 label {
   display: inline-block;
 }
 
-/* line 265, ../sass/_main.scss */
+/* line 266, ../sass/_main.scss */
 a.link {
   text-decoration: underline;
   cursor: pointer;
@@ -260,7 +260,7 @@ a.link {
   font-size: 12px;
   margin-bottom: 15px;
 }
-/* line 272, ../sass/_main.scss */
+/* line 273, ../sass/_main.scss */
 a.link:hover {
   text-decoration: underline;
 }

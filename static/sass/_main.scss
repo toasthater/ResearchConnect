@@ -5,6 +5,7 @@ $loginInputBackground: #4D575E;
 $loginBackground: #3A454D;
 $loginIconColor: #C4C4C4;
 $loginIconBackground: #687178;
+$loginPHColor: #7A7F84;
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -235,11 +236,11 @@ button.connect {
 }
 
 .login form input[type="text"] {
-  background-color: #3b4148;
+  background-color: $loginInputBackground;
   border-radius: 0px 3px 3px 0px;
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.8rem;
-  color: #a9a9a9;
+  color: $loginPHColor;
   margin-bottom: 1em !important;
   padding: 0 16px;
   width: 235px;
@@ -247,11 +248,11 @@ button.connect {
 }
 
 .login form input[type="password"] {
-  background-color: #3b4148;
+  background-color: $loginInputBackground;
   border-radius: 0px 3px 3px 0px;
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.8rem;
-  color: #a9a9a9;
+  color: $loginPHColor;
   margin-bottom: 1em !important;
   padding: 0 16px;
   width: 235px;
