@@ -266,4 +266,7 @@ a.link:hover {
 /* line 274, ../sass/_main.scss */
 h2.logo_text {
   margin-top: 40px;
+  overflow: ellipse;
+  font-size: 2em;
+  text-overflow: ellipsis;
 }
