@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md">
                     <div class="onboard-form login p-3">
-                        <div v-if="!showing_sign_up_form" id="web2py_user_form">
+                        <div id="web2py_user_form">
                             {{form=auth.login()}}
                             {{=form.custom.begin}}
                                 <div class="input-group mb-3" id="email_form">
@@ -65,7 +65,7 @@
 
                         <div id="signup" v-if="showing_sign_up_form" >
                             <div class="signup_form_container" ></div>
-                            <div id="web2py_signup_form" class="centered login">
+                            <div id="web2py_signup_form" class="centered login p-3">
                                 {{form=auth.register()}}
                                 {{=form.custom.begin}}
                                 {{form.custom.widget.first_name['_placeholder'] = 'First name'}}
