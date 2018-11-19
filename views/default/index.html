@@ -43,7 +43,7 @@
                             <div id="web2py_user_form">
                                 {{form=auth.login()}}
                                 {{=form.custom.begin}}
-                                    <div class="input-group mb-3" id="email_form">
+                                    <div class="input-group mb-1" id="email_form">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
                                         </div>
@@ -51,7 +51,7 @@
                                         {{=form.custom.widget.email}}
                                     </div>
 
-                                    <div class="input-group mb-3" id="pass_form">
+                                    <div class="input-group mb-1 pb-4" id="pass_form">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text black"><i class="material-icons">lock</i></span>
                                         </div>
@@ -67,39 +67,64 @@
                             <div id="signup" v-if="showing_sign_up_form" >
                                 <div class="signup_form_container" ></div>
                                 <div id="web2py_signup_form" class="centered login p-3">
-                                    {{form=auth.register()}}
-                                    {{=form.custom.begin}}
-                                    {{form.custom.widget.first_name['_placeholder'] = 'First name'}}
-                                    {{=form.custom.widget.first_name}}
-                                    {{form.custom.widget.last_name['_placeholder'] = 'Last name'}}
-                                    {{=form.custom.widget.last_name}}
-                                    {{form.custom.widget.email['_placeholder'] = 'Email'}}
-                                    {{=form.custom.widget.email}}
-                                    {{form.custom.widget.password['_placeholder'] = 'Password'}}
-                                    {{=form.custom.widget.password}}
-                                    {{form.custom.widget.password_two['_placeholder'] = 'Repeat Password'}}
-                                    {{=form.custom.widget.password_two}}
-                                    <button class="connect">Sign up</button>
-                                    {{=form.custom.end}}
+                                    <div class = "col px-0">
+                                        <div class = "row justify-content-center py-3">
+                                            <i class="material-icons" style="font-size: 64px; color: #fff">account_circle
+                                            </i>
+                                        </div>
+                                        <div class = "row justify-content-center px-3">
+                                            <div class = " col register_line"></div>
+                                            <h2 class= "px-2"> Register</h2>
+                                            <div class = " col register_line"></div>
+                                        </div>
+                                        <div class = "row justify-content-center">
+                                            <p class = "pt-0 pb-3" style = "font-size: 13px" >
+                                            Create your account. It's free and only takes a minute.
+                                            </p>
+                                        </div>
+                                        {{form=auth.register()}}
+                                        {{=form.custom.begin}}
+                                        <div class="input-group mb-1">
+                                            {{form.custom.widget.first_name['_placeholder'] = 'First name'}}
+                                            {{=form.custom.widget.first_name}}
+                                            {{form.custom.widget.last_name['_placeholder'] = 'Last name'}}
+                                            {{=form.custom.widget.last_name}}
+                                            {{form.custom.widget.email['_placeholder'] = 'Email'}}
+                                            {{=form.custom.widget.email}}
+                                            {{form.custom.widget.password['_placeholder'] = 'Password'}}
+                                            {{=form.custom.widget.password}}
+                                            {{form.custom.widget.password_two['_placeholder'] = 'Repeat Password'}}
+                                            {{=form.custom.widget.password_two}}
+                                        </div>
+                                        <button class="btn btn-lg btn-block connect">Sign up</button>
+                                        {{=form.custom.end}}
+                                    </div>
                                 </div>
                             </div>
                             <div id="forgotpassword" v-if="showing_forgot_password_form" >
                                 <div class="signup_form_container" ></div>
                                 <div id="web2py_forgot_password_form" class="centered login p-3">
-                                    <div class = "col">
-                                        <div class = "row justify-content-center" style = "padding-top: 25px;">
+                                    <div class = "col px-0">
+                                        <div class = "row justify-content-center py-3">
                                             <i class="material-icons" style="font-size: 64px; color: #E74747">lock_outline
                                             </i>
                                         </div>
-                                        <div class = "row justify-content-center">
-                                            <h2 style = "padding-top: 25px; padding-bottom: 50px;">
+                                        <div class = "row justify-content-center px-3">
+                                            <div class = "col register_line"></div>
+                                            <h2 class ="px-2">
                                                 Reset Password
                                             </h2>
+                                            <div class = "col register_line"></div>
+                                        </div>
+                                        <div class = "row justify-content-center">
+                                            <p class = "pt-0 pb-3" style = "font-size: 13px;">
+                                            We'll send you an email with a link to reset your password.
+                                            </p>
                                         </div>
                                     </div>
                                     {{form=auth.request_reset_password()}}
                                     {{=form.custom.begin}}
-                                    <div class="input-group mb-3" id="email_form">
+                                    <div class="input-group my-2" id="email_form">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
                                         </div>
