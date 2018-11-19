@@ -44,3 +44,12 @@ db.define_table('ucsc_user',
                 Field('middle_name'),
                 Field('last_name')
                 )
+
+# CruzIDs
+db.define_table('ucsc_faculty_member',
+                Field('cruzid'),
+                Field('phone'),
+                Field('name'),
+                Field('department'),
+                Field('title')
+                )
