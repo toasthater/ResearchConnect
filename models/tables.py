@@ -36,3 +36,11 @@ db.define_table('thumb',
                 Field('post_id', 'reference post'), # The thumbed post
                 Field('thumb_state'), # This can be 'u' for up or 'd' for down, or None for... None.
                 )
+
+# CruzIDs
+db.define_table('ucsc_user',
+                Field('cruzid'),
+                Field('first_name'),
+                Field('middle_name'),
+                Field('last_name')
+                )
