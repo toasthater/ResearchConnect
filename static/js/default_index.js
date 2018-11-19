@@ -1,6 +1,5 @@
 // This is the js for the default/index.html view.
 
-
 var app = function () {
 
     var self = {};
@@ -233,7 +232,6 @@ var app = function () {
 };
 
 var APP = null;
-
 // No, this would evaluate it too soon.
 // var APP = app();
 

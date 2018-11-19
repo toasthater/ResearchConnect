@@ -5,10 +5,16 @@ $loginInputBackground: #4D575E;
 $loginBackground: #3A454D;
 $loginIconColor: #C4C4C4;
 $loginIconBackground: #687178;
+
 $loginPHColor: #7A7F84;
 $searchBarBackground: #4C866E;
 $searchbarspanBackground: #3B5E56;
 
+
+div.h-pad-0 {
+  padding-right: 0px !important; 
+  padding-left: 0px !important;
+}
 body {
   font-family: "Open Sans", sans-serif;
 }
@@ -46,10 +52,17 @@ div.onboard {
 
 div.divider {
   width: 2px;
-  height: 300px;
+  height: 330px;
   margin-top: 30px;
   background-color: #39444c;
 }
+
+div.register_line {
+  height: 3px;
+  background-color: #4D575E;
+  margin-top: 20px;
+}
+
 
 h2.logo {
   font-size: 24px;
@@ -247,6 +260,7 @@ button.connect {
 .login form {
   margin: auto;
   width: 100%;
+  min-width: 300px;
 }
 
 .black{
