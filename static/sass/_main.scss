@@ -16,8 +16,6 @@ body.main {
   color: #fff;
 }
 
-
-
 @mixin button-bg($bg) {
   background: $bg;
   &:hover {
@@ -267,5 +265,14 @@ a.link {
   &:hover {
     text-decoration: underline !important;
   }
+}
+
+.big_logo {
+  margin: 70px auto;
+  padding: 15px;
+}
+
+h2.logo_text {
+  margin-top: 40px;
 }
 

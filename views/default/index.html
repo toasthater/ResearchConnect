@@ -27,17 +27,15 @@
         <!-- IF USER IS NOT LOGGED IN -> SHOW LOGIN FORM -->
         <div v-if="!is_logged_in" class="onboard">
             <div class="row">
-                <div class="col-md" id="big_logo">
-                    <div class="row">
-                        <div class="col-sm">
-                            <img src="{{=URL('static', 'images', args='Logo.png')}}" />
-                        </div>
-                        <h2 class="col-sm">
+                <div class="col">
+                    <div class="row big_logo">
+                        <img src="{{=URL('static', 'images', args='Logo.png')}}" />
+                        <h2 class="col-4 logo_text">
                             Research <br>Connect
                         </h2>
                     </div>
                 </div>
-                <div class="col-md">
+                <div class="col">
                     <div class="login p-3">
                         <div id="web2py_user_form">
                             {{form=auth.login()}}
