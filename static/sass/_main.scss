@@ -6,6 +6,8 @@ $loginBackground: #3A454D;
 $loginIconColor: #C4C4C4;
 $loginIconBackground: #687178;
 $loginPHColor: #7A7F84;
+$searchBarBackground: #4C866E;
+$searchbarspanBackground: #3B5E56;
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -57,6 +59,46 @@ h2.logo {
   margin-top: 50px;
   text-align: left;
   margin-left: 20px;
+}
+
+h2 {
+  font-family: "Open Sans", Arial, sans-serif !important;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+.search-bar{
+  font-family: "Open Sans", Arial, sans-serif !important;
+
+  input{
+    background:$searchBarBackground;
+    color: $white !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+  }
+
+  i{
+    color: $white !important;
+  }
+
+  button{
+    background: $searchbarspanBackground !important;
+    border-radius: 0px !important;
+    border: 0px !important;
+  }
+
+  a{
+    background: $searchBarBackground;
+  }
+
+  
+
 }
 
 .colorful {

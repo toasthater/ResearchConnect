@@ -25,12 +25,11 @@
   <nav class="navbar navbar-custom">
         {{if auth.user is not None:}}
         {{=MENU(response.menu)}}
-          <form class="form-inline">
+          <form class="form-inline search-bar">
               <div class="input-group" id="pass_form">
                 <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">search</i></button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">
                   <a class="dropdown-item" href="#">
                       <i class="material-icons">work</i>
                       <div style = "display: inline-block; vertical-align: top;">
@@ -55,9 +54,12 @@
               </div>
       </form>
         {{=MENU(response.menu_profile)}}
-
+        {{pass}}
+        {{if auth.user is None:}}
+        <a class="navbar-brand" href="#">
+          <img src="{{=URL('static','images/Logo.png')}}" width="30" height="30" alt="">
+        </a>
       {{pass}}
-    </a>
   </nav>
 
   <main class="content">
