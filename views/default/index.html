@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-md">
-                    <div class="onboard-form login p-3">
+                    <div class="login p-3">
                         <div id="web2py_user_form">
                             {{form=auth.login()}}
                             {{=form.custom.begin}}
@@ -59,8 +59,8 @@
                                 </div>
                                 <button class="btn btn-lg btn-block connect">Connect</button>
                             {{=form.custom.end}}
-                            
-                            <a class="link" id="show_signup_form" v-on:click="show_sign_up()">Sign Up</a>
+                            <a class="link">Forgot Password?</a>
+                            <a class="link" id="show_signup_form" v-on:click="show_sign_up()" style="float: right;">Sign Up</a>
                         </div>
 
                         <div id="signup" v-if="showing_sign_up_form" >

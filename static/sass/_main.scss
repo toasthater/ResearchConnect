@@ -13,7 +13,6 @@ body {
 
 body.main {
   background-color: $dark;
-
   color: #fff;
 }
 
@@ -43,12 +42,6 @@ main.content {
 
 div.onboard {
   margin-top: 200px;
-  text-align: center;
-}
-div.onboard_form {
-  background-color: #39444c;
-  border-radius: 8px;
-  margin-left: 30px;
 }
 
 div.divider {
@@ -207,6 +200,9 @@ button.connect {
   background-color: $loginBackground;
   border-radius: 5px;
   display: block !important;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
 }
 
 .login form {
@@ -266,11 +262,10 @@ label {
 a.link {
   text-decoration: underline;
   cursor: pointer;
-  margin-top: 10px;
   color: $white !important;
   font-size: 12px;
-  margin-bottom: 15px;
   &:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
   }
 }
+
