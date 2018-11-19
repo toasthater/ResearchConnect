@@ -17,6 +17,14 @@ def main():
     # We just want to expand the template.
     return dict()
 
+def profile():
+    # We just want to expand the template.
+    return dict()
+
+def settings():
+    # We just want to expand the template.
+    return dict()
+
 def user():
     """
     exposes:
