@@ -221,6 +221,12 @@ div.main_content {
     background-color: $dark;
     max-width: 400px !important;
   }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .4s;
+  }
+  .fade-enter, .fade-leave-to{
+    opacity: 0;
+  }
 
   .signup_form_container {
     position: fixed;
