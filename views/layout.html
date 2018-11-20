@@ -22,7 +22,7 @@
     {{=response.flash}}
   </div>
   {{pass}}
-  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-custom row" style="padding-left: 100px; padding-right: 100px;">
         {{if auth.user is not None:}}
         {{=MENU(response.menu)}}
           <form class="form-inline search-bar">

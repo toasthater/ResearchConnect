@@ -13,12 +13,9 @@ $searchbarspanBackground: #3B5E56;
 
 ul.web2py-menu-vertical {
   list-style-type: none !important;
+  margin: 0 0 0 0;
 }
 
-div.h-pad-0 {
-  padding-right: 0px !important; 
-  padding-left: 0px !important;
-}
 body {
   font-family: "Open Sans", sans-serif;
 }
@@ -81,7 +78,6 @@ h2 {
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
-
   display: flex;
   align-items: center;
 }
