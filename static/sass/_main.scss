@@ -109,7 +109,7 @@ ul.web2py-menu-vertical {
     border-radius: 0px !important;
   }
   i{
-    color: $white !important;
+    color: $searchBarBackground !important;
   }
   button{
     background: $searchbarspanBackground !important;
@@ -117,7 +117,7 @@ ul.web2py-menu-vertical {
     border: 0px !important;
   }
   a{
-    background: $searchBarBackground;
+    background: $white;
   }
 }
 
