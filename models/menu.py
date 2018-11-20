@@ -33,7 +33,7 @@ response.menu = [
 ]
 
 response.menu_profile = [
-    (IMG(_src=URL('static', 'images/profile.png'), _class="navbar-icon no-bullet"), False, URL('default', 'user', args='logout'), [])
+    (IMG(_src=URL('static', 'images/profile.png'), _class="navbar-icon"), False, URL('default', 'user', args='logout'), [])
 ]
 
 DEVELOPMENT_MENU = True
