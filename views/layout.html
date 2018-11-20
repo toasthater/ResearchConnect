@@ -24,12 +24,12 @@
   {{pass}}
   <nav class="navbar navbar-custom col" style="padding-left: 100px; padding-right: 100px;">
         {{if auth.user is not None:}}
-        <div class = row>
+        <div class = "row pr-3">
           {{=MENU(response.menu)}}
         </div>
         
-          <form class="form-inline search-bar mb-0 col justify-content-end" >
-              <div class="input-group" id="pass_form">
+          <form class="form-inline mb-0 col justify-content-end">
+              <div class="search-bar input-group col justify-content-end" id="pass_form" style="height:50px;">
                 <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">search</i></button>
                 <div class="dropdown-menu">
@@ -53,7 +53,7 @@
                   </a>
                 </div>
                 </div>
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search" style= "height: 50px; max-width: 350px;">
               </div>
       </form>
 
