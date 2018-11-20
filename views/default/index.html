@@ -88,12 +88,20 @@
                                 {{form=auth.register()}}
                                 {{=form.custom.begin}}
                                 <div class="input-group mb-1">
-                                    {{form.custom.widget.email['_placeholder'] = 'Email'}}
-                                    {{=form.custom.widget.email}}
-                                    {{form.custom.widget.password['_placeholder'] = 'Password'}}
-                                    {{=form.custom.widget.password}}
-                                    {{form.custom.widget.password_two['_placeholder'] = 'Repeat Password'}}
-                                    {{=form.custom.widget.password_two}}
+                                    <div class="input-group mb-1" id="email_form">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
+                                        </div>
+                                        {{form.custom.widget.email['_placeholder'] = 'Email'}}
+                                        {{=form.custom.widget.email}}
+                                    </div>
+                                    <div class="input-group mb-1 pb-4" id="pass_form">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text black"><i class="material-icons">lock</i></span>
+                                        </div>
+                                        {{form.custom.widget.password['_placeholder'] = 'Password'}}
+                                        {{=form.custom.widget.password}}
+                                    </div>
                                 </div>
                                 <button class="btn btn-lg btn-block connect">Sign up</button>
                                 {{=form.custom.end}}

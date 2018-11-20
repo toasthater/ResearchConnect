@@ -84,6 +84,7 @@ auth.settings.login_next = URL('main')
 auth.settings.register_next = URL('main')
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
+auth.settings.register_verify_password = False
 
 
 # More API examples for controllers:
