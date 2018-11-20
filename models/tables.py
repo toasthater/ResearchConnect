@@ -67,4 +67,6 @@ db.define_table('ucsc_faculty_member',
                 Field('title')
                 )
 
+db.auth_user.first_name.writable = False
+db.auth_user.last_name.writable = False
 db.auth_user._after_insert.append(lambda f, id: update_values(f, id))
