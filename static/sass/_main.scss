@@ -92,7 +92,7 @@ header.top {
 }
 
 a.dropdown-toggle::after{
-    display: none;
+    display: none !important;
 }
 
 ul.web2py-menu-vertical {
