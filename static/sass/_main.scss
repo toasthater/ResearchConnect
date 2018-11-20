@@ -11,6 +11,10 @@ $searchBarBackground: #4C866E;
 $searchbarspanBackground: #3B5E56;
 
 
+ul.web2py-menu-vertical {
+  list-style-type: none !important;
+}
+
 div.h-pad-0 {
   padding-right: 0px !important; 
   padding-left: 0px !important;
