@@ -22,6 +22,19 @@ def get_user_email():
 def get_current_time():
     return datetime.datetime.utcnow()
 
+def update_values(fields, id):
+    cruzid =  fields['email'].split('@')[0]
+    ucsc_users = db((db.ucsc_user.cruzid == cruzid)).select()
+    if len(ucsc_users) > 0:
+        ucsc_user = db((db.ucsc_user.cruzid == cruzid)).select()[0]
+        first_name = ucsc_user.first_name + " " + ucsc_user.middle_name
+        last_name = ucsc_user.last_name
+        db(db.auth_user.id == id).update(first_name=first_name, last_name=last_name)
+    else:
+        print "USER NOT FOUND IN UCSC USERS DB"
+    return
+
+
 db.define_table('post',
                 Field('post_author', default=get_user_email()),
                 Field('post_title'),
@@ -53,3 +66,5 @@ db.define_table('ucsc_faculty_member',
                 Field('department'),
                 Field('title')
                 )
+
+db.auth_user._after_insert.append(lambda f, id: update_values(f, id))

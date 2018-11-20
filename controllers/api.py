@@ -1,5 +1,20 @@
 # Here go your api methods.
 
+def register_student():
+    email = request.vars.email
+    cruzid = email.split('@')[0]
+    ucsc_user = db((db.ucsc_user.cruz_id == cruzid)).select()[0]
+    first_name = ucsc_user.first_name + " " + ucsc_user.middle_name
+    last_name = ucsc_user.last_name
+    user_id = db.post.insert(
+        post_title=request.vars.post_title,
+        post_content=request.vars.post_content,
+        thumb=None,
+        score=0
+    )
+    # We return the id of the new post, so we can insert it along all the others.
+    return response.json(dict(post_id=post_id))
+
 
 @auth.requires_signature()
 def add_post():
