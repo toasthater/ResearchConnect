@@ -22,9 +22,12 @@
     {{=response.flash}}
   </div>
   {{pass}}
-  <nav class="navbar navbar-custom row" style="padding-left: 100px; padding-right: 100px;">
+  <nav class="navbar navbar-custom col" style="padding-left: 100px; padding-right: 100px;">
         {{if auth.user is not None:}}
-        {{=MENU(response.menu)}}
+        <div class = row>
+          {{=MENU(response.menu)}}
+        </div>
+        
           <form class="form-inline search-bar mb-0 col justify-content-end" >
               <div class="input-group" id="pass_form">
                 <div class="input-group-prepend">
@@ -54,7 +57,7 @@
               </div>
       </form>
 
-       <li class="nav-item dropdown" style = "list-style-type: none;">
+       <li class="nav-item dropdown pr-2" style = "list-style-type: none;">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="{{=URL('static', 'images/profile.png')}}" class='navbar-icon' alt="">
         </a>

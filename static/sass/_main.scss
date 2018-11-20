@@ -11,19 +11,8 @@ $searchBarBackground: #4C866E;
 $searchbarspanBackground: #3B5E56;
 
 
-ul.web2py-menu-vertical {
-  list-style-type: none !important;
-  margin: 0 0 0 0;
-}
 
-body {
-  font-family: "Open Sans", sans-serif;
-}
-
-body.main {
-  background-color: $dark;
-  color: #fff;
-}
+// Buttons, Links, Etc
 
 @mixin button-bg($bg) {
   background: $bg;
@@ -36,9 +25,57 @@ body.main {
   }
 }
 
-header.top {
-  background-color: $primary;
-  height: 70px;
+a.link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: $white !important;
+  font-size: 12px;
+  &:hover {
+    text-decoration: underline !important;
+  }
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+
+.colorful {
+  color: $clrHilight;
+}
+
+.black{
+    background-color: #363b41 !important;
+    color: #ffffff !important;
+}
+
+label {
+  display: inline-block;
+}
+
+// Transitions
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .4s;
+}
+.fade-enter, .fade-leave-to{
+  opacity: 0;
+}
+
+// Layout Elements
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+body.main {
+  background-color: $dark;
+  color: #fff;
+}
+
+h2 {
+  font-family: "Open Sans", Arial, sans-serif !important;
 }
 
 main.content {
@@ -46,6 +83,45 @@ main.content {
   padding-right: 100px;
   width: 100%;
 }
+
+// Nav Bar
+
+header.top {
+  background-color: $primary;
+  height: 70px;
+}
+
+a.dropdown-toggle::after{
+    display: none;
+}
+
+ul.web2py-menu-vertical {
+  list-style-type: none !important;
+  margin: 0 0 0 0;
+}
+
+.search-bar{
+  font-family: "Open Sans", Arial, sans-serif !important;
+  input{
+    background:$searchBarBackground;
+    color: $white !important;
+    border: 0px !important;
+    border-radius: 0px !important;
+  }
+  i{
+    color: $white !important;
+  }
+  button{
+    background: $searchbarspanBackground !important;
+    border-radius: 0px !important;
+    border: 0px !important;
+  }
+  a{
+    background: $searchBarBackground;
+  }
+}
+
+// Onboard
 
 div.onboard {
   margin-top: 200px;
@@ -57,13 +133,6 @@ div.divider {
   background-color: #39444c;
 }
 
-div.register_line {
-  height: 3px;
-  background-color: #4D575E;
-  margin-top: 20px;
-}
-
-
 h2.logo {
   font-size: 24px;
   margin-top: 50px;
@@ -71,49 +140,116 @@ h2.logo {
   margin-left: 20px;
 }
 
-h2 {
-  font-family: "Open Sans", Arial, sans-serif !important;
+.big_logo {
+  margin: 70px auto;
+  padding: 15px;
 }
 
-.vertical-center {
-  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 100vh; /* These two lines are counted as one :-)       */
-  display: flex;
-  align-items: center;
+h2.logo_text {
+  margin-top: 40px;
+  overflow: ellipse;
+  font-size: 2em;
+  text-overflow: ellipsis;
 }
 
-.search-bar{
-  font-family: "Open Sans", Arial, sans-serif !important;
+// Login 
 
-  input{
-    background:$searchBarBackground;
-    color: $white !important;
-    border: 0px !important;
-    border-radius: 0px !important;
-  }
-
-  i{
-    color: $white !important;
-  }
-
-  button{
-    background: $searchbarspanBackground !important;
-    border-radius: 0px !important;
-    border: 0px !important;
-  }
-
-  a{
-    background: $searchBarBackground;
-  }
-
-  
-
+button.connect {
+  font-family: "Open Sans", Arial, sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  fotn-weight: bold !important;
+  text-transform: uppercase;
+  background: $primary;
+  margin-bottom: 10px;
+  @include button-bg($primary);
 }
 
-.colorful {
-  color: $clrHilight;
+.login {
+  margin: auto;
+  background-color: $loginBackground;
+  border-radius: 5px;
+  display: block !important;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
 }
 
+.login form {
+  width: 100%;
+  min-width: 300px;
+  margin: auto;
+}
+
+.login form span {
+  background-color: $loginIconBackground !important;
+  border-radius: 3px 0px 0px 3px;
+  border: 0px;
+  border-right: 3px solid #434a52;
+  color: $loginIconColor !important;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+.login input {
+  border: 0 !important;
+}
+
+.login form input[type="text"] {
+  background-color: $loginInputBackground;
+  border-radius: 0px 3px 3px 0px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: $loginPHColor;
+  margin-bottom: 1em !important;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
+
+.login form input[type="password"] {
+  background-color: $loginInputBackground;
+  border-radius: 0px 3px 3px 0px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: $loginPHColor;
+  margin-bottom: 1em !important;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
+
+// Signup 
+
+div.register_line {
+  height: 3px;
+  background-color: #4D575E;
+  margin-top: 20px;
+}
+
+div.signup_form_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.6;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $dark;
+  max-width: 400px !important;
+}
+
+
+// Posts 
 div.main_content {
   padding: 16px;
 
@@ -212,153 +348,15 @@ div.main_content {
     text-transform: uppercase;
     background: $primary;
   }
-
-  .centered {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: $dark;
-    max-width: 400px !important;
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .4s;
-  }
-  .fade-enter, .fade-leave-to{
-    opacity: 0;
-  }
-
-  .signup_form_container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 0.6;
-  }
-
-
 }
 
-button.connect {
-    font-family: "Open Sans", Arial, sans-serif;
-    text-align: center;
-    font-size: 1rem;
-    fotn-weight: bold !important;
-    text-transform: uppercase;
-    background: $primary;
-    margin-bottom: 10px;
-    @include button-bg($primary);
-  }
 
-.login {
-  margin: auto;
-  background-color: $loginBackground;
-  border-radius: 5px;
-  display: block !important;
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-}
 
-.login form {
-  width: 100%;
-  min-width: 300px;
-  margin: auto;
-}
 
-.black{
-    background-color: #363b41 !important;
-    color: #ffffff !important;
-}
 
-.login form span {
-  background-color: $loginIconBackground !important;
-  border-radius: 3px 0px 0px 3px;
-  border: 0px;
-  border-right: 3px solid #434a52;
-  color: $loginIconColor !important;
-  line-height: 50px;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-}
 
-.login input {
-  border: 0 !important;
-}
 
-.login form input[type="text"] {
-  background-color: $loginInputBackground;
-  border-radius: 0px 3px 3px 0px;
-  font-family: "Open Sans", Arial, sans-serif;
-  font-size: 0.8rem;
-  color: $loginPHColor;
-  margin-bottom: 1em !important;
-  padding: 0 16px;
-  width: 235px;
-  height: 50px;
-}
 
-.login form input[type="password"] {
-  background-color: $loginInputBackground;
-  border-radius: 0px 3px 3px 0px;
-  font-family: "Open Sans", Arial, sans-serif;
-  font-size: 0.8rem;
-  color: $loginPHColor;
-  margin-bottom: 1em !important;
-  padding: 0 16px;
-  width: 235px;
-  height: 50px;
-}
 
-label {
-  display: inline-block;
-}
 
-a.link {
-  text-decoration: underline;
-  cursor: pointer;
-  color: $white !important;
-  font-size: 12px;
-  &:hover {
-    text-decoration: underline !important;
-  }
-}
 
-.big_logo {
-  margin: 70px auto;
-  padding: 15px;
-}
-
-h2.logo_text {
-  margin-top: 40px;
-  overflow: ellipse;
-  font-size: 2em;
-  text-overflow: ellipsis;
-}
-
-.search-bar{
-  font-family: "Open Sans", Arial, sans-serif !important;
-  input{
-    background:$searchBarBackground;
-    color: $white !important;
-    border: 0px !important;
-    border-radius: 0px !important;
-  }
-
-  i{
-    color: $white !important;
-  }
-
-  button{
-    background: $searchbarspanBackground !important;
-    border-radius: 0px !important;
-    border: 0px !important;
-  }
-
-  a{
-    background: $searchBarBackground;
-  }
-}
