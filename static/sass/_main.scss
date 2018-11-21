@@ -78,12 +78,6 @@ h2 {
   font-family: "Open Sans", Arial, sans-serif !important;
 }
 
-main.content {
-  padding-left: 100px;
-  padding-right: 100px;
-  width: 100%;
-}
-
 // Nav Bar
 
 header.top {
@@ -250,10 +244,7 @@ div.signup_form_container {
 
 
 // Posts 
-div.main_content {
-  padding: 16px;
-
-  div.form_row {
+div.form_row {
     margin-top: 8px;
     margin-bottom: 8px;
   }
@@ -348,7 +339,6 @@ div.main_content {
     text-transform: uppercase;
     background: $primary;
   }
-}
 
 
 

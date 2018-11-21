@@ -22,75 +22,78 @@
     {{=response.flash}}
   </div>
   {{pass}}
-  <nav class="navbar navbar-custom col" style="padding-left: 100px; padding-right: 100px;">
-        {{if auth.user is not None:}}
-        <div class = "row pr-3">
-          {{=MENU(response.menu)}}
-        </div>
-        
+  <nav class="navbar navbar-custom">
+        <div class = "row" style = "width: 100%;">
+          <div class = "col-2 ml-2"></div>
+          {{if auth.user is not None:}}
+          <div class = "row pr-2 mt-2">
+            {{=MENU(response.menu)}}
+          </div>
+          
           <form class="form-inline mb-0 col justify-content-end">
               <div class="search-bar input-group col px-0 justify-content-end" id="pass_form" style="height:50px;">
                 <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary dropdown-toggle px-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style = "color: white !important;">search</i></button>
-                <div class = "px-0">
-                  <div class="dropdown-menu dropdown-menu-right col" style="max-width: 420px; margin-right: 7px;">
-                    <a class="dropdown-item" href="#">
-                        <i class="material-icons">work</i>
-                        <div style = "display: inline-block; vertical-align: top;">
-                          Department
-                        </div>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="material-icons">account_box</i>
-                        <div style = "display: inline-block; vertical-align: top;">
-                          Professor
-                        </div>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="material-icons">description</i>
-                        <div style = "display: inline-block; vertical-align: top;">
-                          Title
-                        </div>
-                    </a>
-                  </div>
-              </div>
+                  <div class = "px-0">
+                    <div class="dropdown-menu dropdown-menu-right col" style="max-width: 420px; margin-right: 7px;">
+                      <a class="dropdown-item" href="#">
+                          <i class="material-icons">work</i>
+                          <div style = "display: inline-block; vertical-align: top;">
+                            Department
+                          </div>
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="material-icons">account_box</i>
+                          <div style = "display: inline-block; vertical-align: top;">
+                            Professor
+                          </div>
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        <i class="material-icons">description</i>
+                          <div style = "display: inline-block; vertical-align: top;">
+                            Title
+                          </div>
+                      </a>
+                    </div>
+                </div>
                 </div>
                 <input class="form-control mr-2 ml-0" type="search" placeholder="Search" aria-label="Search" style= "height: 50px; max-width: 350px;">
               </div>
-      </form>
-
-       <li class="nav-item dropdown pr-2" style = "list-style-type: none;">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img src="{{=URL('static', 'images/profile.png')}}" class='navbar-icon' alt="">
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{=URL('default', 'profile')}}">
-            <i class="material-icons">perm_identity</i>
-                <div style = "display: inline-block; vertical-align: top;">
-                  Profile
-                </div>
-            </a>
-            <a class="dropdown-item" href="{{=URL('default', 'settings')}}">
-                  <i class="material-icons">settings</i>
-                  <div style = "display: inline-block; vertical-align: top;">
-                    Settings
-                  </div>
-            </a>
-          <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{=URL('default', 'user', args='logout')}}">
-                      <i class="material-icons">lock</i>
-                      <div style = "display: inline-block; vertical-align: top;">
-                        Logout
-                      </div>
+            </form>
+             <li class="nav-item dropdown row justify-content-end px-0" style = "list-style-type: none;">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{=URL('static', 'images/profile.png')}}" class='navbar-icon' alt="">
               </a>
-        </div>
-      </li>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{=URL('default', 'profile')}}">
+                  <i class="material-icons">perm_identity</i>
+                    <div style = "display: inline-block; vertical-align: top;">
+                      Profile
+                    </div>
+                  </a>
+                  <a class="dropdown-item" href="{{=URL('default', 'settings')}}">
+                    <i class="material-icons">settings</i>
+                    <div style = "display: inline-block; vertical-align: top;">
+                      Settings
+                    </div>
+                  </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{=URL('default', 'user', args='logout')}}">
+                  <i class="material-icons">lock</i>
+                  <div style = "display: inline-block; vertical-align: top;">
+                    Logout
+                  </div>
+                </a>
+              </div>
+            </li>
+            <div class = "col-2"></div>
+          {{pass}}
+          {{if auth.user is None:}}
+          <a class="navbar-brand" href="#">
+            <img src="{{=URL('static','images/LogoHeader.svg')}}" width="50" height="50" alt="">
+          </a>
         {{pass}}
-        {{if auth.user is None:}}
-        <a class="navbar-brand" href="#">
-          <img src="{{=URL('static','images/LogoHeader.svg')}}" width="50" height="50" alt="">
-        </a>
-      {{pass}}
+      </div>
   </nav>
 
   <main class="content">

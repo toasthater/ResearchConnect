@@ -62,69 +62,62 @@ h2 {
   font-family: "Open Sans", Arial, sans-serif !important;
 }
 
-/* line 81, ../sass/_main.scss */
-main.content {
-  padding-left: 100px;
-  padding-right: 100px;
-  width: 100%;
-}
-
-/* line 89, ../sass/_main.scss */
+/* line 83, ../sass/_main.scss */
 header.top {
   background-color: #67c896;
   height: 70px;
 }
 
-/* line 94, ../sass/_main.scss */
+/* line 88, ../sass/_main.scss */
 a.dropdown-toggle::after {
   display: none !important;
 }
 
-/* line 98, ../sass/_main.scss */
+/* line 92, ../sass/_main.scss */
 ul.web2py-menu-vertical {
   list-style-type: none !important;
   margin: 0 0 0 0;
 }
 
-/* line 103, ../sass/_main.scss */
+/* line 97, ../sass/_main.scss */
 .search-bar {
   font-family: "Open Sans", Arial, sans-serif !important;
 }
-/* line 105, ../sass/_main.scss */
+/* line 99, ../sass/_main.scss */
 .search-bar input {
   background: #4C866E;
   color: #ffffff !important;
   border: 0px !important;
   border-radius: 0px !important;
 }
-/* line 111, ../sass/_main.scss */
+/* line 105, ../sass/_main.scss */
 .search-bar i {
   color: #4C866E !important;
 }
-/* line 114, ../sass/_main.scss */
+/* line 108, ../sass/_main.scss */
 .search-bar button {
   background: #3B5E56 !important;
   border-radius: 0px !important;
   border: 0px !important;
 }
-/* line 119, ../sass/_main.scss */
+/* line 113, ../sass/_main.scss */
 .search-bar a {
   background: #ffffff;
 }
 
-/* line 126, ../sass/_main.scss */
+/* line 120, ../sass/_main.scss */
 div.onboard {
   margin-top: 200px;
 }
 
-/* line 130, ../sass/_main.scss */
+/* line 124, ../sass/_main.scss */
 div.divider {
   width: 2px;
   height: 360px;
   background-color: #39444c;
 }
 
-/* line 136, ../sass/_main.scss */
+/* line 130, ../sass/_main.scss */
 h2.logo {
   font-size: 24px;
   margin-top: 50px;
@@ -132,13 +125,13 @@ h2.logo {
   margin-left: 20px;
 }
 
-/* line 143, ../sass/_main.scss */
+/* line 137, ../sass/_main.scss */
 .big_logo {
   margin: 70px auto;
   padding: 15px;
 }
 
-/* line 148, ../sass/_main.scss */
+/* line 142, ../sass/_main.scss */
 h2.logo_text {
   margin-top: 40px;
   overflow: ellipse;
@@ -146,7 +139,7 @@ h2.logo_text {
   text-overflow: ellipsis;
 }
 
-/* line 157, ../sass/_main.scss */
+/* line 151, ../sass/_main.scss */
 button.connect {
   font-family: "Open Sans", Arial, sans-serif;
   text-align: center;
@@ -167,7 +160,7 @@ button.connect:active {
   background: #2f8156;
 }
 
-/* line 168, ../sass/_main.scss */
+/* line 162, ../sass/_main.scss */
 .login {
   margin: auto;
   background-color: #3A454D;
@@ -178,14 +171,14 @@ button.connect:active {
   padding: 15px;
 }
 
-/* line 178, ../sass/_main.scss */
+/* line 172, ../sass/_main.scss */
 .login form {
   width: 100%;
   min-width: 300px;
   margin: auto;
 }
 
-/* line 184, ../sass/_main.scss */
+/* line 178, ../sass/_main.scss */
 .login form span {
   background-color: #687178 !important;
   border-radius: 3px 0px 0px 3px;
@@ -198,12 +191,12 @@ button.connect:active {
   height: 50px;
 }
 
-/* line 196, ../sass/_main.scss */
+/* line 190, ../sass/_main.scss */
 .login input {
   border: 0 !important;
 }
 
-/* line 200, ../sass/_main.scss */
+/* line 194, ../sass/_main.scss */
 .login form input[type="text"] {
   background-color: #4D575E;
   border-radius: 0px 3px 3px 0px;
@@ -216,7 +209,7 @@ button.connect:active {
   height: 50px;
 }
 
-/* line 212, ../sass/_main.scss */
+/* line 206, ../sass/_main.scss */
 .login form input[type="password"] {
   background-color: #4D575E;
   border-radius: 0px 3px 3px 0px;
@@ -229,14 +222,14 @@ button.connect:active {
   height: 50px;
 }
 
-/* line 226, ../sass/_main.scss */
+/* line 220, ../sass/_main.scss */
 div.register_line {
   height: 3px;
   background-color: #4D575E;
   margin-top: 20px;
 }
 
-/* line 232, ../sass/_main.scss */
+/* line 226, ../sass/_main.scss */
 div.signup_form_container {
   position: fixed;
   top: 0;
@@ -247,7 +240,7 @@ div.signup_form_container {
   opacity: 0.6;
 }
 
-/* line 242, ../sass/_main.scss */
+/* line 236, ../sass/_main.scss */
 .centered {
   position: fixed;
   top: 50%;
@@ -257,48 +250,50 @@ div.signup_form_container {
   max-width: 400px !important;
 }
 
-/* line 253, ../sass/_main.scss */
-div.main_content {
-  padding: 16px;
-}
-/* line 256, ../sass/_main.scss */
-div.main_content div.form_row {
+/* line 247, ../sass/_main.scss */
+div.form_row {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-/* line 261, ../sass/_main.scss */
-div.main_content div.post_div {
+
+/* line 252, ../sass/_main.scss */
+div.post_div {
   margin: 10px;
   border: 1px black solid;
   background-color: #67c896;
   border-radius: 5px;
   padding: 10px;
 }
-/* line 267, ../sass/_main.scss */
-div.main_content div.post_div .post_title {
+/* line 258, ../sass/_main.scss */
+div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
-/* line 280, ../sass/_main.scss */
-div.main_content i {
+
+/* line 271, ../sass/_main.scss */
+i {
   cursor: pointer;
 }
-/* line 284, ../sass/_main.scss */
-div.main_content i.changed {
+
+/* line 275, ../sass/_main.scss */
+i.changed {
   color: #777777;
 }
-/* line 288, ../sass/_main.scss */
-div.main_content span.likers_list {
+
+/* line 279, ../sass/_main.scss */
+span.likers_list {
   color: #7777cc;
 }
-/* line 292, ../sass/_main.scss */
-div.main_content .section-header {
+
+/* line 283, ../sass/_main.scss */
+.section-header {
   position: relative;
   text-align: center;
 }
-/* line 297, ../sass/_main.scss */
-div.main_content .section-header:before {
+
+/* line 288, ../sass/_main.scss */
+.section-header:before {
   content: "";
   z-index: 1;
   position: absolute;
@@ -309,8 +304,9 @@ div.main_content .section-header:before {
   height: 1px;
   background: #dddddd;
 }
-/* line 312, ../sass/_main.scss */
-div.main_content .section-header__title {
+
+/* line 303, ../sass/_main.scss */
+.section-header__title {
   position: relative;
   z-index: 2;
   padding: 5px 20px;
@@ -321,8 +317,9 @@ div.main_content .section-header__title {
   display: inline-block;
   color: #174750;
 }
-/* line 327, ../sass/_main.scss */
-div.main_content .section-header__subtitle {
+
+/* line 318, ../sass/_main.scss */
+.section-header__subtitle {
   position: relative;
   z-index: 2;
   padding: 5px 20px;
@@ -333,8 +330,9 @@ div.main_content .section-header__subtitle {
   display: inline-block;
   color: #174750;
 }
-/* line 342, ../sass/_main.scss */
-div.main_content .section-header__container {
+
+/* line 333, ../sass/_main.scss */
+.section-header__container {
   position: relative;
   z-index: 2;
   padding: 5px 20px;
