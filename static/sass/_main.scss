@@ -149,11 +149,11 @@ h2.logo_text {
 // Login 
 
 button.connect {
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif !important;
   text-align: center;
   font-size: 1rem;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: uppercase !important;
   background: $primary;
   margin-bottom: 10px;
   @include button-bg($primary);
@@ -338,4 +338,101 @@ span.likers_list {
 
   text-transform: uppercase;
   background: $primary;
+}
+
+// Profile
+.text {
+  font-family: raleway;
+  font-size: 40px;
+  position: absolute center;
+  text-align: center;
+  padding-left: 0%;
+  color: #000;
+  margin-top: 43px;
+}
+
+.text1 {
+  font-family: raleway;
+  font-size: 21px;
+  text-align: center;
+  margin-top: -20px;
+  color: #000;
+}
+
+.image {
+  text-align: center;
+  width: 200px;
+  /* Container's dimensions */
+  height: 200px;
+  -webkit-border-radius: 75%;
+  -moz-border-radius: 75%;
+  box-shadow: 0 0 0 1px #eee;
+  background: url("https://images.unsplash.com/reserve/ysPfhVSzSP2m629CW0mw_selfPortrait.jpg?fit=crop&fm=jpg&h=700&q=80&w=1225") center center no-repeat;
+  background-size: cover;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: -30px;
+  align-content: center;
+}
+
+
+.trick {
+  display: inline-block;
+  vertical-align: middle;
+  height: 150px;
+}
+
+
+.image:hover {
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  -webkit-transition: 1.6s ease-in-out;
+  transition: 1.6s ease-in-out;
+}
+
+
+
+.trick:hover img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+#overlay {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  padding: 0 0 0 0;
+  opacity: 1.0;
+  -webkit-transition: opacity 2.25s ease;
+  -moz-transition: opacity 10.25s ease;
+}
+
+#box:hover #overlay {
+  opacity: 1;
+}
+
+
+.panel-group{
+  width:350px;
+  margin:auto;
+  max-width:100%;
+}
+
+.panel-heading{
+  background-color:transparent !important;
+}
+
+.title{
+  text-align: center;
+  background-color:transparent;
+  color:#000;
+  font-family:lato;
+  font-weight:300;
+  font-size:15px;
+  max-width:100%;
+}
+
+#accordion{
+  background-color: transparent;
+  max-width:100%;
+  margin-bottom:200px;
 }

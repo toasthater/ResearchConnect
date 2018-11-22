@@ -2,12 +2,12 @@
 a.link {
   text-decoration: underline;
   cursor: pointer;
-  color: #ffffff !important;
+  color: #ffffff;
   font-size: 12px;
 }
 /* line 33, ../sass/_main.scss */
 a.link:hover {
-  text-decoration: underline !important;
+  text-decoration: underline;
 }
 
 /* line 38, ../sass/_main.scss */
@@ -27,8 +27,8 @@ a.link:hover {
 
 /* line 49, ../sass/_main.scss */
 .black {
-  background-color: #363b41 !important;
-  color: #ffffff !important;
+  background-color: #363b41;
+  color: #ffffff;
 }
 
 /* line 54, ../sass/_main.scss */
@@ -59,7 +59,7 @@ body.main {
 
 /* line 77, ../sass/_main.scss */
 h2 {
-  font-family: "Open Sans", Arial, sans-serif !important;
+  font-family: "Open Sans", Arial, sans-serif;
 }
 
 /* line 83, ../sass/_main.scss */
@@ -70,35 +70,35 @@ header.top {
 
 /* line 88, ../sass/_main.scss */
 a.dropdown-toggle::after {
-  display: none !important;
+  display: none;
 }
 
 /* line 92, ../sass/_main.scss */
 ul.web2py-menu-vertical {
-  list-style-type: none !important;
+  list-style-type: none;
   margin: 0 0 0 0;
 }
 
 /* line 97, ../sass/_main.scss */
 .search-bar {
-  font-family: "Open Sans", Arial, sans-serif !important;
+  font-family: "Open Sans", Arial, sans-serif;
 }
 /* line 99, ../sass/_main.scss */
 .search-bar input {
   background: #4C866E;
-  color: #ffffff !important;
-  border: 0px !important;
-  border-radius: 0px !important;
+  color: #ffffff;
+  border: 0px;
+  border-radius: 0px;
 }
 /* line 105, ../sass/_main.scss */
 .search-bar i {
-  color: #4C866E !important;
+  color: #4C866E;
 }
 /* line 108, ../sass/_main.scss */
 .search-bar button {
-  background: #3B5E56 !important;
-  border-radius: 0px !important;
-  border: 0px !important;
+  background: #3B5E56;
+  border-radius: 0px;
+  border: 0px;
 }
 /* line 113, ../sass/_main.scss */
 .search-bar a {
@@ -141,11 +141,11 @@ h2.logo_text {
 
 /* line 151, ../sass/_main.scss */
 button.connect {
-  font-family: "Open Sans", Arial, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif !important;
   text-align: center;
   font-size: 1rem;
-  fotn-weight: bold !important;
-  text-transform: uppercase;
+  font-weight: bold;
+  text-transform: uppercase !important;
   background: #67c896;
   margin-bottom: 10px;
   background: #67c896;
@@ -165,7 +165,7 @@ button.connect:active {
   margin: auto;
   background-color: #3A454D;
   border-radius: 5px;
-  display: block !important;
+  display: block;
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -180,11 +180,11 @@ button.connect:active {
 
 /* line 178, ../sass/_main.scss */
 .login form span {
-  background-color: #687178 !important;
+  background-color: #687178;
   border-radius: 3px 0px 0px 3px;
   border: 0px;
   border-right: 3px solid #434a52;
-  color: #C4C4C4 !important;
+  color: #C4C4C4;
   line-height: 50px;
   text-align: center;
   width: 50px;
@@ -193,7 +193,7 @@ button.connect:active {
 
 /* line 190, ../sass/_main.scss */
 .login input {
-  border: 0 !important;
+  border: 0;
 }
 
 /* line 194, ../sass/_main.scss */
@@ -203,7 +203,7 @@ button.connect:active {
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.8rem;
   color: #7A7F84;
-  margin-bottom: 1em !important;
+  margin-bottom: 1em;
   padding: 0 16px;
   width: 235px;
   height: 50px;
@@ -216,7 +216,7 @@ button.connect:active {
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.8rem;
   color: #7A7F84;
-  margin-bottom: 1em !important;
+  margin-bottom: 1em;
   padding: 0 16px;
   width: 235px;
   height: 50px;
@@ -247,7 +247,7 @@ div.signup_form_container {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #2a363f;
-  max-width: 400px !important;
+  max-width: 400px;
 }
 
 /* line 247, ../sass/_main.scss */
@@ -338,4 +338,107 @@ span.likers_list {
   padding: 5px 20px;
   text-transform: uppercase;
   background: #67c896;
+}
+
+/* line 344, ../sass/_main.scss */
+.text {
+  font-family: raleway;
+  font-size: 40px;
+  position: absolute center;
+  text-align: center;
+  padding-left: 0%;
+  color: #000;
+  margin-top: 43px;
+}
+
+/* line 354, ../sass/_main.scss */
+.text1 {
+  font-family: raleway;
+  font-size: 21px;
+  text-align: center;
+  margin-top: -20px;
+  color: #000;
+}
+
+/* line 362, ../sass/_main.scss */
+.image {
+  text-align: center;
+  width: 200px;
+  /* Container's dimensions */
+  height: 200px;
+  -webkit-border-radius: 75%;
+  -moz-border-radius: 75%;
+  box-shadow: 0 0 0 1px #eee;
+  background: url("https://images.unsplash.com/reserve/ysPfhVSzSP2m629CW0mw_selfPortrait.jpg?fit=crop&fm=jpg&h=700&q=80&w=1225") center center no-repeat;
+  background-size: cover;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: -30px;
+  align-content: center;
+}
+
+/* line 379, ../sass/_main.scss */
+.trick {
+  display: inline-block;
+  vertical-align: middle;
+  height: 150px;
+}
+
+/* line 386, ../sass/_main.scss */
+.image:hover {
+  -webkit-transform: scale(1.12);
+  transform: scale(1.12);
+  -webkit-transition: 1.6s ease-in-out;
+  transition: 1.6s ease-in-out;
+}
+
+/* line 395, ../sass/_main.scss */
+.trick:hover img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+/* line 400, ../sass/_main.scss */
+#overlay {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  padding: 0 0 0 0;
+  opacity: 1.0;
+  -webkit-transition: opacity 2.25s ease;
+  -moz-transition: opacity 10.25s ease;
+}
+
+/* line 409, ../sass/_main.scss */
+#box:hover #overlay {
+  opacity: 1;
+}
+
+/* line 414, ../sass/_main.scss */
+.panel-group {
+  width: 350px;
+  margin: auto;
+  max-width: 100%;
+}
+
+/* line 420, ../sass/_main.scss */
+.panel-heading {
+  background-color: transparent !important;
+}
+
+/* line 424, ../sass/_main.scss */
+.title {
+  text-align: center;
+  background-color: transparent;
+  color: #000;
+  font-family: lato;
+  font-weight: 300;
+  font-size: 15px;
+  max-width: 100%;
+}
+
+/* line 434, ../sass/_main.scss */
+#accordion {
+  background-color: transparent;
+  max-width: 100%;
+  margin-bottom: 200px;
 }
