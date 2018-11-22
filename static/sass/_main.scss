@@ -28,10 +28,10 @@ $searchbarspanBackground: #3B5E56;
 a.link {
   text-decoration: underline;
   cursor: pointer;
-  color: $white !important;
+  color: $white;
   font-size: 12px;
   &:hover {
-    text-decoration: underline !important;
+    text-decoration: underline;
   }
 }
 
@@ -47,8 +47,8 @@ a.link {
 }
 
 .black{
-    background-color: #363b41 !important;
-    color: #ffffff !important;
+    background-color: #363b41;
+    color: #ffffff;
 }
 
 label {
@@ -75,7 +75,7 @@ body.main {
 }
 
 h2 {
-  font-family: "Open Sans", Arial, sans-serif !important;
+  font-family: "Open Sans", Arial, sans-serif;
 }
 
 // Nav Bar
@@ -86,29 +86,29 @@ header.top {
 }
 
 a.dropdown-toggle::after{
-    display: none !important;
+    display: none;
 }
 
 ul.web2py-menu-vertical {
-  list-style-type: none !important;
+  list-style-type: none;
   margin: 0 0 0 0;
 }
 
 .search-bar{
-  font-family: "Open Sans", Arial, sans-serif !important;
+  font-family: "Open Sans", Arial, sans-serif;
   input{
     background:$searchBarBackground;
-    color: $white !important;
-    border: 0px !important;
-    border-radius: 0px !important;
+    color: $white;
+    border: 0px;
+    border-radius: 0px;
   }
   i{
-    color: $searchBarBackground !important;
+    color: $searchBarBackground;
   }
   button{
-    background: $searchbarspanBackground !important;
-    border-radius: 0px !important;
-    border: 0px !important;
+    background: $searchbarspanBackground;
+    border-radius: 0px;
+    border: 0px;
   }
   a{
     background: $white;
@@ -152,7 +152,7 @@ button.connect {
   font-family: "Open Sans", Arial, sans-serif;
   text-align: center;
   font-size: 1rem;
-  fotn-weight: bold !important;
+  font-weight: bold;
   text-transform: uppercase;
   background: $primary;
   margin-bottom: 10px;
@@ -163,7 +163,7 @@ button.connect {
   margin: auto;
   background-color: $loginBackground;
   border-radius: 5px;
-  display: block !important;
+  display: block;
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -176,11 +176,11 @@ button.connect {
 }
 
 .login form span {
-  background-color: $loginIconBackground !important;
+  background-color: $loginIconBackground;
   border-radius: 3px 0px 0px 3px;
   border: 0px;
   border-right: 3px solid #434a52;
-  color: $loginIconColor !important;
+  color: $loginIconColor;
   line-height: 50px;
   text-align: center;
   width: 50px;
@@ -188,7 +188,7 @@ button.connect {
 }
 
 .login input {
-  border: 0 !important;
+  border: 0;
 }
 
 .login form input[type="text"] {
@@ -197,7 +197,7 @@ button.connect {
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.8rem;
   color: $loginPHColor;
-  margin-bottom: 1em !important;
+  margin-bottom: 1em;
   padding: 0 16px;
   width: 235px;
   height: 50px;
@@ -209,7 +209,7 @@ button.connect {
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.8rem;
   color: $loginPHColor;
-  margin-bottom: 1em !important;
+  margin-bottom: 1em;
   padding: 0 16px;
   width: 235px;
   height: 50px;
@@ -239,7 +239,7 @@ div.signup_form_container {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $dark;
-  max-width: 400px !important;
+  max-width: 400px;
 }
 
 
@@ -249,104 +249,93 @@ div.form_row {
     margin-bottom: 8px;
   }
 
-  div.post_div {
-    margin: 10px;
-    border: 1px black solid;
-    background-color: $primary;
-    border-radius: 5px;
-    padding: 10px;
-    .post_title {
-      font-size: 120%;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .post_content {
-    }
-
-    .attributes {
-    }
-  }
-
-  i {
-    cursor: pointer;
-  }
-
-  i.changed {
-    color: $clrUnconfirmed;
-  }
-
-  span.likers_list {
-    color: $clrLikerList;
-  }
-
-  .section-header {
-    position: relative;
+div.post_div {
+  margin: 10px;
+  border: 1px black solid;
+  background-color: $primary;
+  border-radius: 5px;
+  padding: 10px;
+  .post_title {
+    font-size: 120%;
+    font-weight: bold;
     text-align: center;
   }
 
-  .section-header:before {
-    content: "";
-    z-index: 1;
-
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-
-    width: 100%;
-    height: 1px;
-
-    background: #dddddd;
+  .post_content {
   }
 
-  .section-header__title {
-    position: relative;
-    z-index: 2;
-
-    padding: 5px 20px;
-
-    font-weight: 700;
-    font-size: 20px;
-    text-transform: uppercase;
-    background: $primary;
-    display: inline-block;
-
-    color: #174750;
+  .attributes {
   }
+}
 
-  .section-header__subtitle {
-    position: relative;
-    z-index: 2;
+i {
+  cursor: pointer;
+}
 
-    padding: 5px 20px;
+i.changed {
+  color: $clrUnconfirmed;
+}
 
-    font-weight: 700;
-    font-size: 10px;
-    text-transform: uppercase;
-    background: #eeeeee;
-    display: inline-block;
+span.likers_list {
+  color: $clrLikerList;
+}
 
-    color: #174750;
-  }
+.section-header {
+  position: relative;
+  text-align: center;
+}
 
-  .section-header__container {
-    position: relative;
-    z-index: 2;
+.section-header:before {
+  content: "";
+  z-index: 1;
 
-    padding: 5px 20px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 
-    text-transform: uppercase;
-    background: $primary;
-  }
+  width: 100%;
+  height: 1px;
 
+  background: #dddddd;
+}
 
+.section-header__title {
+  position: relative;
+  z-index: 2;
 
+  padding: 5px 20px;
 
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  background: $primary;
+  display: inline-block;
 
+  color: #174750;
+}
 
+.section-header__subtitle {
+  position: relative;
+  z-index: 2;
 
+  padding: 5px 20px;
 
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  background: #eeeeee;
+  display: inline-block;
 
+  color: #174750;
+}
 
+.section-header__container {
+  position: relative;
+  z-index: 2;
 
+  padding: 5px 20px;
+
+  text-transform: uppercase;
+  background: $primary;
+}
