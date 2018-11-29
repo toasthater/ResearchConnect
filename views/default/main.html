@@ -49,7 +49,7 @@
                         Tags:
                     </div>
                     <div class="form threequarters">
-                        <textarea v-model="form_tags" placeholder="Enter Tags (comma delimited)"></textarea>
+                        <textarea v-model="form_tags" placeholder="Enter: Tag1,Tag2,Tag3,... (comma delimited)"></textarea>
                     </div>
                 </div>
                 <div class="container form_row">
@@ -98,6 +98,8 @@
                 </div>
                 <!-- END Code for Thumbs. -->
                 <div class="post_content">${post.post_content}</div>
+                <div class="post_department">${post.post_department}</div>
+                <div class="post_tags">${post.post_tags}</div>
                 <div class="attributes"></div>
                 </div>
             </div>

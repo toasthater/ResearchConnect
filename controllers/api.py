@@ -50,6 +50,8 @@ def get_post_list():
                 post_title=row.post_title,
                 post_content=row.post_content,
                 post_author=row.post_author,
+                post_department=row.post_department,
+                post_tags=row.post_tags,
                 thumb = None,
                 score=0
             ))
@@ -69,6 +71,8 @@ def get_post_list():
                 post_title=row.post.post_title,
                 post_content=row.post.post_content,
                 post_author=row.post.post_author,
+                post_department=row.post_department,
+                post_tags=row.post_tags,
                 thumb = None if row.thumb.id is None else row.thumb.thumb_state,
                 score=post_score
             ))
