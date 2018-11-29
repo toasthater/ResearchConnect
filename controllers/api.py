@@ -21,6 +21,8 @@ def add_post():
     post_id = db.post.insert(
         post_title=request.vars.post_title,
         post_content=request.vars.post_content,
+        post_department=request.vars.post_department,
+        post_tags=request.vars.post_tags,
         thumb=None,
         score=0
     )

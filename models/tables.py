@@ -41,7 +41,7 @@ db.define_table('post',
                 Field('post_content', 'text'),
                 Field('post_time', 'datetime', default=get_current_time()),
                 Field('post_department'),
-                Field('post_tags', default = []),
+                Field('post_tags'),
                 Field('post_participants', default = []),
                 Field('post_applicants', default = [])
                 )
