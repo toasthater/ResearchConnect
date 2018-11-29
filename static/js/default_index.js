@@ -27,15 +27,15 @@ var app = function () {
         var sent_title = self.vue.form_title; // Makes a copy 
         var sent_content = self.vue.form_content; // 
         var sent_department = self.vue.form_department; // 
-        var sent_tags = self.vue.form_tags; // 
-        console.log("tags.split(',')" + sent_tags.split(','));
+        var sent_tags = self.vue.form_tags.split(','); // 
+        console.log(sent_tags);
         $.post(add_post_url,
             // Data we are sending.
             {
                 post_title: self.vue.form_title,
                 post_content: self.vue.form_content,
                 post_department: self.vue.form_department,
-                post_tags: self.vue.form_tags
+                post_tags: self.vue.form_tags.split(',')
             },
             // What do we do when the post succeeds?
             function (data) {
