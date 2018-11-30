@@ -18,8 +18,19 @@ def main():
     return dict()
 
 def profile():
-    # We just want to expand the template.
-    return dict()
+    # To redirect to specific profile use the following:
+    # href="{{=URL('default', 'profile',  args='desired_user_id')}}
+    # We initialize the user at the current user
+    user = auth.user
+    # If a user id is specified -> we set the user to the requested user
+    if request.args(0) != None:
+        id = int(request.args(0))
+        users = db((db.auth_user.id == id)).select()
+        if len(users) > 0:
+            user = users[0]
+        else:
+            print "Error: user not found"
+    return dict(user=user)
 
 def settings():
     # We just want to expand the template.
