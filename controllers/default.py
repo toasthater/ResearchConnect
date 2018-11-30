@@ -13,6 +13,11 @@ def index():
     # We just want to expand the template.
     return dict()
 
+def search():
+    # We just want to expand the template.
+    return dict()
+
+
 def main():
     # We just want to expand the template.
     return dict()

@@ -199,6 +199,10 @@ var app = function () {
         self.vue.showing_forgot_password_form = false;
     };
 
+    self.search_posts = function () {
+        console.log("function called!");
+    };
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -225,7 +229,8 @@ var app = function () {
             show_sign_up: self.show_sign_up,
             hide_sign_up: self.hide_sign_up,
             show_forgot_password: self.show_forgot_password,
-            hide_forgot_password: self.hide_forgot_password
+            hide_forgot_password: self.hide_forgot_password,
+            search_posts: self.search_posts
         }
     });
 

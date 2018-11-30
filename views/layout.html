@@ -30,25 +30,25 @@
             {{=MENU(response.menu)}}
           </div>
           
-          <form class="form-inline mb-0 pr-0 col justify-content-end">
+          <div class="form-inline mb-0 pr-0 col justify-content-end" >
               <div class="search-bar input-group col px-0 justify-content-end" id="pass_form" style="height:50px;">
                 <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary dropdown-toggle px-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style = "color: white !important;">search</i></button>
                   <div class = "px-0">
                     <div class="dropdown-menu dropdown-menu-right col" style="max-width: 420px; margin-right: 7px;">
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('work');">
                           <i class="material-icons">work</i>
                           <div style = "display: inline-block; vertical-align: top;">
                             Department
                           </div>
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('professor');">
                         <i class="material-icons">account_box</i>
                           <div style = "display: inline-block; vertical-align: top;">
                             Professor
                           </div>
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('title');">
                         <i class="material-icons">description</i>
                           <div style = "display: inline-block; vertical-align: top;">
                             Title
@@ -57,9 +57,10 @@
                     </div>
                 </div>
                 </div>
-                <input class="form-control mr-2 ml-0" type="search" placeholder="Search" aria-label="Search" style= "height: 50px; max-width: 350px;">
+                <input class="form-control mr-2 ml-0" type="search" name="contains" placeholder="Search" aria-label="Search" style= "height: 50px; max-width: 350px;" @keyup.enter="search_posts">
+                <input id="search_type" name="search_type" type="hidden">
               </div>
-            </form>
+            </div>
              <li class="nav-item dropdown row justify-content-end px-0" style = "list-style-type: none;">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="{{=URL('static', 'images/profile.png')}}" class='navbar-icon' alt="">
