@@ -82,9 +82,14 @@ auth.next = None
 auth.settings.registration_requires_verification = False
 auth.settings.login_next = URL('main')
 auth.settings.register_next = URL('main')
+auth.settings.create_user_groups = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
 auth.settings.register_verify_password = False
+#student_group = auth.add_group('student','group that has student permissions')
+auth.add_membership(auth.add_group('student','student permissions'),user_id=auth._get_user_id)
+
+
 
 
 # More API examples for controllers:

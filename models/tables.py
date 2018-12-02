@@ -13,8 +13,9 @@
 # after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
 
-
+from gluon.tools import Auth, Service, PluginManager
 import datetime
+
 
 def get_user_email():
     return None if auth.user is None else auth.user.email
@@ -24,15 +25,25 @@ def get_current_time():
 
 def update_values(fields, id):
     cruzid =  fields['email'].split('@')[0]
+    
     ucsc_users = db((db.ucsc_user.cruzid == cruzid)).select()
+    
     if len(ucsc_users) > 0:
         ucsc_user = db((db.ucsc_user.cruzid == cruzid)).select()[0]
         first_name = ucsc_user.first_name + " " + ucsc_user.middle_name
         last_name = ucsc_user.last_name
         db(db.auth_user.id == id).update(first_name=first_name, last_name=last_name)
+       
+    
+      
     else:
         print "USER NOT FOUND IN UCSC USERS DB"
     return
+
+
+
+
+
 
 
 db.define_table('post',
@@ -59,7 +70,8 @@ db.define_table('ucsc_user',
                 Field('cruzid'),
                 Field('first_name'),
                 Field('middle_name'),
-                Field('last_name')
+                Field('last_name'),
+                Field('membership')
                 )
 
 # CruzIDs
