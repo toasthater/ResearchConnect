@@ -11,6 +11,9 @@
     var get_score_url = "{{=URL('api', 'get_score')}}"
 
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
+    var is_professor = {{='true' if auth.has_membership(role='professor') else 'false'}};
+
+    console.log("{{=auth.has_membership(role='professor')}}");
 
 </script>
 {{end}}
@@ -61,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <button v-if="is_logged_in" id="toggle_form_button" v-on:click="toggle_form">Add post <i
+            <button v-if="is_professor" id="toggle_form_button" v-on:click="toggle_form">Add post <i
                     class="fa fa-plus-circle"></i></button>
             <!-- Message in case there are no posts. -->
             <div v-cloak>

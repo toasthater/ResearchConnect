@@ -86,7 +86,8 @@ auth.settings.create_user_groups = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
 auth.settings.register_verify_password = False
-
+auth.add_group('professor','professor permissions')
+auth.add_group('student','student permissions')
 #student_group = auth.add_group('student','group that has student permissions')
 
 

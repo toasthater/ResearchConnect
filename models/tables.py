@@ -33,9 +33,9 @@ def update_values(fields, id):
     isProfessor = True if len(professors) > 0 else False
 
     if isProfessor: 
-        auth.add_membership(professor_group_id,user_id=id)
+        auth.add_membership('professor',user_id=id)
     else:
-        auth.add_membership(student_group_id,user_id=id)
+        auth.add_membership('student',user_id=id)
     
     if len(ucsc_users) > 0:
         ucsc_user = db((db.ucsc_user.cruzid == cruzid)).select()[0]
@@ -102,8 +102,7 @@ db.define_table('research_post',
                 Field('applicants')
 )
 
-professor_group_id = auth.add_group('professor','professor permissions')
-student_group_id = auth.add_group('student','student permissions')
+
 db.auth_user.first_name.writable = False
 db.auth_user.last_name.writable = False
 db.auth_user._after_insert.append(lambda f, id: update_values(f, id))
