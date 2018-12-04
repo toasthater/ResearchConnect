@@ -102,7 +102,7 @@ db.define_table('research_post',
                 Field('applicants')
 )
 
-
+db.auth_user.email.requires = IS_EMAIL(forced='^.*\ucsc.edu(|\..*)$')
 db.auth_user.first_name.writable = False
 db.auth_user.last_name.writable = False
 db.auth_user._after_insert.append(lambda f, id: update_values(f, id))
