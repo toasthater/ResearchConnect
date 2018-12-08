@@ -162,7 +162,7 @@ def post_resume():
     return response.json(dict(file_str = file_str))
 
 # TODO: Shold this require signature?
-@auth.requires_signature()
+# @auth.requires_signature()
 def get_resume():
     user_email = auth.user.email
 

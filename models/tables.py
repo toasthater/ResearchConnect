@@ -74,7 +74,8 @@ db.define_table('thumb',
                 Field('thumb_state'), # This can be 'u' for up or 'd' for down, or None for... None.
                 )
 
-# CruzIDs
+# CruzIDs - All ucsc members who have a cruzid, 
+#           not necessarly signed up
 db.define_table('ucsc_user',
                 Field('cruzid'),
                 Field('first_name'),
