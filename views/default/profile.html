@@ -4,6 +4,13 @@
 <link rel="shortcut icon" href="../../static/images/favicon.ico">
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
+  var resume_post_url = "{{=URL('api', 'post_resume', user_signature=True)}}"
+  var resume_get_url = "{{=URL('api', 'get_resume', user_signature=True)}}"
+
+
+
+  var is_logged_in = {{='false' if auth.user is None else 'true'}};
+  var user_email = "{{= None if auth.user is None else auth.user.email}}";
 
 </script>
 {{end}}
@@ -19,7 +26,12 @@
       <div class="text1">Computer Science B.S.</div>
 
 
-
+<div id="vue-div" class="display:none">
+  <input id="file_input" type="file" v-on:change="upload_resume($event)" accept=".doc,.docx,application/msword,.pdf">
+  <div v-if="resume">
+    <a v-bind:href="resume" download><button>Download Resume</button></a>
+  </div>
+</div>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
@@ -67,3 +79,5 @@
     </div>
   </div>
 </div>
+
+<script src="{{=URL('static', 'js/profile.js')}}"></script>

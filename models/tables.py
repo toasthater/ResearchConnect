@@ -102,6 +102,12 @@ db.define_table('research_post',
                 Field('applicants')
 )
 
+# Resumes
+db.define_table('resumes',
+                Field('file_str', 'text'),
+                Field('user_email')
+)
+
 db.auth_user.email.requires = IS_EMAIL(forced='^.*\ucsc.edu(|\..*)$')
 db.auth_user.first_name.writable = False
 db.auth_user.last_name.writable = False

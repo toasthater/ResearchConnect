@@ -148,4 +148,27 @@ def set_thumb():
     return "ok"
 
 
+@auth.requires_signature()
+def post_resume():
+    file_str = request.vars.file_str
+    user_email = auth.user.email
 
+    db.resumes.update_or_insert(
+        (db.resumes.user_email == user_email),
+        user_email = user_email,
+        file_str = file_str
+    )
+
+    return response.json(dict(file_str = file_str))
+
+# TODO: Shold this require signature?
+@auth.requires_signature()
+def get_resume():
+    user_email = auth.user.email
+
+    row = db(db.resumes.user_email == user_email).select().first()
+
+    file_str = None
+    if row is not None and row.file_str is not None:
+        file_str = row.file_str
+    return response.json(dict(file_str = file_str))
