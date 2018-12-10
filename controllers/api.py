@@ -137,7 +137,7 @@ def get_search_posts():
                             ],
                             orderby=~db.post.post_time)
         elif search_type == 'professor' :
-            rows = db().select(db.post.ALL, db.thumb.ALL,
+            rows = db(db.post.post_author_name.like(search_query)).select(db.post.ALL, db.thumb.ALL,
                             left=[
                                 db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
                             ],
