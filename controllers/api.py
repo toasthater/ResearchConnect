@@ -174,10 +174,10 @@ def get_resume():
     return response.json(dict(file_str = file_str))
 
 
-def show_applicants():
+def get_applicants():
     post_id = int(request.vars.post_id)
     applicant_list = list()
-    applicants = db(db.applicant.post_id == post_id).select(orderby=db.applicant.id)
+    applicants = db(db.applicant.post_id == post_id).select(orderby=~db.applicant.apply_time)
     for applicant in applicants:
         applicant_list.append(dict(
             applicant_id = applicant.id,
@@ -187,15 +187,10 @@ def show_applicants():
         ))
     return response.json(dict(applicant_list = applicant_list))
 
-def hide_applicants():
-    post_id = int(request.vars.post_id)
-    applicant_list = []
-    return response.json(dict(applicant_list = applicant_list))
-
 #@auth.requires_signature()
 def add_applicant():
-    post_id = int(request.vars.post_id)
+    pid = int(request.vars.post_id)
     applicant_id = db.applicant.insert(
-        post_id = post_id,
+        post_id = pid,
     )
     return response.json(dict(applicant_id=applicant_id))

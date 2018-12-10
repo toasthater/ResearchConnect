@@ -5,8 +5,11 @@
 <script>
     var logged_in_user_email = "{{= None if auth.user is None else auth.user.email}}";
     var add_applicant_url = "{{=URL('api', 'add_applicant', user_signature=True)}}";
+    var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
 
+    var post_id = "{{=post.id}}";
     var is_logged_in = "{{='false' if auth.user is None else 'true'}}";
+    var is_post_page = "{{='false'}}";
 </script>
 {{end}}
 
@@ -24,7 +27,12 @@
     <div class="post_content">Description: {{=post.post_content}}</div>
     <div class="post_department">Department: {{=post.post_department}}</div>
     <div class="post_tags">Tags: {{=post.post_tags}}</div>
-    <div class="attributes"></div>
+    <div class="attributes" v-if="is_logged_in">
+        <a class="btn" v-on:click="add_applicant(post.id)">
+            <i class=""></i> Apply
+        </a>
+    </div>
+
 </div>
 
 <div id="applicants_container" class="container" v-for="applicant in post._applicant_list">

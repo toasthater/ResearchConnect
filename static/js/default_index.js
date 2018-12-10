@@ -236,15 +236,14 @@ var app = function () {
         );
     }
 
-    self.add_applicant = function () {
-        $.web2py.disableElement($("#apply"));
-        var p = self.vue.post_list[post_idx];
+    self.add_applicant = function (pid) {
+        //$.web2py.disableElement($("#apply"));
         $.getJSON(add_applicant_url,
             {
-                post_id: p.id,
+                post_id: pid,
             },
             function(data) {
-                self.refresh_applicants(post_idx);
+                //self.refresh_applicants(post_idx);
             }
         );
     };
@@ -293,8 +292,9 @@ var app = function () {
     $("#add_post").hide();
     $("#toggle_form_button").show();
 
-    self.get_applicants();
-
+    if (is_post_page){
+        self.get_applicants();
+    }
     return self;
 };
 

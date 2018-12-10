@@ -115,7 +115,7 @@ db.define_table('applicant',
                 Field('post_id', 'reference post'),
                 Field('name', default=get_user_name()),
                 Field('email', default=get_user_email()),
-                Field('reply_time', 'datetime', update=get_current_time())
+                Field('apply_time', 'datetime', update=get_current_time())
                 )
 
 db.auth_user.email.requires = IS_EMAIL(forced='^.*\ucsc.edu(|\..*)$')
