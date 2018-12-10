@@ -96,11 +96,11 @@ def get_search_posts():
             rows = db(db.post.post_tags.contains(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
             print "Found " + str(len(rows)) + " researches "
         elif search_type == 'department':
-            rows = db(db.post.post_department.like(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
+            rows = db(db.post.post_department.contains(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
         elif search_type == 'title':
-            rows = db(db.post.post_title.like(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
+            rows = db(db.post.post_title.contains(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
         elif search_type == 'professor' :
-            rows = db().select(db.post.ALL,orderby=~db.post.post_time)
+            rows = db(db.post.post_author_name.contains(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
         else :
             rows = db().select(db.post.ALL,orderby=~db.post.post_time)
         
@@ -125,19 +125,19 @@ def get_search_posts():
                                 orderby=~db.post.post_time)
             print "Found " + str(len(rows)) + " researches "
         elif search_type == 'department':
-            rows = db(db.post.post_department.like(search_query)).select(db.post.ALL, db.thumb.ALL,
+            rows = db(db.post.post_department.contains(search_query)).select(db.post.ALL, db.thumb.ALL,
                             left=[
                                 db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
                             ],
                             orderby=~db.post.post_time)
         elif search_type == 'title':
-            rows = db(db.post.post_title.like(search_query)).select(db.post.ALL, db.thumb.ALL,
+            rows = db(db.post.post_title.contains(search_query)).select(db.post.ALL, db.thumb.ALL,
                             left=[
                                 db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
                             ],
                             orderby=~db.post.post_time)
         elif search_type == 'professor' :
-            rows = db(db.post.post_author_name.like(search_query)).select(db.post.ALL, db.thumb.ALL,
+            rows = db(db.post.post_author_name.contains(search_query)).select(db.post.ALL, db.thumb.ALL,
                             left=[
                                 db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
                             ],
