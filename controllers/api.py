@@ -81,6 +81,90 @@ def get_post_list():
             ))
     # For homogeneity, we always return a dictionary.
     return response.json(dict(post_list=results))
+
+
+def get_search_posts():
+    results = []
+    search_type = request.vars.search_type
+    search_query = request.vars.search_query
+    print "Search type : " + search_type
+    print "Search query : " + search_query
+
+    if auth.user is None:
+        # Not logged in.
+        if search_type == 'tag':
+            rows = db(db.post.post_tags.contains(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
+            print "Found " + str(len(rows)) + " researches "
+        elif search_type == 'department':
+            rows = db(db.post.post_department.like(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
+        elif search_type == 'title':
+            rows = db(db.post.post_title.like(search_query)).select(db.post.ALL,orderby=~db.post.post_time)
+        elif search_type == 'professor' :
+            rows = db().select(db.post.ALL,orderby=~db.post.post_time)
+        else :
+            rows = db().select(db.post.ALL,orderby=~db.post.post_time)
+        
+        for row in rows:
+            results.append(dict(
+                id=row.id,
+                post_title=row.post_title,
+                post_content=row.post_content,
+                post_author=row.post_author,
+                post_department=row.post.post_department,
+                post_tags=row.post.post_tags,
+                thumb = None,
+                score=0
+            ))
+    else:
+        # Logged in.
+        if search_type == 'tag':
+            rows = db(db.post.post_tags.contains(search_query)).select(db.post.ALL, db.thumb.ALL,
+                                left=[
+                                    db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
+                                ],
+                                orderby=~db.post.post_time)
+            print "Found " + str(len(rows)) + " researches "
+        elif search_type == 'department':
+            rows = db(db.post.post_department.like(search_query)).select(db.post.ALL, db.thumb.ALL,
+                            left=[
+                                db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
+                            ],
+                            orderby=~db.post.post_time)
+        elif search_type == 'title':
+            rows = db(db.post.post_title.like(search_query)).select(db.post.ALL, db.thumb.ALL,
+                            left=[
+                                db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
+                            ],
+                            orderby=~db.post.post_time)
+        elif search_type == 'professor' :
+            rows = db().select(db.post.ALL, db.thumb.ALL,
+                            left=[
+                                db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
+                            ],
+                            orderby=~db.post.post_time)
+        else :
+            rows = db().select(db.post.ALL, db.thumb.ALL,
+                            left=[
+                                db.thumb.on((db.thumb.post_id == db.post.id) & (db.thumb.user_email == auth.user.email)),
+                            ],
+                            orderby=~db.post.post_time)
+        for row in rows:
+            thumbs_up=len(db((db.thumb.post_id == row.post.id) & (db.thumb.thumb_state == "u")).select())
+            thumbs_down=len(db((db.thumb.post_id == row.post.id) & (db.thumb.thumb_state == "d")).select())
+            post_score=thumbs_up - thumbs_down
+            results.append(dict(
+                id=row.post.id,
+                post_title=row.post.post_title,
+                post_content=row.post.post_content,
+                post_author=row.post.post_author,
+                post_department=row.post.post_department,
+                post_tags=row.post.post_tags,
+                thumb = None if row.thumb.id is None else row.thumb.thumb_state,
+                score=post_score
+            ))
+    # For homogeneity, we always return a dictionary.
+    return response.json(dict(post_list=results))
+
     
 
 def get_filtered_post_list():

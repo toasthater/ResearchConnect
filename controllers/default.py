@@ -15,7 +15,7 @@ def index():
 
 def search():
     # We just want to expand the template.
-    return dict()
+    return dict(type=request.vars['search_type'], content=request.vars['contains'])
 
 
 def main():

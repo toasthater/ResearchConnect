@@ -1,164 +1,73 @@
 {{extend 'layout.html'}}
 
 {{block head}}
-<link rel="shortcut icon" href="../../static/images/favicon.ico">
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
     var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
-    var get_post_list_url = "{{=URL('api', 'get_post_list')}}";
-    var get_filtered_post_list_url = "{{=URL('api', 'get_filtered_post_list')}}";
+    var get_search_posts_url = "{{=URL('api', 'get_search_posts')}}";
     // Thumbs callbacks.
     var set_thumb_url = "{{=URL('api', 'set_thumb', user_signature=True)}}";
     // Score callback
     var get_score_url = "{{=URL('api', 'get_score')}}"
 
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
+    var is_professor = {{='true' if auth.has_membership(role='professor') else 'false'}};
 
-    $( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) { // ESC
-        $( "#signup" ).hide();
-    }
-    });
+    var content = "{{=content}}";
+    var type = "{{=type}}";
 
 </script>
 {{end}}
 
-<div class="main_content container">
-    <div id="vue-div" class="display:none">
-        <!-- IF USER IS NOT LOGGED IN -> SHOW LOGIN FORM -->
-        <div v-if="!is_logged_in" class="onboard">
-            <div class="row">
-                <div class="col">
-                    <div class="row big_logo">
-                        <img src="{{=URL('static', 'images', args='logo.svg')}}" class = "offset-2">
-                        <h2 class="col-4 logo_text">
-                            Research<br>Connect
-                        </h2>
+<div class="col-8 offset-2">
+    <div id="vue-div" class="display:none" v-cloak>
+        <!-- ELSE SHOW HOME PAGE -->
+        <div v-if="is_logged_in">
+            <!-- Message in case there are no posts. -->
+            <div v-cloak>
+            <div v-if="post_list.length === 0">No research opportunities matched the search.</div>
+            </div>
+            <!-- We display the posts. -->
+            <div id="post_list">
+                <div class="post_div" v-for="post in post_list">
+                    <a class="dropdown-item" v-bind:href="'research/' + post.id">
+                    <div class="section-header">
+                        <span class="section-header__title post_title">${post.post_title}</span>
                     </div>
-                </div>
-                <div class="col">
-                    <div class = "row">
-                        <div class = "divider">
-                        </div>
-                        <div class="login p-3">
-                            <div id="web2py_user_form">
-                                {{form=auth.login()}}
-                                {{=form.custom.begin}}
-                                    <div class="input-group mb-1" id="email_form">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
-                                        </div>
-                                        {{form.custom.widget.email['_placeholder'] = 'Email'}}
-                                        {{=form.custom.widget.email}}
-                                        <!--
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">@ucsc.edu</span>
-                                       </div> -->
-                                    </div>
-
-                                    <div class="input-group mb-1 pb-4" id="pass_form">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text black"><i class="material-icons">lock</i></span>
-                                        </div>
-                                        {{form.custom.widget.password['_placeholder'] = 'Password'}}
-                                        {{=form.custom.widget.password}}
-                                    </div>
-                                    <button class="btn btn-lg btn-block connect">Connect</button>
-                                {{=form.custom.end}}
-                                <a class="link"  v-on:click="show_forgot_password()">Forgot Password?</a>
-                                <a class="link" id="show_signup_form" v-on:click="show_sign_up()" style="float: right;">Sign Up</a>
-                            </div>
+                    <!-- Code for Thumbs. -->
+                <div class="section-header">
+                    <div class="section-header__container">
+                        <div v-if="is_logged_in">
+                            <span class="thumbs-up"
+                                v-on:mouseover="thumb_up_mouseover(post._idx)"
+                                v-on:mouseout="thumb_up_mouseout(post._idx)"
+                                v-on:click="thumbs_up_click(post._idx)">
+                                <i class="fa "
+                                    v-bind:class="{changed: post._over_up  && !(post._thumb === 'u'), 'fa-thumbs-o-up': ((!post._over_up && post._thumb !== 'u') || post._over_down), 'fa-thumbs-up': !((!post._over_up && post._thumb !== 'u') || post._over_down)}"></i>
+                            </span>
+                            <div class="thumbs_count">${post._score}</div>
+                            <span class="thumbs-down"
+                                v-on:mouseover="thumb_down_mouseover(post._idx)"
+                                v-on:mouseout="thumb_down_mouseout(post._idx)"
+                                v-on:click="thumbs_down_click(post._idx)">
+                                <i class="fa " 
+                                    v-bind:class="{changed: post._over_down && !(post._thumb === 'd'), 'fa-thumbs-o-down': ((!post._over_down && post._thumb !== 'd') || post._over_up), 'fa-thumbs-down': !((!post._over_down && post._thumb !== 'd') || post._over_up)}">
+                                </i>
+                            </span>
                         </div>
                     </div>
                 </div>
-                <transition name="fade">
-                    <div id="signup" v-cloak v-if="showing_sign_up_form" >
-                        <div class="signup_form_container" ></div>
-                        <div id="web2py_signup_form" class="centered login p-3">
-                            <div class = "col px-0">
-                                <div class = "row justify-content-center py-3">
-                                    <i class="material-icons" style="font-size: 64px; color: #fff">account_circle
-                                    </i>
-                                </div>
-                                <div class = "row justify-content-center px-3">
-                                    <div class = " col register_line"></div>
-                                    <h2 class= "px-2"> Register</h2>
-                                    <div class = " col register_line"></div>
-                                </div>
-                                <div class = "row justify-content-center">
-                                    <p class = "pt-0 pb-3" style = "font-size: 13px" >
-                                    Create your account. It's free and only takes a minute.
-                                    </p>
-                                </div>
-                                {{form=auth.register()}}
-                                {{=form.custom.begin}}
-                                <div class="input-group mb-1">
-                                    <div class="input-group mb-1" id="email_form">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
-                                        </div>
-                                        {{form.custom.widget.email['_placeholder'] = 'Email'}}
-                                        {{=form.custom.widget.email}}
-                                        <!--
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">@ucsc.edu</span>
-                                       </div> -->
-                                    </div>
-                                    <div class="input-group mb-1 pb-4" id="pass_form">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text black"><i class="material-icons">lock</i></span>
-                                        </div>
-                                        {{form.custom.widget.password['_placeholder'] = 'Password'}}
-                                        {{=form.custom.widget.password}}
-                                    </div>
-                                </div>
-                                <button class="btn btn-lg btn-block connect">Sign up</button>
-                                {{=form.custom.end}}
-                            </div>
-                        </div>
-                    </div>
-                </transition>
-                <transition name="fade">
-                    <div id="forgotpassword" v-cloak v-if="showing_forgot_password_form" >
-                        <div class="signup_form_container" ></div>
-                        <div id="web2py_forgot_password_form" class="centered login p-3">
-                            <div class = "col px-0">
-                                <div class = "row justify-content-center py-3">
-                                    <i class="material-icons" style="font-size: 64px; color: #E74747">lock_outline
-                                    </i>
-                                </div>
-                                <div class = "row justify-content-center px-3">
-                                    <div class = "col register_line"></div>
-                                    <h2 class ="px-2">
-                                        Reset Password
-                                    </h2>
-                                    <div class = "col register_line"></div>
-                                </div>
-                                <div class = "row justify-content-center">
-                                    <p class = "pt-0 pb-3" style = "font-size: 13px;">
-                                    We'll send you an email with a link to reset your password.
-                                    </p>
-                                </div>
-                            </div>
-                            {{form=auth.request_reset_password()}}
-                            {{=form.custom.begin}}
-                            <div class="input-group my-2" id="email_form">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
-                                </div>
-                                {{form.custom.widget.email['_placeholder'] = 'Email'}}
-                                {{=form.custom.widget.email}}
-                            </div>
-                            <button class="btn btn-lg btn-block connect">Reset Password</button>
-                            {{=form.custom.end}}
-                        </div>
-                    </div>
-                </transition>
+                <!-- END Code for Thumbs. -->
+                <div class="post_content">${post.post_content}</div>
+                <div class="post_department">${post.post_department}</div>
+                <div class="post_tags">${post.post_tags}</div>
+                <div class="attributes"></div>
+                </a>
+                </div>
             </div>
         </div>
-        <!-- END IF USER IS NOT LOGGED IN -> SHOW LOGIN FORM -->
+        <!-- END ELSE SHOW HOME PAGE -->
     </div>
-
 </div>
 
 <style>
@@ -167,4 +76,5 @@
   }
 </style>
 
-<script src="{{=URL('static', 'js/default_index.js')}}"></script>
+<script src="{{=URL('static', 'js/search.js')}}"></script>
+    

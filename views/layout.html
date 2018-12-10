@@ -36,7 +36,7 @@
                 <button class="btn btn-outline-secondary dropdown-toggle px-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style = "color: white !important;">search</i></button>
                   <div class = "px-0">
                     <div class="dropdown-menu dropdown-menu-right col" style="max-width: 420px; margin-right: 7px;">
-                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('work');">
+                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('department');">
                           <i class="material-icons">work</i>
                           <div style = "display: inline-block; vertical-align: top;">
                             Department
@@ -57,8 +57,10 @@
                     </div>
                 </div>
                 </div>
-                <input class="form-control mr-2 ml-0" type="search" name="contains" placeholder="Search" aria-label="Search" style= "height: 50px; max-width: 350px;" @keyup.enter="search_posts">
-                <input id="search_type" name="search_type" type="hidden">
+                <form action="search">
+                <input class="form-control mr-2 ml-0" type="search" name="contains" placeholder="Search" aria-label="Search" style= "height: 50px; max-width: 350px;" >
+                <input id="search_type" name="search_type" type="hidden" value="tag">
+              </form>
               </div>
             </div>
              <li class="nav-item dropdown row justify-content-end px-0" style = "list-style-type: none;">
