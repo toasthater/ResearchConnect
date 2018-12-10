@@ -79,16 +79,16 @@ def user():
         form = auth()
     return dict(form=form)
 
-# def register():
-#     form = SQLFORM(db.auth_user)
-#     if form.validate():
-#         auth.get_or_create_user(form.vars)
-#         # cruzid = auth.email.split('@')[0]
-#         # ucsc_user = db((db.ucsc_user.cruz_id == cruzid)).select()[0]
-#         # auth.first_name = ucsc_user.first_name + " " + ucsc_user.middle_name
-#         # auth.last_name = ucsc_user.last_name
-#         # auth.user = admin_user
-#     return dict(form=form)
+def register():
+    form = SQLFORM(db.auth_user)
+    if form.validate():
+        auth.get_or_create_user(form.vars)
+        cruzid = auth.email.split('@')[0]
+        ucsc_user = db((db.ucsc_user.cruz_id == cruzid)).select()[0]
+        auth.first_name = ucsc_user.first_name + " " + ucsc_user.middle_name
+        auth.last_name = ucsc_user.last_name
+        auth.user = admin_user
+    return dict(form=auth.register())
 
 
 

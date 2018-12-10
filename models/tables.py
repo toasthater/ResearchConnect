@@ -29,6 +29,7 @@ def get_current_time():
 def update_values(fields, id):
     cruzid =  fields['email'].split('@')[0]
     auth = Auth(db, host_names=myconf.get('host.names'))
+    
     ucsc_users = db((db.ucsc_user.cruzid == cruzid)).select()
 
     professors = db((db.ucsc_faculty_member.cruzid == cruzid)).select()

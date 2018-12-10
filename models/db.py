@@ -58,7 +58,7 @@ response.form_label_separator = myconf.get('forms.separator') or ''
 # - old style crud actions
 # (more options discussed in gluon/tools.py)
 
-from gluon.tools import Auth, Service, PluginManager
+from gluon.tools import Auth, Service, PluginManager, Mail
 
 # host names must be a list of allowed host names (glob syntax allowed)
 auth = Auth(db, host_names=myconf.get('host.names'))
@@ -79,12 +79,12 @@ mail.settings.ssl = myconf.get('smtp.ssl') or False
 
 # configure auth policy
 auth.next = None
-auth.settings.registration_requires_verification = False
+auth.settings.registration_requires_verification = True
 auth.settings.login_next = URL('main')
 auth.settings.register_next = URL('main')
 auth.settings.create_user_groups = False
 auth.settings.registration_requires_approval = False
-auth.settings.reset_password_requires_verification = True
+auth.settings.reset_password_requires_verification = False
 auth.settings.register_verify_password = False
 auth.add_group('professor','professor permissions')
 auth.add_group('student','student permissions')
