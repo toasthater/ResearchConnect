@@ -1,6 +1,14 @@
 {{extend 'layout.html'}}
 
 {{block head}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var logged_in_user_email = "{{= None if auth.user is None else auth.user.email}}";
+    var add_applicant_url = "{{=URL('api', 'add_applicant', user_signature=True)}}";
+
+    var is_logged_in = "{{='false' if auth.user is None else 'true'}}";
+</script>
+{{end}}
 
 <div class="post_div">
     <div class="section-header">
@@ -18,3 +26,20 @@
     <div class="post_tags">Tags: {{=post.post_tags}}</div>
     <div class="attributes"></div>
 </div>
+
+<div id="applicants_container" class="container" v-for="applicant in post._applicant_list">
+    <div class="applicant">
+        <div class="applicant_author">Name: ${applicant.first_name} ${applicant.last_name}</div>
+        <div class="applicant_content">Email: ${applicant.email}</div>
+        <div class="applicant options" v-if="{{=post.post_author}} === logged_in_user_email">
+            <a class="btn" v-on:click="accept_applicant_click(applicant)">
+                <i class=""></i> Accept
+            </a>
+            <a class="btn" v-on:click="decline_applicant_click(applicant)">
+                <i class=""></i> Decline
+            </a>
+        </div>
+    </div>
+</div>
+
+<div v-if="applicant_list.length === 0">There are no posts.</div>

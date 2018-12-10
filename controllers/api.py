@@ -172,3 +172,30 @@ def get_resume():
     if row is not None and row.file_str is not None:
         file_str = row.file_str
     return response.json(dict(file_str = file_str))
+
+
+def show_applicants():
+    post_id = int(request.vars.post_id)
+    applicant_list = list()
+    applicants = db(db.applicant.post_id == post_id).select(orderby=db.applicant.id)
+    for applicant in applicants:
+        applicant_list.append(dict(
+            applicant_id = applicant.id,
+            applicant_first_name = applicant.first_name,
+            applicant_last_name = applicant.last_name,
+            applicant_email = applicant.email,
+        ))
+    return response.json(dict(applicant_list = applicant_list))
+
+def hide_applicants():
+    post_id = int(request.vars.post_id)
+    applicant_list = []
+    return response.json(dict(applicant_list = applicant_list))
+
+#@auth.requires_signature()
+def add_applicant():
+    post_id = int(request.vars.post_id)
+    applicant_id = db.applicant.insert(
+        post_id = post_id,
+    )
+    return response.json(dict(applicant_id=applicant_id))
