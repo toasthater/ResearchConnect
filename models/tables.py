@@ -110,7 +110,7 @@ db.define_table('research_post',
 # Resumes
 db.define_table('resumes',
                 Field('file_str', 'text'),
-                Field('user_email')
+                Field('user_id')
 )
 
 db.auth_user.email.requires = IS_EMAIL(forced='^.*\ucsc.edu(|\..*)$')
