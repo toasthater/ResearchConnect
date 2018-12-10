@@ -33,22 +33,22 @@
           <div class="form-inline mb-0 pr-0 col justify-content-end" >
               <div class="search-bar input-group col px-0 justify-content-end" id="pass_form" style="height:50px;">
                 <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary dropdown-toggle px-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons" style = "color: white !important;">search</i></button>
+                <button class="btn btn-outline-secondary dropdown-toggle px-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i id="search_icon" class="material-icons" style = "color: white !important;">search</i></button>
                   <div class = "px-0">
                     <div class="dropdown-menu dropdown-menu-right col" style="max-width: 420px; margin-right: 7px;">
-                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('department');">
+                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('department');$('#search_icon').html('work');">
                           <i class="material-icons">work</i>
                           <div style = "display: inline-block; vertical-align: top;">
                             Department
                           </div>
                       </a>
-                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('professor');">
+                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('professor');$('#search_icon').html('account_box');">
                         <i class="material-icons">account_box</i>
                           <div style = "display: inline-block; vertical-align: top;">
                             Professor
                           </div>
                       </a>
-                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('title');">
+                      <a class="dropdown-item" href="#" onclick="$('#search_type').val('title');$('#search_icon').html('description');">
                         <i class="material-icons">description</i>
                           <div style = "display: inline-block; vertical-align: top;">
                             Title
