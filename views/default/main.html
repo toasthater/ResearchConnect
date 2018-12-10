@@ -73,6 +73,7 @@
             <!-- We display the posts. -->
             <div id="post_list">
                 <div class="post_div" v-for="post in post_list">
+                    <a class="dropdown-item" v-bind:href="'research/' + post.id">
                     <div class="section-header">
                         <span class="section-header__title post_title">${post.post_title}</span>
                     </div>
@@ -104,6 +105,7 @@
                 <div class="post_department">${post.post_department}</div>
                 <div class="post_tags">${post.post_tags}</div>
                 <div class="attributes"></div>
+                </a>
                 </div>
             </div>
         </div>

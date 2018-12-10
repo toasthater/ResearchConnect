@@ -1,0 +1,20 @@
+{{extend 'layout.html'}}
+
+{{block head}}
+
+<div class="post_div">
+    <div class="section-header">
+        <span class="section-header__title post_title">{{=post.post_title}}</span>
+    </div>
+    <!-- Code for Thumbs. -->
+    <div class="section-header">
+        <div class="section-header__container">
+        </div>
+    </div>
+    <!-- END Code for Thumbs. -->
+    <div class="post_author">Author: {{=post.post_author}}</div>
+    <div class="post_content">Description: {{=post.post_content}}</div>
+    <div class="post_department">Department: {{=post.post_department}}</div>
+    <div class="post_tags">Tags: {{=post.post_tags}}</div>
+    <div class="attributes"></div>
+</div>
