@@ -19,15 +19,27 @@ var app = function () {
     self.toggle_form = function () {
         $("#add_post").show();
         $("#toggle_form_button").hide();
+        $("#tags_in").hide();
+        $("#tags_container").html(
+         '<input id="tags_in" style="display: none;" class="form-control" type="text" placeholder="Tags"'+
+         'value="" '+
+         'data-role="tagsinput" />'
+            );
+        $("input#tags_in").tagsinput();
     }
 
     self.add_post = function () {
         // We disable the button, to prevent double submission.
-        $.web2py.disableElement($("#add-post"));
+        $("#add-post").prop('disabled', true);
+        var tags = $("input#tags_in").val().split(',');
+        for (var i = 0; i < tags.length; i++) {
+            tags[i].replace(/\n|\r/g, "");
+        }
+
         var sent_title = self.vue.form_title; // Makes a copy 
         var sent_content = self.vue.form_content; // 
         var sent_department = self.vue.form_department; // 
-        var sent_tags = self.vue.form_tags.split(','); // 
+        var sent_tags = tags// 
         console.log(sent_tags);
         $.post(add_post_url,
             // Data we are sending.
@@ -40,7 +52,7 @@ var app = function () {
             // What do we do when the post succeeds?
             function (data) {
                 // Re-enable the button.
-                $.web2py.enableElement($("#add-post"));
+                $("#add-post").prop('disabled', false);
                 // Clears the form.
                 self.vue.form_title = "";
                 self.vue.form_content = "";
@@ -210,7 +222,7 @@ var app = function () {
         data: {
             form_title: "",
             form_content: "",
-            form_department: "",
+            form_department: "Academic Senate",
             form_tags: "",
             post_list: [],
             showing_sign_up_form: false,
@@ -244,7 +256,6 @@ var app = function () {
     // Gets the posts.
     self.get_posts();
     $("#add_post").hide();
-    $("#toggle_form_button").show();
 
     return self;
 };
