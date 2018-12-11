@@ -42,7 +42,7 @@
     <div class="applicant">
         <div class="applicant_author">Name: ${applicant.name}</div>
         <div class="applicant_content">Email: 
-            <a v-bind:href="'mailto:' + ${applicant.email}">${applicant.email}</a>
+                <a href = "mailto:${applicant.email}">${applicant.email}</a>
         </div>
         <div class="applicant options" v-if="{{=post.post_author}} === logged_in_user_email">
             <a class="btn" v-on:click="accept_applicant_click(applicant)">
