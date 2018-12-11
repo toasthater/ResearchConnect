@@ -277,4 +277,4 @@ def add_applicant():
     applicant_id = db.applicant.insert(
         post_id = pid,
     )
-    return response.json(dict(applicant_id=applicant_id))
+    return response.json(dict(post_id=pid))

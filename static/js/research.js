@@ -29,8 +29,8 @@ var app = function () {
                 self.refresh_applicants();
             }
         );
-        console.log(self.vue.applicant_list.length);
     };
+
     self.refresh_applicants = function (){
         enumerate(self.vue.applicant_list);
         self.vue.applicant_list.map(function (e) {});
@@ -44,7 +44,8 @@ var app = function () {
                 post_id: pid,
             },
             function(data) {
-                //self.refresh_applicants(post_idx);
+                self.get_applicants(data.post_id);
+                //self.refresh_applicants();
             }
         );
     };

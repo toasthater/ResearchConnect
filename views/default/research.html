@@ -9,7 +9,6 @@
 
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
-    console.log("post_id = " + post_id);
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
 
 </script>
