@@ -273,21 +273,21 @@ def get_applicants():
 
 #@auth.requires_signature()
 def add_applicant():
-    applicant_list = []
-    applicant_email = request.vars.email
     pid = int(request.vars.post_id)
-    full_list = db(db.applicant.post_id == pid and db.applicant.email == applicant_email).select(orderby=~db.applicant.apply_time)
-    for applicant in full_list:
-        applicant_list.append(dict(
-            id = applicant.id,
-            name = applicant.name,
-            email = applicant.email,
-        ))
-        
-    if (applicant_list == []):
-        applicant_id = db.applicant.insert(
-            post_id = pid,
-        )
+    applicant_id = db.applicant.insert(
+        post_id = pid,
+    )
     return response.json(dict(post_id=pid))
     
+def get_participants():
+    post_id = int(request.vars.post_id)
+    participants_list = list()
+    posts = db(db.post.id == post_id).select()
+    if len(posts) > 0:
+        post = posts[0]
+        if len(post.post_participants) > 0:
+            participants_list = post.post_participants
+    else:
+        print "Error: post not found"
+    return response.json(dict(participants_list = participants_list))
     
