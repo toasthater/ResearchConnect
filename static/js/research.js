@@ -95,6 +95,7 @@ var app = function () {
             Vue.set(e, '_thumbs_up', e.thumb == 'u' ? true : false);
             Vue.set(e, '_thumbs_down', e.thumb == 'd' ? true : false);
             Vue.set(e, '_score', e.score);
+            Vue.set(e, '_applicant_list', []);
 
         });
     };
@@ -203,6 +204,50 @@ var app = function () {
         console.log("function called!");
     };
 
+    self.get_applicants = function () {
+        $.getJSON(get_applicants_url,
+            function (data) {
+                // I am assuming here that the server gives me a nice list
+                // of posts, all ready for display.
+                self.vue.applicant_list = data.applicant_list;
+                // Post-processing.
+                self.refresh_applicants();
+            }
+        );
+    };
+
+    self.refresh_applicants = function (){
+        enumerate(self.vue.applicant_list);
+        var p = self.vue.post_list[post_idx];
+        console.log(p._applicant_list);
+        $.getJSON(show_applicant_url,
+            {
+                post_id: p.id,
+                applicant_list: p._applicant_list
+            },
+            function(data) {
+                p._applicant_list = data.applicant_list;
+                enumerate(p._applicant_list);
+                p._applicant_list.map(function (e){
+                    Vue.set(e, '_post_idx', post_idx);
+                });
+                console.log(p._applicant_list);
+            }
+        );
+    }
+
+    self.add_applicant = function (pid) {
+        //$.web2py.disableElement($("#apply"));
+        $.getJSON(add_applicant_url,
+            {
+                post_id: pid,
+            },
+            function(data) {
+                //self.refresh_applicants(post_idx);
+            }
+        );
+    };
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -213,6 +258,7 @@ var app = function () {
             form_department: "",
             form_tags: "",
             post_list: [],
+            applicant_list: [],
             showing_sign_up_form: false,
             showing_forgot_password_form: false
         },
@@ -240,12 +286,9 @@ var app = function () {
     if (is_logged_in) {
         $("#add_post").show();
     }
-
-    // Gets the posts.
-    self.get_posts();
-    $("#add_post").hide();
-    $("#toggle_form_button").show();
-
+    
+    self.get_applicants();
+    
     return self;
 };
 

@@ -8,7 +8,7 @@
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
 
     var post_id = "{{=post.id}}";
-    var is_logged_in = "{{='false' if auth.user is None else 'true'}}";
+    var is_logged_in = {{='false' if auth.user is None else 'true'}};
     var is_post_page = "{{='false'}}";
 </script>
 {{end}}
@@ -56,3 +56,4 @@
 </div>
 
 <div v-if="applicant_list.length === 0">There are no posts.</div>
+<script src="{{=URL('static', 'js/research.js')}}"></script>
