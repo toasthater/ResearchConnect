@@ -43,10 +43,7 @@
                 </a>
             </div>
 
-
-            <div v-if="applicant_list.length === 0">There are no posts.</div>
-
-            <div>Length is: ${applicant_list.length}</div>
+            <div>There are ${applicant_list.length} applicants:</div>
             <div id="applicants_list">
                 <div id="applicants_container" class="container" v-for="applicant in applicant_list">
                     <div class="applicant">
