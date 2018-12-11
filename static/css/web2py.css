@@ -30,8 +30,9 @@ div.w2p_flash {
     opacity:0.95;
     vertical-align:middle;
     cursor:pointer;
-    color:#000;
+    color:#FFF;
     background-color:#2a363f;
+
     z-index:2000;
 }
 .navbar-custom {
