@@ -24,6 +24,9 @@
     </div>
     <!-- END Code for Thumbs. -->
     <div class="post_author">Author: {{=post.post_author}}</div>
+    <div class="applicant_content">Email: 
+        <a href = "mailto:{{=post.post_author}}">{{=post.post_author}}</a>
+    </div>
     <div class="post_content">Description: {{=post.post_content}}</div>
     <div class="post_department">Department: {{=post.post_department}}</div>
     <div class="post_tags">Tags: {{=post.post_tags}}</div>
@@ -38,7 +41,9 @@
 <div id="applicants_container" class="container" v-for="applicant in post._applicant_list">
     <div class="applicant">
         <div class="applicant_author">Name: ${applicant.name}</div>
-        <div class="applicant_content">Email: ${applicant.email}</div>
+        <div class="applicant_content">Email: 
+            <a v-bind:href="'mailto:' + ${applicant.email}">${applicant.email}</a>
+        </div>
         <div class="applicant options" v-if="{{=post.post_author}} === logged_in_user_email">
             <a class="btn" v-on:click="accept_applicant_click(applicant)">
                 <i class=""></i> Accept
