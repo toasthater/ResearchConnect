@@ -6,6 +6,7 @@
     var logged_in_user_email = "{{= None if auth.user is None else auth.user.email}}";
     var add_applicant_url = "{{=URL('api', 'add_applicant', user_signature=True)}}";
     var add_participant_url = "{{=URL('api', 'add_participant', user_signature=True)}}";
+    var decline_participant_url = "{{=URL('api', 'decline_participant', user_signature=True)}}";
     var get_participants_url = "{{=URL('api', 'get_participants')}}";
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
     var post_id = "{{=post.id }}";
@@ -72,10 +73,10 @@
                                 <a href="mailto:${applicant.email}">${applicant.email}</a>
                             </div>
                             <div class="applicant options" v-if="post_author === logged_in_user_email">
-                                <a class="btn" v-on:click="accept_applicant_click(applicant.id)">
+                                <a class="btn" v-on:click="add_participant(applicant.id)">
                                     <i class=""></i> Accept
                                 </a>
-                                <a class="btn" v-on:click="decline_applicant_click(applicant.id)">
+                                <a class="btn" v-on:click="decline_participant(applicant.id)">
                                     <i class=""></i> Decline
                                 </a>
                             </div>

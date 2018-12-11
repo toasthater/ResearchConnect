@@ -282,11 +282,20 @@ def add_applicant():
 
 def add_participant():
     applicant_id = int(request.vars.applicant_id)
-    applicant_id = db.applicant.insert(
-        post_id = pid,
-    )
-    return response.json(dict(post_id=pid))
+    db.applicant.update_or_insert(
+            (db.applicant.id == applicant_id),
+            accepted = 1
+        )
+    return response.json(dict(applicant_id=applicant_id))
     
+def decline_participant():
+    applicant_id = int(request.vars.applicant_id)
+    db.applicant.delete(
+            (db.applicant.id == applicant_id),
+            accepted = 1
+        )
+    return response.json(dict(applicant_id=applicant_id))
+
 def get_participants():
     post_id = int(request.vars.post_id)
     participant_list = list()
