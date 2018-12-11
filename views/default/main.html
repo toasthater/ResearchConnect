@@ -18,7 +18,7 @@
 </script>
 {{end}}
 
-<div class="col-8 offset-2">
+<div class="col-8 offset-2 px-4">
     <div id="vue-div" class="display:none" v-cloak>
         <!-- ELSE SHOW HOME PAGE -->
         <div v-if="is_logged_in">
@@ -72,42 +72,26 @@
             </div>
             <!-- We display the posts. -->
             <div class = "row" id="post_list">
-                <div class="col-4" v-for="(post, index) in post_list.slice(0, 15)">
-                    <div class = "post_div">
-                        <a class="dropdown-item" v-bind:href="'research/' + post.id">
-                        <div class="section-header">
-                            <span class="section-header__title post_title">${post.post_title}</span>
-                        </div>
-                        <!-- Code for Thumbs. -->
-                        <div class="section-header">
-                            <div class="section-header__container">
-                                <div v-if="is_logged_in">
-                                    <span class="thumbs-up"
-                                        v-on:mouseover="thumb_up_mouseover(post._idx)"
-                                        v-on:mouseout="thumb_up_mouseout(post._idx)"
-                                        v-on:click="thumbs_up_click(post._idx)">
-                                        <i class="fa "
-                                            v-bind:class="{changed: post._over_up  && !(post._thumb === 'u'), 'fa-thumbs-o-up': ((!post._over_up && post._thumb !== 'u') || post._over_down), 'fa-thumbs-up': !((!post._over_up && post._thumb !== 'u') || post._over_down)}"></i>
-                                    </span>
-                                    <div class="thumbs_count">${post._score}</div>
-                                    <span class="thumbs-down"
-                                        v-on:mouseover="thumb_down_mouseover(post._idx)"
-                                        v-on:mouseout="thumb_down_mouseout(post._idx)"
-                                        v-on:click="thumbs_down_click(post._idx)">
-                                        <i class="fa " 
-                                            v-bind:class="{changed: post._over_down && !(post._thumb === 'd'), 'fa-thumbs-o-down': ((!post._over_down && post._thumb !== 'd') || post._over_up), 'fa-thumbs-down': !((!post._over_down && post._thumb !== 'd') || post._over_up)}">
-                                        </i>
-                                    </span>
+                <div class="col-4 mt-5" v-for="(post, index) in post_list.slice(0, 15)">
+                    <a v-bind:href="'research/' + post.id" style = "text-decoration: none;">
+                        <div class = "card text-justify">
+                            <div class = "card-img-top">
+                                <div class = "circle justify-content-center">
+                                <img class = "post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
                                 </div>
+                            </div> 
+                            <div class = "card-body">
+                                <h5 class="card-title text-center">
+                                    ${post.post_title}
+                                </h5>
+                                <ul class="list-group list-group-flush">
+                                <li class="list-group-item">${post.post_content}</li>
+                                <li class="list-group-item">${post.post_department}</li>
+                                <li class="list-group-item">${post.post_tags}</li>
+                                </ul>
                             </div>
                         </div>
-                        <!-- END Code for Thumbs. -->
-                        <div class="post_content">${post.post_content}</div>
-                        <div class="post_department">${post.post_department}</div>
-                        <div class="post_tags">${post.post_tags}</div>
-                        <div class="attributes"></div>
-                        </a>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
