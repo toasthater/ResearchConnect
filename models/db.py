@@ -77,11 +77,16 @@ mail.settings.login = 'research.connect.app@gmail.com:Cmps183Class'
 mail.settings.tls = True
 mail.settings.ssl = False
 
+
 # configure auth policy
 auth.next = None
+
 auth.settings.registration_requires_verification = True
+auth.messages.email_sent = "A verification email has been sent to you! Follow it's link to proceed."
+auth.messages.verify_email_subject = 'Verify your account with ResearchConnect'
+#auth.messages.verify_email = 'Thanks for signing up with ResearchConnect! We hope you look forward to connecting with professors and finding the research project you have been searching for. But first, we need you to follow this link'  http://...verify_email/%(key)s + 'to verify your email.'
 auth.settings.login_next = URL('main')
-auth.settings.register_next = URL('main')
+auth.settings.register_next = URL('index')
 auth.settings.create_user_groups = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = False
