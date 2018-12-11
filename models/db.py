@@ -58,7 +58,7 @@ response.form_label_separator = myconf.get('forms.separator') or ''
 # - old style crud actions
 # (more options discussed in gluon/tools.py)
 
-from gluon.tools import Auth, Service, PluginManager
+from gluon.tools import Auth, Service, PluginManager, Mail
 
 # host names must be a list of allowed host names (glob syntax allowed)
 auth = Auth(db, host_names=myconf.get('host.names'))
@@ -71,20 +71,25 @@ auth.define_tables(username=False, signature=False)
 
 # configure email
 mail = auth.settings.mailer
-mail.settings.server = 'logging' if request.is_local else myconf.get('smtp.server')
-mail.settings.sender = myconf.get('smtp.sender')
-mail.settings.login = myconf.get('smtp.login')
-mail.settings.tls = myconf.get('smtp.tls') or False
-mail.settings.ssl = myconf.get('smtp.ssl') or False
+mail.settings.server = 'smtp.gmail.com:587'
+mail.settings.sender = 'research.connect.app@gmail.com'
+mail.settings.login = 'research.connect.app@gmail.com:Cmps183Class'
+mail.settings.tls = True
+mail.settings.ssl = False
+
 
 # configure auth policy
 auth.next = None
-auth.settings.registration_requires_verification = False
+
+auth.settings.registration_requires_verification = True
+auth.messages.email_sent = "A verification email has been sent to you! Follow it's link to proceed."
+auth.messages.verify_email_subject = 'Verify your account with ResearchConnect'
+#auth.messages.verify_email = 'Thanks for signing up with ResearchConnect! We hope you look forward to connecting with professors and finding the research project you have been searching for. But first, we need you to follow this link'  https://toasthater.pythonanywhere.com/ResearchConnect/default/verify_email/%(key)s
 auth.settings.login_next = URL('main')
-auth.settings.register_next = URL('main')
+auth.settings.register_next = URL('index')
 auth.settings.create_user_groups = False
 auth.settings.registration_requires_approval = False
-auth.settings.reset_password_requires_verification = True
+auth.settings.reset_password_requires_verification = False
 auth.settings.register_verify_password = False
 auth.add_group('professor','professor permissions')
 auth.add_group('student','student permissions')
