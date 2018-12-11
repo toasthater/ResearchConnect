@@ -112,7 +112,17 @@ db.define_table('research_post',
 # Resumes
 db.define_table('resumes',
                 Field('file_str', 'text'),
-                Field('user_email')
+                Field('user_id')
+)
+
+
+# Linkedin needs validation 
+db.define_table('users',
+                Field('user_id'),
+                Field('user_degree'),
+                Field('user_bio'),
+                Field('user_links'),
+
 )
 
 db.define_table('applicant',
