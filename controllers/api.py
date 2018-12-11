@@ -176,14 +176,14 @@ def get_resume():
 
 def get_applicants():
     post_id = int(request.vars.post_id)
+    print post_id
     applicant_list = list()
     applicants = db(db.applicant.post_id == post_id).select(orderby=~db.applicant.apply_time)
     for applicant in applicants:
         applicant_list.append(dict(
-            applicant_id = applicant.id,
-            applicant_first_name = applicant.first_name,
-            applicant_last_name = applicant.last_name,
-            applicant_email = applicant.email,
+            id = applicant.id,
+            name = applicant.name,
+            email = applicant.email,
         ))
     return response.json(dict(applicant_list = applicant_list))
 

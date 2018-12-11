@@ -7,53 +7,62 @@
     var add_applicant_url = "{{=URL('api', 'add_applicant', user_signature=True)}}";
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
 
-    var post_id = "{{=post.id}}";
+    var post_id = "{{=post.id }}";
+    var post_author = "{{=post.post_author}}";
+    console.log("post_id = " + post_id);
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
-    var is_post_page = "{{='false'}}";
+
 </script>
 {{end}}
 
-<div class="post_div">
-    <div class="section-header">
-        <span class="section-header__title post_title">{{=post.post_title}}</span>
-    </div>
-    <!-- Code for Thumbs. -->
-    <div class="section-header">
-        <div class="section-header__container">
+<div id="vue-div" class="display:none">
+    <div class="post_div">
+        <div class="section-header">
+            <span class="section-header__title post_title">{{=post.post_title}}</span>
         </div>
-    </div>
-    <!-- END Code for Thumbs. -->
-    <div class="post_author">Author: {{=post.post_author_name}}</div>
-    <div class="applicant_content">Email: 
-        <a href = "mailto:{{=post.post_author}}">{{=post.post_author}}</a>
-    </div>
-    <div class="post_content">Description: {{=post.post_content}}</div>
-    <div class="post_department">Department: {{=post.post_department}}</div>
-    <div class="post_tags">Tags: {{=post.post_tags}}</div>
-    <div class="attributes" v-if="is_logged_in">
-        <a class="btn" v-on:click="add_applicant(post.id)">
-            <i class=""></i> Apply
-        </a>
-    </div>
 
-</div>
-
-<div id="applicants_container" class="container" v-for="applicant in post._applicant_list">
-    <div class="applicant">
-        <div class="applicant_author">Name: ${applicant.name}</div>
-        <div class="applicant_content">Email: 
-                <a href = "mailto:${applicant.email}">${applicant.email}</a>
+        <!-- Code for Thumbs. -->
+        <div class="section-header">
+            <div class="section-header__container">
+            </div>
         </div>
-        <div class="applicant options" v-if="{{=post.post_author}} === logged_in_user_email">
-            <a class="btn" v-on:click="accept_applicant_click(applicant)">
-                <i class=""></i> Accept
-            </a>
-            <a class="btn" v-on:click="decline_applicant_click(applicant)">
-                <i class=""></i> Decline
+        <!-- END Code for Thumbs. -->
+        <div class="post_author">Author: {{=post.post_author_name}}</div>
+        <div class="applicant_content">Email:
+            <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
+        </div>
+        <div class="post_content">Description: {{=post.post_content}}</div>
+        <div class="post_department">Department: {{=post.post_department}}</div>
+        <div class="post_tags">Tags: {{=post.post_tags}}</div>
+        <div class="attributes" v-if="is_logged_in">
+            <a class="btn" v-on:click="add_applicant(post_id)">
+                <i class=""></i> Apply
             </a>
         </div>
+
+    </div>
+
+
+    <div v-if="applicant_list.length === 0">There are no posts.</div>
+
+    <div>Length is: ${applicant_list.length}</div>
+    <div id="applicants_list">
+        <div id="applicants_container" class="container" v-for="applicant in applicant_list">
+            <div class="applicant">
+                <div class="applicant_author">Name: ${applicant.name}</div>
+                <div class="applicant_content">Email:
+                    <a href="mailto:${applicant.email}">${applicant.email}</a>
+                </div>
+                <div class="applicant options" v-if="post_author === logged_in_user_email">
+                    <a class="btn" v-on:click="accept_applicant_click(applicant)">
+                        <i class=""></i> Accept
+                    </a>
+                    <a class="btn" v-on:click="decline_applicant_click(applicant)">
+                        <i class=""></i> Decline
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<div v-if="applicant_list.length === 0">There are no posts.</div>
 <script src="{{=URL('static', 'js/research.js')}}"></script>
