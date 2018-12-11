@@ -73,7 +73,7 @@ auth.define_tables(username=False, signature=False)
 mail = auth.settings.mailer
 mail.settings.server = 'smtp.gmail.com:587'
 mail.settings.sender = 'research.connect.app@gmail.com'
-mail.settings.login = 'research.connect.app:Cmps183Class'
+mail.settings.login = 'research.connect.app@gmail.com:Cmps183Class'
 mail.settings.tls = True
 mail.settings.ssl = False
 
