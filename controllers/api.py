@@ -285,7 +285,7 @@ def get_participants():
     posts = db(db.post.id == post_id).select()
     if len(posts) > 0:
         post = posts[0]
-        if len(post.post_participants) > 0:
+        if(post.post_participants is not None):
             participants_list = post.post_participants
     else:
         print "Error: post not found"

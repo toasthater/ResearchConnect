@@ -42,21 +42,42 @@
                 </a>
             </div>
 
-            <div>There are ${applicant_list.length} applicants:</div>
-            <div id="applicants_list">
-                <div id="applicants_container" class="container" v-for="applicant in applicant_list">
-                    <div class="applicant">
-                        <div class="applicant_author">Name: ${applicant.name}</div>
-                        <div class="applicant_content">Email:
-                            <a href="mailto:${applicant.email}">${applicant.email}</a>
+            <div class="participants_box">
+                <div>There are ${participants_list.length} participants:</div>
+                <div id="participants_list">
+                    <div id="participants_container" class="container" v-for="participant in participants_list">
+                        <div class="applicant">
+                            <div class="participant_author">Name: ${participant.name}</div>
+                            <div class="participant_email">Email:
+                                <a href="mailto:${applicant.email}">${participant.email}</a>
+                            </div>
+                            <div class="participant options" v-if="post_author === logged_in_user_email">
+                                <a class="btn" v-on:click="remove_participant_click(participant.id)">
+                                    <i class=""></i> Remove
+                                </a>
+                            </div>
                         </div>
-                        <div class="applicant options" v-if="post_author === logged_in_user_email">
-                            <a class="btn" v-on:click="accept_applicant_click(applicant.id)">
-                                <i class=""></i> Accept
-                            </a>
-                            <a class="btn" v-on:click="decline_applicant_click(applicant.id)">
-                                <i class=""></i> Decline
-                            </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="applicants_box">
+                <div>There are ${applicant_list.length} applicants:</div>
+                <div id="applicants_list">
+                    <div id="applicants_container" class="container" v-for="applicant in applicant_list">
+                        <div class="applicant">
+                            <div class="applicant_author">Name: ${applicant.name}</div>
+                            <div class="applicant_content">Email:
+                                <a href="mailto:${applicant.email}">${applicant.email}</a>
+                            </div>
+                            <div class="applicant options" v-if="post_author === logged_in_user_email">
+                                <a class="btn" v-on:click="accept_applicant_click(applicant.id)">
+                                    <i class=""></i> Accept
+                                </a>
+                                <a class="btn" v-on:click="decline_applicant_click(applicant.id)">
+                                    <i class=""></i> Decline
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
