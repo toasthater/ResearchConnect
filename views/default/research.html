@@ -6,38 +6,36 @@
     var logged_in_user_email = "{{= None if auth.user is None else auth.user.email}}";
     var add_applicant_url = "{{=URL('api', 'add_applicant', user_signature=True)}}";
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
-
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
-
 </script>
 {{end}}
 
 <div id="vue-div" class="display:none">
-    <div class = "row justify-content-center">
-        <div class = "col-4 mt-5">
-            <div class = "card text-justify">
-                <div class = "card-img-top">
-                    <div class = "circle justify-content-center">
-                    <img class = "post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
+    <div class="row justify-content-center">
+        <div class="col-4 mt-5">
+            <div class="card text-justify">
+                <div class="card-img-top">
+                    <div class="circle justify-content-center">
+                        <img class="post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
                     </div>
-                </div> 
-                <div class = "card-body">
+                </div>
+                <div class="card-body">
                     <h5 class="card-title text-center">
                         {{=post.post_title}}
                     </h5>
                     <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{=post.post_author_name}}</li>
-                    <li class="list-group-item">
-                        <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
-                    </li>
-                    <li class="list-group-item">{{=post.post_content}}</li>
-                    <li class="list-group-item">{{=post.post_department}}</li>
-                    <li class="list-group-item">{{=post.post_tags}}</li>
+                        <li class="list-group-item">{{=post.post_author_name}}</li>
+                        <li class="list-group-item">
+                            <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
+                        </li>
+                        <li class="list-group-item">{{=post.post_content}}</li>
+                        <li class="list-group-item">{{=post.post_department}}</li>
+                        <li class="list-group-item">{{=post.post_tags}}</li>
                     </ul>
                 </div>
-                <a class="btn" v-on:click="add_applicant(post_id)">
+                <a class="btn" v-if="post_author !== logged_in_user_email" v-on:click="add_applicant(post_id, logged_in_user_email)">
                     <i class=""></i> Apply
                 </a>
             </div>

@@ -36,12 +36,12 @@ var app = function () {
         self.vue.applicant_list.map(function (e) {});
     }
 
-    self.add_applicant = function (pid) {
+    self.add_applicant = function (pid, email) {
         //$.web2py.disableElement($("#apply"));
-        console.log("I'm in here");
         $.post(add_applicant_url,
             {
                 post_id: pid,
+                applicant_email: email
             },
             function(data) {
                 self.get_applicants(data.post_id);
