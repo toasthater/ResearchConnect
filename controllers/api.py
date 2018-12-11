@@ -264,11 +264,12 @@ def get_applicants():
     applicant_list = list()
     applicants = db(db.applicant.post_id == post_id).select(orderby=~db.applicant.apply_time)
     for applicant in applicants:
-        applicant_list.append(dict(
-            id = applicant.id,
-            name = applicant.name,
-            email = applicant.email,
-        ))
+        if(applicant.accepted == 0):
+            applicant_list.append(dict(
+                id = applicant.id,
+                name = applicant.name,
+                email = applicant.email,
+            ))
     return response.json(dict(applicant_list = applicant_list))
 
 #@auth.requires_signature()
@@ -281,13 +282,14 @@ def add_applicant():
     
 def get_participants():
     post_id = int(request.vars.post_id)
-    participants_list = list()
-    posts = db(db.post.id == post_id).select()
-    if len(posts) > 0:
-        post = posts[0]
-        if(post.post_participants is not None):
-            participants_list = post.post_participants
-    else:
-        print "Error: post not found"
-    return response.json(dict(participants_list = participants_list))
+    participant_list = list()
+    participants = db(db.applicant.post_id == post_id).select(orderby=~db.applicant.apply_time)
+    for participant in participants:
+        if(participant.accepted == 1):
+            participant_list.append(dict(
+                id = applicant.id,
+                name = applicant.name,
+                email = applicant.email,
+            ))
+    return response.json(dict(participant_list = participant_list))
     

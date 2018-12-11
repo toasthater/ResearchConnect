@@ -59,11 +59,6 @@ def update_values(fields, id):
     return
 
 
-
-
-
-
-
 db.define_table('post',
                 Field('post_author', default=get_user_email()),
                 Field('post_author_name', default=get_user_name()),
@@ -72,7 +67,6 @@ db.define_table('post',
                 Field('post_time', 'datetime', default=get_current_time()),
                 Field('post_department'),
                 Field('post_tags'),
-                Field('post_participants', default = []),
                 Field('post_capacity', 'integer', default = 1),
                 Field('post_start_date', 'datetime', default=get_current_time()),
                 Field('post_end_date', 'datetime', default=(get_current_time() + timedelta(days=360)))
@@ -126,6 +120,7 @@ db.define_table('applicant',
                 Field('user_id', default=get_user_id()),
                 Field('name', default=get_user_name()),
                 Field('email', default=get_user_email()),
+                Field('accepted', 'integer', default=0),
                 Field('apply_time', 'datetime', update=get_current_time())
                 )
 
