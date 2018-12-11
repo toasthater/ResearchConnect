@@ -125,6 +125,12 @@ db.define_table('users',
 
 )
 
+db.define_table('department',
+                Field('department_name'),
+                Field('department_type'),
+
+)
+
 db.define_table('applicant',
                 Field('post_id', 'reference post'),
                 Field('name', default=get_user_name()),
@@ -132,9 +138,7 @@ db.define_table('applicant',
                 Field('apply_time', 'datetime', update=get_current_time())
                 )
 
-db.define_table('department',
-                Field('name', "text",
-                Field('type', "text")
+     
 
 db.auth_user.email.requires = IS_EMAIL(forced='^.*\ucsc.edu(|\..*)$')
 db.auth_user.first_name.writable = False
