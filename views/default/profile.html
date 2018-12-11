@@ -4,18 +4,27 @@
 <link rel="shortcut icon" href="../../static/images/favicon.ico">
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
 <script>
-  var resume_post_url = "{{=URL('api', 'post_resume', user_signature=True)}}"
-  var resume_get_url = "{{=URL('api', 'get_resume')}}"
+  var resume_post_url = "{{=URL('api', 'post_resume', user_signature=True)}}";
+  var resume_get_url = "{{=URL('api', 'get_resume', args=user.id)}}";
+  var get_user_url = "{{=URL('api', 'get_user', args=user.id)}}";
+  var edit_user_url = "{{=URL('api', 'edit_user', user_signature=True)}}";
 
 
 
   var is_logged_in = {{='false' if auth.user is None else 'true'}};
+  var auth_is_user = {{='true' if auth.user.id == user.id else 'false'}};
   var user_email = "{{= None if auth.user is None else auth.user.email}}";
+
+  var user_id = {{=user.id}};
+  var user_first_name = "{{=user.first_name}}";
+  var user_last_name = "{{=user.last_name}}";
+
 
 </script>
 {{end}}
 
-<div class="box">
+<div id="vue-div" class="display:none">
+  <div class="box">
     <div id="overlay">
       <div class="image">
         <div class="trick">
@@ -23,61 +32,118 @@
         </div>
       </div>
       <ul class="text">{{=user.first_name + " " + user.last_name}}</ul>
-      <div class="text1">Computer Science B.S.</div>
+      <div class="text1" v-if="user != null && user.user_degree != null">${user.user_degree}</div>
 
+      <!-- Name -->
+      <div v-if="editing">
+        <textarea v-model="user_first_name"></textarea>
+        <textarea v-model="user_last_name"></textarea>
+      
+      </div>
+      <div v-else>
+        <div v-if="user && user_first_name">${user_first_name}</div>
+        <div v-if="user && user_last_name">${user_last_name}</div>
+      </div>
 
-<div id="vue-div" class="display:none">
-  <input id="file_input" type="file" v-on:change="upload_resume($event)" accept=".doc,.docx,application/msword,.pdf">
-  <div v-if="resume">
-    <a v-bind:href="resume" download><button>Download Resume</button></a>
-  </div>
-</div>
+      <!-- Major -->
+      <h2>Major: </h2>
+      <div v-if="editing">
+        <textarea v-model="user_degree"></textarea>     
+      </div>
+      <div v-else>
+        <div v-if="user && user_degree">${user_degree}</div>
+        <div v-else>This user has no major</div>
+      </div>
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading " role="tab" id="headingOne">
-      <h4 class="panel-title ">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="" aria-controls="collapseOne">
-          <div class="btn btn-lg btn-block connect">ABOUT {{=user.first_name}}</div>
-        </a>
-      </h4>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-        Walter has been building websites for years. He enjoys making unique websites and web projects. His hobbies include photography, woodworking, leatherworking, fishing, and mid century modern furniture.
+      <!-- Edit Button -->
+      <div v-if="auth_is_user">
+        <div v-if="editing">
+          <button v-on:click="editing = false">Cancel Editing</button>
+        </div>
+        <div v-else>
+          <button v-on:click="editing = true">Edit</button>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <h2>Biography</h2>
+      <div v-if="editing">
+        <textarea v-model="user_bio"></textarea>
+      </div>
+      <div v-else>
+        <div v-if="user && user_bio">${user_bio}</div>
+        <div v-else>This user's bio is blank</div>
+      </div>
+
+      <!-- Links -->
+      <h2>Links</h2>
+      
+
+      <!-- Cancel/Submit Buttons -->
+      <div v-if="editing">
+        <button v-on:click="editing = false">Cancel</button>
+        <button v-on:click="submit_user()">Submit</button>
+      </div>
+
+      <!-- Resume -->
+      <div v-if="auth_is_user">
+        Upload Resume
+        <input id="file_input" type="file" v-on:change="upload_resume($event)" accept=".doc,.docx,application/msword,.pdf">
+      </div>
+      <div v-if="resume">
+        <a v-bind:href="resume" download><button>Download Resume</button></a>
+      </div>
+
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading " role="tab" id="headingOne">
+            <h4 class="panel-title ">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded=""
+                aria-controls="collapseOne">
+                <div class="btn btn-lg btn-block connect">ABOUT {{=user.first_name}}</div>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <div class="text1" v-if="user != null && user.user_degree != null">${user.user_bio}</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                aria-expanded="false" aria-controls="collapseTwo">
+                <div class="btn btn-lg btn-block connect">SOCIAL</div>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+              Walter has been building websites for years. He enjoys making unique websites and web projects. His
+              hobbies include photography, woodworking, leatherworking, fishing, and mid century modern furniture.
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                aria-expanded="false" aria-controls="collapseThree">
+                <div class="btn btn-lg btn-block connect">CONTACT</div>
+              </a>
+            </h4>
+          </div>
+          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+              <form id="form" class="topBefore">
+
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <div class="btn btn-lg btn-block connect">SOCIAL</div>
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        Walter has been building websites for years. He enjoys making unique websites and web projects. His hobbies include photography, woodworking, leatherworking, fishing, and mid century modern furniture.
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          <div class="btn btn-lg btn-block connect">CONTACT</div>
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-          <form id="form" class="topBefore">
 
-          </form>
-		</div>
-    </div>
-  </div>
-</div>
-
-<script src="{{=URL('static', 'js/profile.js')}}"></script>
+    <script src="{{=URL('static', 'js/profile.js')}}"></script>

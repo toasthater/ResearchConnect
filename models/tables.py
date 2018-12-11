@@ -113,6 +113,16 @@ db.define_table('resumes',
                 Field('user_id')
 )
 
+
+# Linkedin needs validation 
+db.define_table('users',
+                Field('user_id'),
+                Field('user_degree'),
+                Field('user_bio'),
+                Field('user_links'),
+
+)
+
 db.auth_user.email.requires = IS_EMAIL(forced='^.*\ucsc.edu(|\..*)$')
 db.auth_user.first_name.writable = False
 db.auth_user.last_name.writable = False

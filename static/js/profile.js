@@ -16,6 +16,31 @@ var app = function() {
     // Enumerates an array.
     var enumerate = function(v) { var k=0; return v.map(function(e) {e._idx = k++;});};
 
+    self.get_user = function() {
+
+        $.getJSON(get_user_url,            
+            function(data) {
+                self.vue.user_bio = data.user.user_bio;
+                self.vue.user_degree = data.user.user_degree;
+                self.vue.user = true;
+                console.log("user got");
+                
+            }
+        );
+        $("#vue-div").show();
+    };
+
+    self.submit_user = function() {
+        self.vue.editing = false;
+
+        $.post(edit_user_url, {
+            user_first_name: self.vue.user_first_name,
+            user_last_name: self.vue.user_last_name,
+
+            user_bio: self.vue.user_bio,
+            user_degree: self.vue.user_degree,
+        });
+    };
 
     self.upload_resume = function(event) {
         var input = event.target;
@@ -51,10 +76,24 @@ var app = function() {
         unsafeDelimiters: ['!{', '}'],
         data: {
             resume: null,
+            is_logged_in: is_logged_in,
+            user_email: user_email,
+            user_id: user_id,
+
+            editing: false,
+
+            user: false,
+            user_first_name: user_first_name,
+            user_last_name: user_last_name,
+            user_degree: null,
+            user_bio: null,
+            user_links: [],
         },
+
         methods: {
             upload_resume: self.upload_resume,
             download_resume: self.download_resume,
+            submit_user: self.submit_user,
             
         }
 
@@ -62,7 +101,7 @@ var app = function() {
 
     //Put runtime code here
     self.download_resume();
-    $("#vue-div").show();
+    self.get_user();
 
     
     return self;

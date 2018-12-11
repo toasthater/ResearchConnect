@@ -248,6 +248,7 @@ def post_resume():
 # TODO: Shold this require signature?
 # @auth.requires_signature()
 def get_resume():
+# TODO: this needs an input parameter
     user_id = auth.user.id
 
     row = db(db.resumes.user_id == user_id).select().first()
@@ -256,3 +257,51 @@ def get_resume():
     if row is not None and row.file_str is not None:
         file_str = row.file_str
     return response.json(dict(file_str = file_str))
+
+@auth.requires_signature()
+def post_user():
+    # file_str = request.vars.file_str
+    user_id = auth.user.id
+    db.users.update_or_insert(
+        (db.users.user_id == user_id),
+        user_degree = request.vars.user_degree,
+        user_bio = request.vars.user_bio,
+        user_links = rrequest.vars.user_links
+    )
+
+    return response.json(dict(file_str = file_str))
+
+def get_user():
+
+    user_id = request.args(0)
+
+    row = db(db.users.user_id == user_id).select().first()
+
+    results = None
+    if row is not None:
+        results = dict(
+            user_degree = row.user_degree,
+            user_bio = row.user_bio,
+            user_links = row.user_links
+        )
+
+    return response.json(dict(user = results))
+
+@auth.requires_signature()
+def edit_user():
+    user_id = auth.user.id
+
+    first_name = request.vars.user_first_name
+    last_name = request.vars.user_last_name
+    user_bio = request.vars.user_bio
+    user_degree = request.vars.user_degree
+
+    row = db(db.users.user_id == user_id).select().first()
+    db.users.update_or_insert(
+        (db.users.user_id == user_id),
+        user_degree = user_degree,
+        user_bio = user_bio
+    )
+    
+    
+
