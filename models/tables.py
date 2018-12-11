@@ -22,6 +22,9 @@ def get_user_name():
 def get_user_email():
     return None if auth.user is None else auth.user.email
 
+def get_user_name():
+    return None if auth.user is None else auth.user.first_name + " " + auth.user.last_name
+
 def get_current_time():
     return datetime.datetime.utcnow()
 
@@ -59,6 +62,7 @@ def update_values(fields, id):
 
 db.define_table('post',
                 Field('post_author', default=get_user_email()),
+                Field('post_author_name', default=get_user_name()),
                 Field('post_title'),
                 Field('post_content', 'text'),
                 Field('post_time', 'datetime', default=get_current_time()),
