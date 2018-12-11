@@ -279,6 +279,13 @@ def add_applicant():
         post_id = pid,
     )
     return response.json(dict(post_id=pid))
+
+def add_participant():
+    applicant_id = int(request.vars.applicant_id)
+    applicant_id = db.applicant.insert(
+        post_id = pid,
+    )
+    return response.json(dict(post_id=pid))
     
 def get_participants():
     post_id = int(request.vars.post_id)

@@ -70,6 +70,19 @@ var app = function () {
         );
     };
 
+    self.add_participant = function (pid, aid) {
+        $.post(add_participant_url,
+            {
+                post_id: pid,
+                applicant_id: aid
+            },
+            function(data) {
+                self.get_applicants(data.post_id);
+                self.get_participants(data.post_id);
+            }
+        );
+    };
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -81,7 +94,8 @@ var app = function () {
         methods: {
             refresh_applicants: self.refresh_applicants,
             refresh_participants: self.refresh_participants,
-            add_applicant: self.add_applicant
+            add_applicant: self.add_applicant,
+            add_participant: self.add_participant
         }
     });
 

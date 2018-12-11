@@ -5,6 +5,7 @@
 <script>
     var logged_in_user_email = "{{= None if auth.user is None else auth.user.email}}";
     var add_applicant_url = "{{=URL('api', 'add_applicant', user_signature=True)}}";
+    var add_participant_url = "{{=URL('api', 'add_participant', user_signature=True)}}";
     var get_participants_url = "{{=URL('api', 'get_participants')}}";
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
     var post_id = "{{=post.id }}";
@@ -42,11 +43,11 @@
                 </a>
             </div>
 
-            <div class="participants_box">
+            <!--div class="participants_box">
                 <div>There are ${participants_list.length} participants:</div>
                 <div id="participants_list">
                     <div id="participants_container" class="container" v-for="participant in participants_list">
-                        <div class="applicant">
+                        <div class="participant">
                             <div class="participant_author">Name: ${participant.name}</div>
                             <div class="participant_email">Email:
                                 <a href="mailto:${applicant.email}">${participant.email}</a>
@@ -59,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
 
             <div class="applicants_box">
                 <div>There are ${applicant_list.length} applicants:</div>
