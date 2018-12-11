@@ -16,6 +16,8 @@
 from gluon.tools import Auth, Service, PluginManager
 import datetime
 
+def get_user_name():
+    return None if auth.user is None else auth.user.first_name + " " + auth.user.last_name
 
 def get_user_email():
     return None if auth.user is None else auth.user.email
@@ -122,6 +124,13 @@ db.define_table('users',
                 Field('user_links'),
 
 )
+
+db.define_table('applicant',
+                Field('post_id', 'reference post'),
+                Field('name', default=get_user_name()),
+                Field('email', default=get_user_email()),
+                Field('apply_time', 'datetime', update=get_current_time())
+                )
 
 db.auth_user.email.requires = IS_EMAIL(forced='^.*\ucsc.edu(|\..*)$')
 db.auth_user.first_name.writable = False

@@ -305,3 +305,25 @@ def edit_user():
     
     
 
+
+
+def get_applicants():
+    post_id = int(request.vars.post_id)
+    print post_id
+    applicant_list = list()
+    applicants = db(db.applicant.post_id == post_id).select(orderby=~db.applicant.apply_time)
+    for applicant in applicants:
+        applicant_list.append(dict(
+            id = applicant.id,
+            name = applicant.name,
+            email = applicant.email,
+        ))
+    return response.json(dict(applicant_list = applicant_list))
+
+#@auth.requires_signature()
+def add_applicant():
+    pid = int(request.vars.post_id)
+    applicant_id = db.applicant.insert(
+        post_id = pid,
+    )
+    return response.json(dict(applicant_id=applicant_id))

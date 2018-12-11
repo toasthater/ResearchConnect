@@ -1,20 +1,71 @@
 {{extend 'layout.html'}}
 
 {{block head}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script>
+    var logged_in_user_email = "{{= None if auth.user is None else auth.user.email}}";
+    var add_applicant_url = "{{=URL('api', 'add_applicant', user_signature=True)}}";
+    var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
 
-<div class="post_div">
-    <div class="section-header">
-        <span class="section-header__title post_title">{{=post.post_title}}</span>
-    </div>
-    <!-- Code for Thumbs. -->
-    <div class="section-header">
-        <div class="section-header__container">
+    var post_id = "{{=post.id }}";
+    var post_author = "{{=post.post_author}}";
+    console.log("post_id = " + post_id);
+    var is_logged_in = {{='false' if auth.user is None else 'true'}};
+
+</script>
+{{end}}
+
+<div id="vue-div" class="display:none">
+    <div class = "row justify-content-center">
+        <div class = "col-4 mt-5">
+            <div class = "card text-justify">
+                <div class = "card-img-top">
+                    <div class = "circle justify-content-center">
+                    <img class = "post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
+                    </div>
+                </div> 
+                <div class = "card-body">
+                    <h5 class="card-title text-center">
+                        {{=post.post_title}}
+                    </h5>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{=post.post_author_name}}</li>
+                    <li class="list-group-item">
+                        <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
+                    </li>
+                    <li class="list-group-item">{{=post.post_content}}</li>
+                    <li class="list-group-item">{{=post.post_department}}</li>
+                    <li class="list-group-item">{{=post.post_tags}}</li>
+                    </ul>
+                </div>
+                <a class="btn" v-on:click="add_applicant(post_id)">
+                    <i class=""></i> Apply
+                </a>
+            </div>
+
+
+            <div v-if="applicant_list.length === 0">There are no posts.</div>
+
+            <div>Length is: ${applicant_list.length}</div>
+            <div id="applicants_list">
+                <div id="applicants_container" class="container" v-for="applicant in applicant_list">
+                    <div class="applicant">
+                        <div class="applicant_author">Name: ${applicant.name}</div>
+                        <div class="applicant_content">Email:
+                            <a href="mailto:${applicant.email}">${applicant.email}</a>
+                        </div>
+                        <div class="applicant options" v-if="post_author === logged_in_user_email">
+                            <a class="btn" v-on:click="accept_applicant_click(applicant)">
+                                <i class=""></i> Accept
+                            </a>
+                            <a class="btn" v-on:click="decline_applicant_click(applicant)">
+                                <i class=""></i> Decline
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- END Code for Thumbs. -->
-    <div class="post_author">Author: {{=post.post_author}}</div>
-    <div class="post_content">Description: {{=post.post_content}}</div>
-    <div class="post_department">Department: {{=post.post_department}}</div>
-    <div class="post_tags">Tags: {{=post.post_tags}}</div>
-    <div class="attributes"></div>
 </div>
+<script src="{{=URL('static', 'js/research.js')}}"></script>

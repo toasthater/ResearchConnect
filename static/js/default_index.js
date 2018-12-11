@@ -230,7 +230,9 @@ var app = function () {
             hide_sign_up: self.hide_sign_up,
             show_forgot_password: self.show_forgot_password,
             hide_forgot_password: self.hide_forgot_password,
-            search_posts: self.search_posts
+            search_posts: self.search_posts,
+            refresh_applicants: self.refresh_applicants,
+            add_applicant: self.add_applicant
         }
     });
 
