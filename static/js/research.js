@@ -57,6 +57,7 @@ var app = function () {
     }
 
     self.add_applicant = function (pid) {
+        can_apply = false;
         //$.web2py.disableElement($("#apply"));
         $.post(add_applicant_url,
             {

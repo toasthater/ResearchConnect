@@ -9,6 +9,7 @@
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
+    var can_apply = {{= 'false' if is_applicant is True else 'true'}}
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
 </script>
 {{end}}
@@ -36,7 +37,7 @@
                         <li class="list-group-item">{{=post.post_tags}}</li>
                     </ul>
                 </div>
-                <a class="btn" v-if="post_author !== logged_in_user_email" v-on:click="add_applicant(post_id)">
+                <a class="btn" v-if="post_author !== logged_in_user_email && can_apply" v-on:click="add_applicant(post_id)">
                     <i class=""></i> Apply
                 </a>
             </div>

@@ -43,9 +43,13 @@ def research():
         posts = db((db.post.id == id)).select()
         if len(posts) > 0:
             post = posts[0]
+            if (len(db((db.applicant.user_id == auth.user.id)&(db.applicant.post_id == post.id)).select()) > 0):
+                is_applicant = True 
+            else:
+                is_applicant = False
         else:
             print "Error: post not found"
-    return dict(post=post)
+    return dict(post=post, is_applicant=is_applicant)
 
 def settings():
     # We just want to expand the template.
