@@ -16,10 +16,10 @@ var app = function () {
     // Enumerates an array.
     var enumerate = function (v) { var k = 0; return v.map(function (e) { e._idx = k++; }); };
 
-    self.get_applicants = function () {
+    self.get_applicants = function (pid) {
         $.post(get_applicants_url,
             {
-                post_id: 6
+                post_id: pid
             },
             function (data) {
                 // I am assuming here that the server gives me a nice list
@@ -67,7 +67,7 @@ var app = function () {
         $("#add_post").show();
     }
     
-    self.get_applicants();
+    self.get_applicants(post_id);
 
     return self;
 };
