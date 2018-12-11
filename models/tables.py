@@ -122,6 +122,10 @@ db.define_table('applicant',
                 Field('apply_time', 'datetime', update=get_current_time())
                 )
 
+db.define_table('department',
+                Field('name', "text",
+                Field('type', "text")
+
 db.auth_user.email.requires = IS_EMAIL(forced='^.*\ucsc.edu(|\..*)$')
 db.auth_user.first_name.writable = False
 db.auth_user.last_name.writable = False

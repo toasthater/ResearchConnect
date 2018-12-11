@@ -17,9 +17,6 @@ var app = function () {
     var enumerate = function (v) { var k = 0; return v.map(function (e) { e._idx = k++; }); };
 
     self.search = function (type, query) {
-        console.log("Inside search function");
-        console.log("Type: " + type);
-        console.log("Query: " + query);
         $.post(get_search_posts_url,
             {
                 search_type: type,
