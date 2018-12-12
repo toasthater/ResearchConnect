@@ -209,10 +209,17 @@ var app = function () {
 
     self.show_sign_up = function () {
         self.vue.showing_sign_up_form = true;
+        $("#signup").show();
+        $("#signup_cruzid").focusout(function(){ 
+            console.log($("#signup_cruzid").val()+"@ucsc.edu");
+            $("#auth_signup_user_email").val($("#signup_cruzid").val()+"@ucsc.edu");
+        }); 
+        
+
     };
 
     self.hide_sign_up = function () {
-        self.vue.showing_sign_up_form = false;
+        $("#signup").hide();
     };
 
     self.show_forgot_password = function () {
@@ -238,7 +245,7 @@ var app = function () {
             form_tags: [],
             post_list: [],
             showing_sign_up_form: false,
-            showing_forgot_password_form: false
+            showing_forgot_password_form: false,
         },
         methods: {
             add_post: self.add_post,
@@ -278,12 +285,19 @@ var APP = null;
 
 // This will make everything accessible from the js console;
 // for instance, self.x above would be accessible as APP.x
-jQuery(function () { APP = app(); });
+jQuery(function () { 
+    APP = app(); 
+    $("#login_cruzid").blur(function(){ 
+        $("#auth_user_email").val($("#login_cruzid").val()+"@ucsc.edu");
+         });
+    $("#signup").hide();
+    $("#signup_cruzid").focusout( function(){ console.log("loldddddd");$("#auth_signup_user_email").val($("#signup_cruzid").val()+"@ucsc.edu");});  
+});
 
 $(document).on('keydown', function (e) {
     if (e.keyCode === 27) { // ESC
         APP.vue.showing_sign_up_form = false;
-        APP.vue.showing_forgot_password_form = false;
+        $("#signup").hide();
     }
 });
 

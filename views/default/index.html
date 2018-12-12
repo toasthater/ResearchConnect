@@ -23,6 +23,7 @@
     }
     });
 
+
 </script>
 {{end}}
 
@@ -51,12 +52,12 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text black icon"><i class="material-icons">perm_identity</i></span>
                                         </div>
-                                        {{form.custom.widget.email['_placeholder'] = 'CruzID'}}
-                                        {{=form.custom.widget.email}}
+                                        <input id="login_cruzid" placeholder="CruzID" type="text" value="" class="form-control string">
+                                        <input id="auth_user_email" name="email" type="hidden" value="" class="form-control">
                                             <div class="input-group-append">
                                                 <span class="input-group-text append-text">@ucsc.edu</span>
                                            </div>
-                                        </div>
+                                    </div>
                                     <div class="input-group mb-1 pb-4" id="pass_form">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text black icon"><i class="material-icons">lock</i></span>
@@ -73,7 +74,7 @@
                     </div>
                 </div>
                 <transition name="fade">
-                    <div id="signup" v-cloak v-if="showing_sign_up_form" >
+                    <div id="signup">
                         <div class="signup_form_container" ></div>
                         <div id="web2py_signup_form" class="centered login p-3">
                             <div class = "col px-0">
@@ -98,12 +99,11 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text black icon"><i class="material-icons">perm_identity</i></span>
                                         </div>
-                                        {{form.custom.widget.email['_placeholder'] = 'CruzID'}}
-                                        {{=form.custom.widget.email}}
+                                        <input id="signup_cruzid" placeholder="CruzID" type="text" value="" class="form-control string">
+                                        <input id="auth_signup_user_email" name="email" type="hidden" value="" class="form-control">
                                             <div class="input-group-append">
                                                 <span class="input-group-text append-text">@ucsc.edu</span>
                                            </div>
-                                        </div>
                                     </div>
                                     <div class="input-group mb-1 pb-4" id="pass_form">
                                         <div class="input-group-prepend">
