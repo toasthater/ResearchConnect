@@ -276,13 +276,23 @@ button.closed {
 
 .login form span {
   background-color: $loginIconBackground;
-  border-radius: 3px 0px 0px 3px;
-  border: 0px;
   border-right: 3px solid #434a52;
   color: $loginIconColor;
   line-height: 50px;
   text-align: center;
+
+}
+
+.login .icon {
+  border-radius: 3px 0px 0px 3px;
+  border: 0px;
   width: 50px;
+  height: 50px;
+}
+
+.login .append-text {
+  border-radius: 0px 3px 3px 0px;
+  border: 0px;
   height: 50px;
 }
 
@@ -298,7 +308,6 @@ button.closed {
   color: white;
   margin-bottom: 1em;
   padding: 0 16px;
-  width: 235px;
   height: 50px;
   &:focus {
     background-color: white;
