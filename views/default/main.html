@@ -72,20 +72,15 @@
                         <div id="tags_container" class="input-group mb-1">
                         </div>
                     </div>
-                    <div class="container form_row">
-                        <div class="quarter"></div>
-                        <div class="threequarters">
-                            <div class="submit">
-                                <button id="add-post" v-on:click="add_post">Submit</button>
-                            </div>
-                        </div>
+                    <div class="row justify-content-center">
+                            <button id="add-post" v-on:click="add_post">Submit</button>
                     </div>
                 </div>
             </div>
 
 
 
-            <button v-if="is_professor" id="toggle_form_button" v-on:click="toggle_form">Add post <i class="fa fa-plus-circle"></i></button>
+            <button v-if="is_professor" class="btn btn-lg btn-block connect mt-4 col-4 mx-auto" id="toggle_form_button" v-on:click="toggle_form">new research</button>
             <!-- Message in case there are no posts. -->
             <div v-cloak>
                 <div v-if="post_list.length === 0">There are no posts.</div>
