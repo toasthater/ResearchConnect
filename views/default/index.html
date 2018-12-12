@@ -13,6 +13,9 @@
     var get_score_url = "{{=URL('api', 'get_score')}}"
 
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
+    if (auth.user != None){
+        window.location.replace('main');
+    }
 
     $( document ).on( 'keydown', function ( e ) {
     if ( e.keyCode === 27 ) { // ESC

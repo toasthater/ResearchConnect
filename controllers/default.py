@@ -11,6 +11,8 @@
 
 def index():
     # We just want to expand the template.
+    if(auth.user != None):
+        return redirect('main')
     return dict()
 
 def search():
