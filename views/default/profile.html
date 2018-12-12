@@ -77,6 +77,14 @@
 
       <!-- Links -->
       <h2>Links</h2>
+      <a href="user_email">${user_email}</a>
+      <div v-if="editing">
+        www.linkedin.com/in/
+        <textarea v-model="user_linkedin"></textarea>
+      </div>
+      <div v-else>
+        <a v-if="user && user_linkedin" v-bind:href="'https://www.linkedin.com/in/' + user_linkedin">www.linkedin.com/in/${user_linkedin}</a>
+      </div>
       
 
       <!-- Cancel/Submit Buttons -->

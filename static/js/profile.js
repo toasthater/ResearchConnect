@@ -22,6 +22,7 @@ var app = function() {
             function(data) {
                 self.vue.user_bio = data.user.user_bio;
                 self.vue.user_degree = data.user.user_degree;
+                self.vue.user_linkedin = data.user.user_linkedin;
                 self.vue.user = true;
                 console.log("user got");
                 
@@ -39,6 +40,7 @@ var app = function() {
 
             user_bio: self.vue.user_bio,
             user_degree: self.vue.user_degree,
+            user_linkedin: self.vue.user_linkedin,
         });
     };
 
@@ -87,7 +89,7 @@ var app = function() {
             user_last_name: user_last_name,
             user_degree: null,
             user_bio: null,
-            user_links: [],
+            user_linkedin: null,
         },
 
         methods: {

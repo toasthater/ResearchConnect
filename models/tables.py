@@ -122,7 +122,7 @@ db.define_table('users',
                 Field('user_id'),
                 Field('user_degree'),
                 Field('user_bio'),
-                Field('user_links'),
+                Field('user_linkedin'),
 
 )
 

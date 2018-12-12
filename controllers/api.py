@@ -253,10 +253,8 @@ def post_resume():
 
     return response.json(dict(file_str = file_str))
 
-# TODO: Shold this require signature?
-# @auth.requires_signature()
+
 def get_resume():
-# TODO: this needs an input parameter
     user_id = auth.user.id
 
     row = db(db.resumes.user_id == user_id).select().first()
@@ -274,7 +272,8 @@ def post_user():
         (db.users.user_id == user_id),
         user_degree = request.vars.user_degree,
         user_bio = request.vars.user_bio,
-        user_links = rrequest.vars.user_links
+        user_linkedin = rrequest.vars.user_linkedin
+        
     )
 
     return response.json(dict(file_str = file_str))
@@ -290,7 +289,7 @@ def get_user():
         results = dict(
             user_degree = row.user_degree,
             user_bio = row.user_bio,
-            user_links = row.user_links
+            user_linkedin = row.user_linkedin
         )
 
     return response.json(dict(user = results))
@@ -303,13 +302,20 @@ def edit_user():
     last_name = request.vars.user_last_name
     user_bio = request.vars.user_bio
     user_degree = request.vars.user_degree
+    user_linkedin = request.vars.user_linkedin
 
-    row = db(db.users.user_id == user_id).select().first()
     db.users.update_or_insert(
         (db.users.user_id == user_id),
+        user_id = user_id,
         user_degree = user_degree,
-        user_bio = user_bio
-    ) 
+        user_bio = user_bio,
+        user_linkedin = user_linkedin,
+    )
+
+    row = db(db.auth_user.id == user_id).select().first()
+    row.update_record(first_name = first_name, last_name = last_name)
+
+    #TODO: first and last name updating
 
 
 def get_applicants():
