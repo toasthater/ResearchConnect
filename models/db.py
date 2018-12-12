@@ -80,7 +80,7 @@ mail.settings.ssl = False
 
 # configure auth policy
 auth.next = None
-
+auth.navbar(referrer_actions=None)
 auth.settings.registration_requires_verification = True
 auth.messages.email_sent = "A verification email has been sent to you! Follow it's link to proceed."
 auth.messages.verify_email_subject = 'Verify your account with ResearchConnect'
