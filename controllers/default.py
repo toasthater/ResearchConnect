@@ -93,17 +93,14 @@ def user():
     #flash = dict(register='An email verifying your registration has been sent. Follow the link to proceed.')
     #auth.messages.email_sent = flash.get(request.args(0),auth.messages.email_sent)
     if request.args(0) == 'register':
-        session.flash('Email has been sent.')
-        
         form = auth.register(next=auth.settings.register_next)
-    elif request.args(0) == 'login':
+    if request.args(0) == 'login':
         form = auth.login(next=auth.settings.login_next)
     else:
         form = auth()
     return dict(form=auth())
     
 def register():
-   auth.messages.sent
    return dict(form=auth.register())
 
 
