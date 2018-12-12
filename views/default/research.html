@@ -90,7 +90,7 @@
                         <li class="list-group-item">Status: ${post_status}</li>
                     </ul>
                 </div>
-                <a class="btn" v-if="post_author == logged_in_user_email && is_editing" v-on:click="toggle_edit(); submit_click(post_id)">
+                <a class="btn" v-if="post_author == logged_in_user_email && is_editing" v-on:click="submit_click(post_id)">
                     <i class=""></i> Submit
                 </a>
                 <a class="btn" v-if="post_author == logged_in_user_email && !is_editing" v-on:click="toggle_edit()">

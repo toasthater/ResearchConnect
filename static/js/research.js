@@ -134,6 +134,7 @@ var app = function () {
                 post_department: post_department
             },
             function (data) {
+                self.toggle_edit(pid);
                 self.refresh_applicants();
             }
         );
