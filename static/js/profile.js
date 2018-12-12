@@ -38,6 +38,7 @@ var app = function() {
 
     self.submit_user = function() {
         self.vue.editing = false;
+        self.vue.user = true;
 
         $.post(edit_user_url, {
             user_first_name: self.vue.user_first_name,
