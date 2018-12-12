@@ -32,15 +32,6 @@ var app = function () {
     };
 
     self.get_participants = function (pid) {
-        var tags = post_tags.split(',');
-        var newtags = "";
-        for (var i = 0; i < tags.length; i++) {
-            if (i==0)
-                newtags = tags[i];
-            else
-                newtags = newtags + "," + tags[i];
-        }
-        self._tags = newtags;
         $.post(get_participants_url,
             {
                 post_id: pid
