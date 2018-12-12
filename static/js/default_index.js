@@ -47,7 +47,7 @@ var app = function () {
                 post_title: self.vue.form_title,
                 post_content: self.vue.form_content,
                 post_department: self.vue.form_department,
-                post_tags: self.vue.form_tags.split(',')
+                post_tags: $("input#tags_in").val().split(',')
             },
             // What do we do when the post succeeds?
             function (data) {
