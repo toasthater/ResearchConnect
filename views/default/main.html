@@ -14,15 +14,15 @@
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
     var user_name = "{{=get_user_name()}}";
 
-    var is_professor = {{='true' if auth.has_membership(role='professor') else 'false'}};
+    var is_professor = {{='true' if auth.has_membership(role = 'professor') else 'false'}};
 
 
 </script>
- <link rel="stylesheet" type="text/css" href="{{=URL('static', 'tagsinput/bootstrap-tagsinput.css')}}">
+<link rel="stylesheet" type="text/css" href="{{=URL('static', 'tagsinput/bootstrap-tagsinput.css')}}">
 <style>
-  [v-cloak] {
-    display: none;
-  }
+    [v-cloak] {
+        display: none;
+    }
 </style>
 {{end}}
 {{ rows = db().select(db.department.ALL) }}
@@ -36,7 +36,7 @@
                         Title:
                     </div>
                     <div class="form threequarters">
-                        <input v-model="form_title" class="form-control" placeholder="Enter the post title"/>
+                        <input v-model="form_title" class="form-control" placeholder="Enter the post title" />
                     </div>
                 </div>
                 <div class="container form_row">
@@ -53,9 +53,9 @@
                     </div>
                     <div class="form threequarters">
                         <select class="form-control" v-model="form_department" id="exampleFormControlSelect1">
-                          {{if len(rows):}}
+                            {{if len(rows):}}
                             {{ for r in rows: }}
-                               <option>{{=r.department_name}}</option>
+                            <option>{{=r.department_name}}</option>
                             {{pass}}
                             {{pass}}
                         </select>
@@ -73,67 +73,63 @@
                     </div>
                 </div>
             </div>
-            <button v-if="is_professor" id="toggle_form_button" v-on:click="toggle_form">Add post <i
-                    class="fa fa-plus-circle"></i></button>
+            <button v-if="is_professor" id="toggle_form_button" v-on:click="toggle_form">Add post <i class="fa fa-plus-circle"></i></button>
             <!-- Message in case there are no posts. -->
             <div v-cloak>
-            <div v-if="post_list.length === 0">There are no posts.</div>
+                <div v-if="post_list.length === 0">There are no posts.</div>
             </div>
             <!-- We display the posts. -->
-            <div class = "row" id="post_list">
+            <div class="row" id="post_list">
                 <div class="col-4 mt-5" v-for="(post, index) in post_list.slice(0, 15)">
-                    <a v-bind:href="'research/' + post.id" style = "text-decoration: none;">
-                        <div class = "post card text-justify">
-                            <div class = "card-img-top">
-                                <div class = "circle justify-content-center">
-                                <img class = "post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
+                    <a v-bind:href="'research/' + post.id" style="text-decoration: none;">
+                        <div class="post card text-justify">
+                            <div class="card-img-top">
+                                <div class="circle justify-content-center">
+                                    <img class="post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
                                 </div>
-                            </div> 
-                            <div class = "card-body">
-                                <div class = "row justify-content-center">
-                                <h5 class="card-title text-center">
-                                    <div class = "title-box px-2 pt-1">
-                                        ${post.post_title}
-                                    </div>
-                                    <div class = "author pt-1">
-                                        ${post.post_author_name}
-                                    </div>
-                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row justify-content-center">
+                                    <h5 class="card-title text-center">
+                                        <div class="title-box px-2 pt-1">
+                                            ${post.post_title}
+                                        </div>
+                                        <div class="author pt-1">
+                                            ${post.post_author_name}
+                                        </div>
+                                    </h5>
                                 </div>
                                 <ul class="list-group list-group-flush px-0">
                                     <li class="list-group-item px-0">
-                                        <div class = "description">
+                                        <div class="description">
                                             ${post.post_content}
                                         </div>
                                     </li>
                                     <li class="list-group-item px-0">
-                                        <div class = "department pt-1 px-3">
+                                        <div class="department pt-1 px-3">
                                             ${post.post_department}
                                         </div>
-                                    <div v-for= "tag in post.post_tags">
-                                    ${tag}
-                                    </div>
-                                    <!-- ${post.post_tags} -->
+                                        <div v-for="tag in post.post_tags">
+                                            ${tag}
+                                        </div>
+                                        <!-- ${post.post_tags} -->
                                     </li>
                                     <li class="list-group-item px-0">
                                         <div v-if="post.post_status === 'Open'">
-                                        <button class="btn btn-lg btn-block connect">Connect</button>
+                                            <button class="btn btn-lg btn-block connect">Connect</button>
                                         </div>
                                         <div v-if="post.post_status === 'Closed'">
-                                        <button class="btn btn-lg btn-block closed">Closed</button>
+                                            <button class="btn btn-lg btn-block closed">Closed</button>
                                         </div>
-                                        
                                     </li>
-=======
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item description">${post.post_content}</li>
-                                    <li class="list-group-item">${post.post_department}</li>
-                                    <div v-for="tag in post._tags">
-                                        ${tag}
-                                    </div>
-                                    <li class="list-group-item">Status: ${post.post_status}</li>
->>>>>>> something_funny
-                                </ul>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item description">${post.post_content}</li>
+                                        <li class="list-group-item">${post.post_department}</li>
+                                        <div v-for="tag in post._tags">
+                                            ${tag}
+                                        </div>
+                                        <li class="list-group-item">Status: ${post.post_status}</li>
+                                    </ul>
                             </div>
                         </div>
                     </a>
@@ -143,5 +139,3 @@
         <!-- END ELSE SHOW HOME PAGE -->
     </div>
 </div>
-
-    
