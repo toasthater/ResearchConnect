@@ -16,6 +16,7 @@
   var auth_is_user = {{='true' if auth.user.id == user.id else 'false'}};
   var user_email = "{{=None if auth.user is None else auth.user.email}}";
 
+  var user_test = "{{=user}}";
   var user_id = {{=user.id}};
   var user_first_name = "{{=user.first_name}}";
   var user_last_name = "{{=user.last_name}}";
@@ -87,7 +88,7 @@
 
       <!-- Links -->
       <h2>Links</h2>
-      <a href="{{=user.email}}">{{=user.email}}</a>
+      <a v-bind:href="'mailto:'  + '{{=user.email}}'">{{=user.email}}</a>
       <div v-if="editing">
         www.linkedin.com/in/
         <input v-model="user_linkedin"></input>
