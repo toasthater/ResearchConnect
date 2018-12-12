@@ -116,8 +116,14 @@ db.define_table('resumes',
                 Field('user_id')
 )
 
+# Profile Pictures
+db.define_table('prof_pics',
+                Field('pic_str', 'text'),
+                Field('user_id')
+)
 
-# Linkedin needs validation 
+
+# Users
 db.define_table('users',
                 Field('user_id'),
                 Field('user_degree'),

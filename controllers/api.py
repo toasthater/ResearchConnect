@@ -264,22 +264,20 @@ def get_resume():
         file_str = row.file_str
     return response.json(dict(file_str = file_str))
 
-@auth.requires_signature()
-def post_user():
-    # file_str = request.vars.file_str
+def get_user_pic():
     user_id = auth.user.id
-    db.users.update_or_insert(
-        (db.users.user_id == user_id),
-        user_degree = request.vars.user_degree,
-        user_bio = request.vars.user_bio,
-        user_linkedin = rrequest.vars.user_linkedin
-        
-    )
+    print "------------------"
+
+    row = db(db.prof_pics.user_id == user_id).select().first()
+    
+    file_str = None
+    if row is not None and row.pic_str is not None:
+        file_str = row.pic_str
 
     return response.json(dict(file_str = file_str))
 
-def get_user():
 
+def get_user():
     user_id = request.args(0)
 
     row = db(db.users.user_id == user_id).select().first()
@@ -303,7 +301,9 @@ def edit_user():
     user_bio = request.vars.user_bio
     user_degree = request.vars.user_degree
     user_linkedin = request.vars.user_linkedin
+    user_pic = request.vars.user_pic
 
+    # Users table
     db.users.update_or_insert(
         (db.users.user_id == user_id),
         user_id = user_id,
@@ -312,10 +312,16 @@ def edit_user():
         user_linkedin = user_linkedin,
     )
 
+    # Auth table (names)
     row = db(db.auth_user.id == user_id).select().first()
     row.update_record(first_name = first_name, last_name = last_name)
 
-    #TODO: first and last name updating
+    db.prof_pics.update_or_insert(
+        (db.prof_pics.user_id == user_id),
+        user_id = user_id,
+        pic_str = user_pic
+    )
+    
 
 
 def get_applicants():

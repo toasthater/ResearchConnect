@@ -23,6 +23,7 @@ var app = function() {
                 self.vue.user_bio = data.user.user_bio;
                 self.vue.user_degree = data.user.user_degree;
                 self.vue.user_linkedin = data.user.user_linkedin;
+                
                 self.vue.user = true;
                 console.log("user got");
                 
@@ -41,7 +42,21 @@ var app = function() {
             user_bio: self.vue.user_bio,
             user_degree: self.vue.user_degree,
             user_linkedin: self.vue.user_linkedin,
+            user_pic: self.vue.user_pic,
         });
+    };
+
+    self.choose_image = function(event) {
+        var input = event.target;
+        var file = input.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+            reader.addEventListener("load", function () {
+                self.vue.user_pic = reader.result;
+            }, false);
+            reader.readAsDataURL(file);
+        }
     };
 
     self.upload_resume = function(event) {
@@ -61,6 +76,14 @@ var app = function() {
         }
     };
 
+    self.download_picture = function() {
+        $.getJSON(picture_get_url, { },
+                function (data) {
+                self.vue.user_pic = data.file_str;
+                console.log("Resume got");
+        });
+    };
+
     self.download_resume = function(event) {
         $.getJSON(resume_get_url, 
             {
@@ -69,6 +92,11 @@ var app = function() {
                 self.vue.resume = data.file_str;
                 console.log("Resume got");
         });
+    };
+
+
+    self.cancel_editing = function() {
+
     };
  
     // Complete as needed.
@@ -90,18 +118,22 @@ var app = function() {
             user_degree: null,
             user_bio: null,
             user_linkedin: null,
+
+            user_pic: null,
         },
 
         methods: {
             upload_resume: self.upload_resume,
             download_resume: self.download_resume,
             submit_user: self.submit_user,
+            choose_image: self.choose_image,
             
         }
 
     });
 
     //Put runtime code here
+    self.download_picture();
     self.download_resume();
     self.get_user();
 
