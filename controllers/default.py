@@ -59,9 +59,9 @@ def profile():
     return dict(user=user)
 
 def research():
+    if(auth.user is None):
+        return redirect('../index')
     if request.args(0) != None:
-        if(auth.user is None):
-                return redirect('../index')
         id = int(request.args(0))
         posts = db((db.post.id == id)).select()
         if len(posts) > 0:
