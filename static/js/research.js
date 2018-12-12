@@ -104,6 +104,23 @@ var app = function () {
         );
     };
 
+    self.toggle_post = function (pid, pst) {
+        if(post_status == 'Open')
+            post_status = 'Closed';
+        else
+            post_status = 'Open';
+        $.post(toggle_post_url,
+            {
+                post_id: pid,
+                post_status: pst
+            },
+            function(data) {
+                self.get_applicants(data.post_id);
+            }
+        );
+    };
+
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -118,7 +135,8 @@ var app = function () {
             add_applicant: self.add_applicant,
             decline_participant: self.decline_participant,
             add_participant: self.add_participant,
-            remove_post: self.remove_post
+            remove_post: self.remove_post,
+            toggle_post: self.toggle_post
         }
     });
 

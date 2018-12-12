@@ -55,6 +55,7 @@ def get_post_list():
                 post_author=row.post_author,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
+                post_status=row.post.post_status,
                 thumb = None,
                 score=0
             ))
@@ -76,6 +77,7 @@ def get_post_list():
                 post_author=row.post.post_author,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
+                post_status=row.post.post_status,
                 thumb = None if row.thumb.id is None else row.thumb.thumb_state,
                 score=post_score
             ))
@@ -112,6 +114,7 @@ def get_search_posts():
                 post_author=row.post_author,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
+                post_status=row.post.post_status,
                 thumb = None,
                 score=0
             ))
@@ -159,6 +162,7 @@ def get_search_posts():
                 post_author=row.post.post_author,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
+                post_status=row.post.post_status,
                 thumb = None if row.thumb.id is None else row.thumb.thumb_state,
                 score=post_score
             ))
@@ -180,6 +184,7 @@ def get_filtered_post_list():
                 post_author=row.post_author,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
+                post_status=row.post.post_status,
                 thumb = None,
                 score=0
             ))
@@ -201,6 +206,7 @@ def get_filtered_post_list():
                 post_author=row.post.post_author,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
+                post_status=row.post.post_status,
                 thumb = None if row.thumb.id is None else row.thumb.thumb_state,
                 score=post_score
             ))
@@ -360,3 +366,15 @@ def remove_post():
     db(db.applicant.post_id == post_id).delete()
     return response.json(dict(post_id=post_id))
     
+def toggle_post():
+    post_id = int(request.vars.post_id)
+    post_status = request.vars.post_status
+    if(post_status == 'Open'):
+        post_status = 'Closed'
+    else:
+        post_status = 'Open'
+    db.post.update_or_insert(
+            (db.post.id == post_id),
+            post_status = post_status
+        )
+    return response.json(dict(post_id=post_id))
