@@ -90,6 +90,7 @@ def user():
         form = auth.register(next=auth.settings.register_next)
     if request.args(0) == 'login':
         form = auth.login(next=auth.settings.login_next)
+        return redirect('../index')
     else:
         form = auth()
     return dict(form=auth())

@@ -13,14 +13,14 @@
     var toggle_post_url = "{{=URL('api', 'toggle_post', user_signature=True)}}";
     var submit_click_url = "{{=URL('api', 'submit_click', user_signature=True)}}";
 
-    var post_content = "{{=post.post_content}}";
-    var post_title = "{{=post.post_title}}";
-    var post_department = "{{=post.post_department}}";
+    var post_content = $('<div>').html("{{=post.post_content}}").text();
+    var post_title = $('<div>').html("{{=post.post_title}}").text();
+    var post_department = $('<div>').html("{{=post.post_department}}").text();
     var post_tags = "{{=post.post_tags}}";
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
     var dept_type = "{{=post.dept_type}}";
-    var can_apply = {{= 'false' if is_applicant is True else 'true'}}
+    var can_apply = {{= 'false' if is_applicant is True else 'true'}};
     var post_status = "{{=post.post_status}}";
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
     var is_editing = {{='false'}};
@@ -86,7 +86,7 @@
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
                         <li class="list-group-item px-0">
-                            <textarea class="description" v-model="post_content"></textarea>
+                            <textarea class="" v-model="post_content"></textarea>
                         </li>
                         <li class="list-group-item px-0 text-left">
                             <select class="department pt-1 px-3" v-model="post_department" id="exampleFormControlSelect1">
@@ -100,7 +100,7 @@
                                 {{ tags = post.post_tags.split(",") }}
                                 {{if len(tags):}}
                                 {{ for tag in tags: }}
-                                    <span class="label-info mr-1">
+                                    <span class="label label-info mr-1">
                                         {{=tag}}
                                     </span>
                                 {{pass}}
@@ -132,7 +132,7 @@
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
                         <li class="list-group-item px-0">
-                            <div class="description">
+                            <div class="">
                                 ${post_content}
                             </div>
                         </li>
@@ -144,7 +144,7 @@
                             {{ tags = post.post_tags.split(",") }}
                             {{if len(tags):}}
                             {{ for tag in tags: }}
-                                <span class="label-info mr-1">
+                                <span class="label label-info mr-1">
                                     {{=tag}}
                                 </span>
                             {{pass}}
