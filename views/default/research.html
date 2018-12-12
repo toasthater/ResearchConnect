@@ -152,7 +152,7 @@
                 <div>There are ${participants_list.length} participants:</div>
                 <div id="participants_list">
                     <div id="participants_container" class="container" v-for="participant in participants_list">
-                        <div class="participant">
+                        <div class="participant" v-if="post_author == logged_in_user_email || participant.email == logged_in_user_email">
                             <div class="participant_author">Name:
                                 <a v-bind:href="'../profile/' + participant.user_id">${participant.name}</a>
                             </div>
@@ -173,7 +173,7 @@
                 <div>There are ${applicant_list.length} applicants:</div>
                 <div id="applicants_list">
                     <div id="applicants_container" class="container" v-for="applicant in applicant_list">
-                        <div class="applicant" v-on:click="">
+                        <div class="applicant"  v-if="post_author == logged_in_user_email || applicant.email == logged_in_user_email">
                             <div class="applicant_author">Name:
                                 <a v-bind:href="'../profile/' + applicant.user_id">${applicant.name}</a>
                             </div>
