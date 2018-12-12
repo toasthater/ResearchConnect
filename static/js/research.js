@@ -94,6 +94,16 @@ var app = function () {
         );
     };
 
+    self.remove_post = function (pid) {
+        $.post(remove_post_url,
+            {
+                post_id: pid
+            },
+            function(data) {
+            }
+        );
+    };
+
     self.vue = new Vue({
         el: "#vue-div",
         delimiters: ['${', '}'],
@@ -107,7 +117,8 @@ var app = function () {
             refresh_participants: self.refresh_participants,
             add_applicant: self.add_applicant,
             decline_participant: self.decline_participant,
-            add_participant: self.add_participant
+            add_participant: self.add_participant,
+            remove_post: self.remove_post
         }
     });
 

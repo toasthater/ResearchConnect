@@ -9,6 +9,8 @@
     var decline_participant_url = "{{=URL('api', 'decline_participant', user_signature=True)}}";
     var get_participants_url = "{{=URL('api', 'get_participants')}}";
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
+    var remove_post_url = "{{=URL('api', 'remove_post', user_signature=True)}}";
+
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
     var can_apply = {{= 'false' if is_applicant is True else 'true'}}
@@ -41,6 +43,9 @@
                 </div>
                 <a class="btn" v-if="post_author !== logged_in_user_email && can_apply" v-on:click="add_applicant(post_id)">
                     <i class=""></i> Apply
+                </a>
+                <a class="btn" v-if="post_author == logged_in_user_email" href="../main" v-on:click="remove_post(post_id)">
+                    <i class=""></i> Remove
                 </a>
             </div>
 
