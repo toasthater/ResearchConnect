@@ -76,6 +76,24 @@
 }
 
 /* line 78, ../sass/_main.scss */
+.post-btn {
+  border-radius: 5px;
+  background-color: #4C866E;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* line 86, ../sass/_main.scss */
+.post-btn:hover {
+  background-color: #3B5E56;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white !important;
+}
+
+/* line 93, ../sass/_main.scss */
 .nav-btn-box {
   border-radius: 5px;
   height: 50px;
@@ -87,7 +105,7 @@
   align-items: center;
   justify-content: center;
 }
-/* line 88, ../sass/_main.scss */
+/* line 103, ../sass/_main.scss */
 .nav-btn-box:hover {
   background-color: #3B5E56;
   transition: all 0.3s ease;
@@ -95,7 +113,7 @@
   color: white !important;
 }
 
-/* line 96, ../sass/_main.scss */
+/* line 111, ../sass/_main.scss */
 .circle {
   border-radius: 50%;
   width: 165px;
@@ -107,7 +125,7 @@
   margin: -35px auto 0;
   z-index: 1;
 }
-/* line 106, ../sass/_main.scss */
+/* line 121, ../sass/_main.scss */
 .circle img.post-icon {
   border: 2px solid white;
   border-radius: 50%;
@@ -115,19 +133,19 @@
   height: 150px;
 }
 
-/* line 125, ../sass/_main.scss */
+/* line 140, ../sass/_main.scss */
 a.link {
   cursor: pointer;
   color: #ffffff;
   font-size: 12px;
 }
-/* line 129, ../sass/_main.scss */
+/* line 144, ../sass/_main.scss */
 a.link:hover {
   text-decoration: underline !important;
   color: #67c896;
 }
 
-/* line 135, ../sass/_main.scss */
+/* line 150, ../sass/_main.scss */
 .vertical-center {
   min-height: 100%;
   /* Fallback for browsers do NOT support vh unit */
@@ -137,87 +155,87 @@ a.link:hover {
   align-items: center;
 }
 
-/* line 142, ../sass/_main.scss */
+/* line 157, ../sass/_main.scss */
 .colorful {
   color: #bb8833;
 }
 
-/* line 146, ../sass/_main.scss */
+/* line 161, ../sass/_main.scss */
 .black {
   background-color: #363b41;
   color: #ffffff;
 }
 
-/* line 151, ../sass/_main.scss */
+/* line 166, ../sass/_main.scss */
 label {
   display: inline-block;
 }
 
-/* line 157, ../sass/_main.scss */
+/* line 172, ../sass/_main.scss */
 .fade-enter-active, .fade-leave-active {
   transition: opacity .4s;
 }
 
-/* line 160, ../sass/_main.scss */
+/* line 175, ../sass/_main.scss */
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
 
-/* line 165, ../sass/_main.scss */
+/* line 180, ../sass/_main.scss */
 body {
   font-family: "Open Sans", sans-serif;
 }
 
-/* line 169, ../sass/_main.scss */
+/* line 184, ../sass/_main.scss */
 body.main {
   background-color: #2a363f;
   color: #fff;
 }
 
-/* line 174, ../sass/_main.scss */
+/* line 189, ../sass/_main.scss */
 h2 {
   font-family: "Open Sans", Arial, sans-serif;
 }
 
-/* line 180, ../sass/_main.scss */
+/* line 195, ../sass/_main.scss */
 header.top {
   background-color: #67c896;
   height: 70px;
 }
 
-/* line 185, ../sass/_main.scss */
+/* line 200, ../sass/_main.scss */
 a.dropdown-toggle::after {
   display: none;
 }
 
-/* line 189, ../sass/_main.scss */
+/* line 204, ../sass/_main.scss */
 ul.web2py-menu-vertical {
   list-style-type: none;
   margin: 0 0 0 0;
 }
 
-/* line 194, ../sass/_main.scss */
+/* line 209, ../sass/_main.scss */
 .search-bar {
   font-family: "Open Sans", Arial, sans-serif;
 }
-/* line 196, ../sass/_main.scss */
+/* line 211, ../sass/_main.scss */
 .search-bar input {
   background: #4C866E;
   color: #ffffff;
   border: 0px;
   border-radius: 0px;
 }
-/* line 202, ../sass/_main.scss */
+/* line 217, ../sass/_main.scss */
 .search-bar i {
   color: #4C866E;
 }
-/* line 205, ../sass/_main.scss */
+/* line 220, ../sass/_main.scss */
 .search-bar button {
   background: #3B5E56;
   border-radius: 0px;
   border: 0px;
 }
-/* line 210, ../sass/_main.scss */
+/* line 225, ../sass/_main.scss */
 .search-bar a {
   background: #ffffff;
 }
@@ -238,19 +256,19 @@ ul.web2py-menu-vertical {
   color: white;
 }
 
-/* line 220, ../sass/_main.scss */
+/* line 235, ../sass/_main.scss */
 div.onboard {
   margin-top: 200px;
 }
 
-/* line 224, ../sass/_main.scss */
+/* line 239, ../sass/_main.scss */
 div.divider {
   width: 2px;
   height: 360px;
   background-color: #39444c;
 }
 
-/* line 230, ../sass/_main.scss */
+/* line 245, ../sass/_main.scss */
 h2.logo {
   font-size: 24px;
   margin-top: 50px;
@@ -258,13 +276,13 @@ h2.logo {
   margin-left: 20px;
 }
 
-/* line 237, ../sass/_main.scss */
+/* line 252, ../sass/_main.scss */
 .big_logo {
   margin: 70px auto;
   padding: 15px;
 }
 
-/* line 242, ../sass/_main.scss */
+/* line 257, ../sass/_main.scss */
 h2.logo_text {
   margin-top: 40px;
   overflow: ellipse;
@@ -272,7 +290,7 @@ h2.logo_text {
   text-overflow: ellipsis;
 }
 
-/* line 251, ../sass/_main.scss */
+/* line 266, ../sass/_main.scss */
 button.connect {
   font-family: "Open Sans", Arial, sans-serif !important;
   text-align: center;
@@ -283,17 +301,17 @@ button.connect {
   margin-bottom: 10px;
   background: #67c896;
 }
-/* line 116, ../sass/_main.scss */
+/* line 131, ../sass/_main.scss */
 button.connect:hover {
   background: #49bd81;
   transition: all 0.3s ease;
 }
-/* line 120, ../sass/_main.scss */
+/* line 135, ../sass/_main.scss */
 button.connect:active {
   background: #2f8156;
 }
 
-/* line 262, ../sass/_main.scss */
+/* line 277, ../sass/_main.scss */
 button.closed {
   font-family: "Open Sans", Arial, sans-serif !important;
   text-align: center;
@@ -304,17 +322,17 @@ button.closed {
   margin-bottom: 10px;
   background: #7A7F84;
 }
-/* line 116, ../sass/_main.scss */
+/* line 131, ../sass/_main.scss */
 button.closed:hover {
   background: #666b6f;
   transition: all 0.3s ease;
 }
-/* line 120, ../sass/_main.scss */
+/* line 135, ../sass/_main.scss */
 button.closed:active {
   background: #3d3f42;
 }
 
-/* line 273, ../sass/_main.scss */
+/* line 288, ../sass/_main.scss */
 .login {
   margin: auto;
   background-color: #3A454D;
@@ -325,14 +343,14 @@ button.closed:active {
   padding: 15px;
 }
 
-/* line 283, ../sass/_main.scss */
+/* line 298, ../sass/_main.scss */
 .login form {
   width: 100%;
   min-width: 300px;
   margin: auto;
 }
 
-/* line 289, ../sass/_main.scss */
+/* line 304, ../sass/_main.scss */
 .login form span {
   background-color: #687178;
   border-right: 3px solid #434a52;
@@ -341,7 +359,7 @@ button.closed:active {
   text-align: center;
 }
 
-/* line 298, ../sass/_main.scss */
+/* line 313, ../sass/_main.scss */
 .login .icon {
   border-radius: 3px 0px 0px 3px;
   border: 0px;
@@ -349,19 +367,19 @@ button.closed:active {
   height: 50px;
 }
 
-/* line 305, ../sass/_main.scss */
+/* line 320, ../sass/_main.scss */
 .login .append-text {
   border-radius: 0px 3px 3px 0px;
   border: 0px;
   height: 50px;
 }
 
-/* line 311, ../sass/_main.scss */
+/* line 326, ../sass/_main.scss */
 .login input {
   border: 0;
 }
 
-/* line 315, ../sass/_main.scss */
+/* line 330, ../sass/_main.scss */
 .login form input[type="text"], input[type="password"] {
   background-color: #4D575E;
   border-radius: 0px 3px 3px 0px;
@@ -372,20 +390,20 @@ button.closed:active {
   padding: 0 16px;
   height: 50px;
 }
-/* line 324, ../sass/_main.scss */
+/* line 339, ../sass/_main.scss */
 .login form input[type="text"]:focus, input[type="password"]:focus {
   background-color: white;
   color: #2a363f;
 }
 
-/* line 332, ../sass/_main.scss */
+/* line 347, ../sass/_main.scss */
 div.register_line {
   height: 3px;
   background-color: #4D575E;
   margin-top: 20px;
 }
 
-/* line 338, ../sass/_main.scss */
+/* line 353, ../sass/_main.scss */
 div.signup_form_container {
   position: fixed;
   top: 0;
@@ -396,7 +414,7 @@ div.signup_form_container {
   opacity: 0.6;
 }
 
-/* line 348, ../sass/_main.scss */
+/* line 363, ../sass/_main.scss */
 .centered {
   position: fixed;
   top: 50%;
@@ -406,48 +424,48 @@ div.signup_form_container {
   max-width: 400px;
 }
 
-/* line 359, ../sass/_main.scss */
+/* line 374, ../sass/_main.scss */
 div.form_row {
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
-/* line 364, ../sass/_main.scss */
+/* line 379, ../sass/_main.scss */
 div.post_div {
   border: 1px black solid;
   background-color: #ffffff;
   border-radius: 5px;
   padding: 10px;
 }
-/* line 369, ../sass/_main.scss */
+/* line 384, ../sass/_main.scss */
 div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
 
-/* line 382, ../sass/_main.scss */
+/* line 397, ../sass/_main.scss */
 i {
   cursor: pointer;
 }
 
-/* line 386, ../sass/_main.scss */
+/* line 401, ../sass/_main.scss */
 i.changed {
   color: #777777;
 }
 
-/* line 390, ../sass/_main.scss */
+/* line 405, ../sass/_main.scss */
 span.likers_list {
   color: #7777cc;
 }
 
-/* line 394, ../sass/_main.scss */
+/* line 409, ../sass/_main.scss */
 .section-header {
   position: relative;
   text-align: center;
 }
 
-/* line 399, ../sass/_main.scss */
+/* line 414, ../sass/_main.scss */
 .section-header:before {
   content: "";
   z-index: 1;
@@ -460,7 +478,7 @@ span.likers_list {
   background: #dddddd;
 }
 
-/* line 414, ../sass/_main.scss */
+/* line 429, ../sass/_main.scss */
 .section-header__title {
   position: relative;
   z-index: 2;
@@ -473,7 +491,7 @@ span.likers_list {
   color: #174750;
 }
 
-/* line 429, ../sass/_main.scss */
+/* line 444, ../sass/_main.scss */
 .section-header__subtitle {
   position: relative;
   z-index: 2;
@@ -486,7 +504,7 @@ span.likers_list {
   color: #174750;
 }
 
-/* line 444, ../sass/_main.scss */
+/* line 459, ../sass/_main.scss */
 .section-header__container {
   position: relative;
   z-index: 2;
@@ -495,7 +513,7 @@ span.likers_list {
   background: #67c896;
 }
 
-/* line 455, ../sass/_main.scss */
+/* line 470, ../sass/_main.scss */
 .text {
   font-family: raleway;
   font-size: 40px;
@@ -506,7 +524,7 @@ span.likers_list {
   margin-top: 43px;
 }
 
-/* line 465, ../sass/_main.scss */
+/* line 480, ../sass/_main.scss */
 .text1 {
   font-family: raleway;
   font-size: 21px;
@@ -515,7 +533,7 @@ span.likers_list {
   color: #000;
 }
 
-/* line 473, ../sass/_main.scss */
+/* line 488, ../sass/_main.scss */
 .image {
   text-align: center;
   width: 200px;
@@ -532,14 +550,14 @@ span.likers_list {
   align-content: center;
 }
 
-/* line 490, ../sass/_main.scss */
+/* line 505, ../sass/_main.scss */
 .trick {
   display: inline-block;
   vertical-align: middle;
   height: 150px;
 }
 
-/* line 497, ../sass/_main.scss */
+/* line 512, ../sass/_main.scss */
 .image:hover {
   -webkit-transform: scale(1.12);
   transform: scale(1.12);
@@ -547,13 +565,13 @@ span.likers_list {
   transition: 1.6s ease-in-out;
 }
 
-/* line 506, ../sass/_main.scss */
+/* line 521, ../sass/_main.scss */
 .trick:hover img {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
 
-/* line 511, ../sass/_main.scss */
+/* line 526, ../sass/_main.scss */
 #overlay {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -563,24 +581,24 @@ span.likers_list {
   -moz-transition: opacity 10.25s ease;
 }
 
-/* line 520, ../sass/_main.scss */
+/* line 535, ../sass/_main.scss */
 #box:hover #overlay {
   opacity: 1;
 }
 
-/* line 525, ../sass/_main.scss */
+/* line 540, ../sass/_main.scss */
 .panel-group {
   width: 350px;
   margin: auto;
   max-width: 100%;
 }
 
-/* line 531, ../sass/_main.scss */
+/* line 546, ../sass/_main.scss */
 .panel-heading {
   background-color: transparent !important;
 }
 
-/* line 535, ../sass/_main.scss */
+/* line 550, ../sass/_main.scss */
 .title {
   text-align: center;
   background-color: transparent;
@@ -591,7 +609,7 @@ span.likers_list {
   max-width: 100%;
 }
 
-/* line 545, ../sass/_main.scss */
+/* line 560, ../sass/_main.scss */
 #accordion {
   background-color: transparent;
   max-width: 100%;

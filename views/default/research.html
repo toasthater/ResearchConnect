@@ -163,26 +163,28 @@
                         </div>
                     </ul>
                 </div>
-                <a class="btn" v-if="post_author == logged_in_user_email && is_editing" v-on:click="submit_click(post_id)">
-                    <i class=""></i> Submit
-                </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && !is_editing" v-on:click="toggle_edit()">
-                    <i class=""></i> Edit
-                </a>
-                <a class="btn" v-if="post_author !== logged_in_user_email && can_apply && !is_editing" v-on:click="add_applicant(post_id)">
-                    <i class=""></i> Apply
-                </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Closed' && !is_editing"
-                    v-on:click="toggle_post(post_id, post_status)">
-                    <i class=""></i> Open
-                </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Open' && !is_editing"
-                    v-on:click="toggle_post(post_id, post_status)">
-                    <i class=""></i> Close
-                </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && !is_editing" href="../main" v-on:click="remove_post(post_id)">
-                    <i class=""></i> Remove
-                </a>
+                <div class = "row mx-3 justify-content-center">
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && is_editing" v-on:click="submit_click(post_id)">
+                        <i class=""></i> Submit
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && !is_editing" v-on:click="toggle_edit()">
+                        <i class=""></i> Edit
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author !== logged_in_user_email && can_apply && !is_editing" v-on:click="add_applicant(post_id)">
+                        <i class=""></i> Apply
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && post_status == 'Closed' && !is_editing"
+                        v-on:click="toggle_post(post_id, post_status)">
+                        <i class=""></i> Open
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && post_status == 'Open' && !is_editing"
+                        v-on:click="toggle_post(post_id, post_status)">
+                        <i class=""></i> Close
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && !is_editing" href="../main" v-on:click="remove_post(post_id)">
+                        <i class=""></i> Remove
+                    </button>
+                </div>
             </div>
 
             <div class="participants_box">
