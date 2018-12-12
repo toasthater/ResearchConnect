@@ -179,6 +179,7 @@ var app = function () {
     self.search(type, content);
     $("#add_post").hide();
     $("#toggle_form_button").show();
+    
 
     return self;
 };

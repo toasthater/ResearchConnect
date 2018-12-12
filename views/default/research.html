@@ -186,9 +186,9 @@
                         v-on:click="toggle_post(post_id, post_status)">
                         <i class=""></i> Close
                     </button>
-                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && !is_editing" href="../main" v-on:click="remove_post(post_id)">
+                    <a class="post-btn mx-1" v-if="post_author == logged_in_user_email && !is_editing" href="../main" v-on:click="remove_post(post_id)">
                         <i class=""></i> Remove
-                    </button>
+                    </a>
                 </div>
             </div>
 

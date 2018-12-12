@@ -15,7 +15,6 @@ $searchbarspanBackground: #3B5E56;
 
 
 // Buttons, Links, Etc
-
 .post {
   color: $dark;
   display: block;
@@ -45,6 +44,7 @@ $searchbarspanBackground: #3B5E56;
     background-color: $searchBarBackground;
     color: white;
   }
+  
 }
 
 .label-info {
@@ -323,6 +323,7 @@ button.closed {
 .login .append-text {
   border-radius: 0px 3px 3px 0px;
   border: 0px;
+  font-size: 0.75rem;
   height: 50px;
 }
 
