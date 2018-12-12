@@ -392,12 +392,12 @@ def toggle_post():
         )
     return response.json(dict(post_id=post_id))
 
-def edit_post():
+def submit_click():
+    post_id = int(request.vars.post_id)
     db.post.update_or_insert(
         (db.post.id == post_id),
         post_title=request.vars.post_title,
         post_content=request.vars.post_content,
-        thumb=request.vars.post_thumb,
-        score=0
+        post_department=request.vars.post_department
     )
     return response.json(dict(post_id=post_id))

@@ -11,6 +11,7 @@
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
     var remove_post_url = "{{=URL('api', 'remove_post', user_signature=True)}}";
     var toggle_post_url = "{{=URL('api', 'toggle_post', user_signature=True)}}";
+    var submit_click_url = "{{=URL('api', 'submit_click', user_signature=True)}}";
 
     var post_content = "{{=post.post_content}}";
     var post_title = "{{=post.post_title}}";
@@ -63,21 +64,21 @@
                         </span>
                         {{pass}}
                         {{pass}}
-                        <i class="list-group-item">Status: ${post_status}</i>
+                        <li class="list-group-item">Status: ${post_status}</li>
                     </ul>
                 </div>
 
                 <div class="card-body" v-if="!is_editing">
                     <h5 class="card-title text-center">
-                        {{=post.post_title}}
+                        ${post_title}
                     </h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">{{=post.post_author_name}}</li>
                         <li class="list-group-item">
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
-                        <li class="list-group-item">{{=post.post_content}}</li>
-                        <li class="list-group-item">{{=post.post_department}}</li>
+                        <li class="list-group-item">${post_content}</li>
+                        <li class="list-group-item">${post_department}</li>
                         {{ tags = post.post_tags.split(",") }}
                         {{if len(tags):}}
                         {{ for tag in tags: }}
@@ -89,7 +90,7 @@
                         <li class="list-group-item">Status: ${post_status}</li>
                     </ul>
                 </div>
-                <a class="btn" v-if="post_author == logged_in_user_email && is_editing" v-on:click="toggle_edit(); submit_click()">
+                <a class="btn" v-if="post_author == logged_in_user_email && is_editing" v-on:click="toggle_edit(); submit_click(post_id)">
                     <i class=""></i> Submit
                 </a>
                 <a class="btn" v-if="post_author == logged_in_user_email && !is_editing" v-on:click="toggle_edit()">

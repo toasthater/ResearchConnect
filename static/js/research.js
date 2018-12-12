@@ -125,6 +125,20 @@ var app = function () {
         self.get_applicants(post_id);
     };
 
+    self.submit_click = function (pid) {
+        $.post(submit_click_url,
+            {
+                post_id: pid,
+                post_title: post_title,
+                post_content: post_content,
+                post_department: post_department
+            },
+            function (data) {
+                self.refresh_applicants();
+            }
+        );
+    }
+
 
     self.vue = new Vue({
         el: "#vue-div",
@@ -142,7 +156,8 @@ var app = function () {
             add_participant: self.add_participant,
             remove_post: self.remove_post,
             toggle_post: self.toggle_post,
-            toggle_edit: self.toggle_edit
+            toggle_edit: self.toggle_edit,
+            submit_click: self.submit_click
         }
     });
 
