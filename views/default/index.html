@@ -34,9 +34,15 @@
                 <div class="col">
                     <div class="row big_logo">
                         <img src="{{=URL('static', 'images', args='logo.svg')}}" class="offset-2">
-                        <h2 class="col-4 logo_text">
-                            Research<br>Connect
-                        </h2>
+                        <div class="col-4">
+                            <h2 class="logo_text">
+                                Research<br>Connect
+                            </h2>
+                            
+                        </div>
+                        <p class="mx-auto pt-4">Connect with new and interesting resarch today!</p>
+                        
+                        
                     </div>
                 </div>
                 <div class="col">
@@ -82,18 +88,6 @@
                                     <i class="material-icons" style="font-size: 64px; color: #fff">account_circle
                                     </i>
                                 </div>
-<<<<<<< HEAD
-
-                                <div class = "row justify-content-center px-3">
-                                    <div class = " col register_line"></div>
-                                    <h2 class= "px-2"> Register</h2>
-                                    <div class = " col register_line"></div>
-                                </div>
-                                
-                                <div class = "row justify-content-center">
-                                    <p class = "pt-0 pb-3" style = "font-size: 13px" >
-                                    Create your account. It's free and only takes a minute.
-=======
                                 <div class="row justify-content-center px-3">
                                     <div class=" col register_line"></div>
                                     <h2 class="px-2"> Register</h2>
@@ -102,7 +96,6 @@
                                 <div class="row justify-content-center">
                                     <p class="pt-0 pb-3" style="font-size: 13px">
                                         Create your account. It's free and only takes a minute.
->>>>>>> master
                                     </p>
                                 </div>
                                 {{form=auth.register()}}
