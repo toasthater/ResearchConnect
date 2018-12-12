@@ -39,7 +39,6 @@ var app = function () {
         var sent_title = self.vue.form_title; // Makes a copy 
         var sent_content = self.vue.form_content; // 
         var sent_department = self.vue.form_department; // 
-        var sent_name = self.vue.form_author_name; // 
         var sent_tags = tags// 
         console.log(sent_tags);
         $.post(add_post_url,
@@ -61,7 +60,7 @@ var app = function () {
                 self.vue.form_tags = "";
                 // Adds the post to the list of posts. 
                 var new_post = {
-                    post_author_name: sent_name,
+                    post_author_name: user_name,
                     id: data.post_id,
                     post_title: sent_title,
                     post_content: sent_content,
@@ -223,7 +222,6 @@ var app = function () {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
-            form_author_name: user_name,
             form_title: "",
             form_content: "",
             form_department: "Academic Senate",
