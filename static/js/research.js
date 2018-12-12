@@ -126,6 +126,8 @@ var app = function () {
     };
 
     self.submit_click = function (pid) {
+        self.toggle_edit(pid);
+        
         $.post(submit_click_url,
             {
                 post_id: pid,
@@ -134,7 +136,6 @@ var app = function () {
                 post_department: post_department
             },
             function (data) {
-                self.toggle_edit(pid);
                 self.refresh_applicants();
             }
         );
