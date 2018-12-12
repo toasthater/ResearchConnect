@@ -100,20 +100,30 @@
                                     </div>
                                 </h5>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                <li class="list-group-item description">${post.post_content}</li>
-                                <li class="list-group-item row">
-                                    <div class = "department">
-                                        ${post.post_department}
+                                <ul class="list-group list-group-flush px-0">
+                                    <li class="list-group-item px-0">
+                                        <div class = "description">
+                                            ${post.post_content}
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div class = "department pt-1 px-3">
+                                            ${post.post_department}
+                                        </div>
+                                    <div v-for= "tag in post.post_tags">
+                                    ${tag}
                                     </div>
-                                </li>
-                                <li class="list-group-item">
-                                <div v-for= "tag in post.post_tags">
-                                ${tag}
-                                </div>
-                                <!-- ${post.post_tags} -->
-                                </li>
-                                <li class="list-group-item">Status: ${post.post_status}</li>
+                                    <!-- ${post.post_tags} -->
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div v-if="post.post_status === 'Open'">
+                                        <button class="btn btn-lg btn-block connect">Connect</button>
+                                        </div>
+                                        <div v-if="post.post_status === 'Closed'">
+                                        <button class="btn btn-lg btn-block closed">Closed</button>
+                                        </div>
+                                        
+                                    </li>
                                 </ul>
                             </div>
                         </div>

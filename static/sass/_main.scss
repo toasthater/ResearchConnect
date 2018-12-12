@@ -17,14 +17,14 @@ $searchbarspanBackground: #3B5E56;
 // Buttons, Links, Etc
 
 .post {
-  color: $searchBarBackground;
+  color: $dark;
   display: block;
   line-height: 1.5em;
   .card-title {
     .title-box {
       height:35px;
       border-radius: 5px;
-      background-color: $primary;
+      background-color: $searchBarBackground;
       color: white;
     }
     .author {
@@ -32,14 +32,14 @@ $searchbarspanBackground: #3B5E56;
     }
   }
   .description {
-    height: 5.7em;
+    height: 6em;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical; 
   }
   .department {
-    display: block !important;
+    display: inline-block;
     height:35px;
     border-radius: 5px;
     background-color: $primary;
@@ -241,6 +241,17 @@ button.connect {
   background: $primary;
   margin-bottom: 10px;
   @include button-bg($primary);
+}
+
+button.closed {
+  font-family: "Open Sans", Arial, sans-serif !important;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase !important;
+  background: $loginPHColor;
+  margin-bottom: 10px;
+  @include button-bg($loginPHColor);
 }
 
 .login {
