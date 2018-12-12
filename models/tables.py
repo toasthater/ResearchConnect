@@ -69,6 +69,7 @@ db.define_table('post',
                 Field('post_department'),
                 Field('post_tags'),
                 Field('post_status', default="Open"),
+                Field('dept_type', 'integer'),
                 Field('post_start_date', 'datetime', default=get_current_time()),
                 Field('post_end_date', 'datetime', default=(get_current_time() + timedelta(days=360)))
                 )

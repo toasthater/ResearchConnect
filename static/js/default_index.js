@@ -75,6 +75,7 @@ var app = function () {
                     post_department: sent_department,
                     post_tags: newtags,
                     post_status: 'Open',
+                    dept_type: data.dept_type,
                     score: 0
                 };
                 self.vue.post_list.unshift(new_post);

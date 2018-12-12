@@ -22,16 +22,18 @@ def register_student():
 @auth.requires_signature()
 def add_post():
     our_tags=request.vars.get('post_tags',"")
+    post_dept_type = db(db.department.department_name==request.vars.post_department).select().first().department_type
     post_id = db.post.insert(
         post_title=request.vars.post_title,
         post_content=request.vars.post_content,
         post_department=request.vars.post_department,
         post_tags=our_tags,
         thumb=None,
+        dept_type=post_dept_type,
         score=0
     )
     # We return the id of the new post, so we can insert it along all the others.
-    return response.json(dict(post_id=post_id))
+    return response.json(dict(post_id=post_id, dept_type=post_dept_type))
 
 
 # def get_score():
@@ -58,6 +60,7 @@ def get_post_list():
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
                 post_status=row.post.post_status,
+                dept_type=row.post.dept_type,
                 thumb = None,
                 score=0
             ))
@@ -69,7 +72,7 @@ def get_post_list():
                             ],
                             orderby=~db.post.post_time)
         for row in rows:
-            dept_t = db(db.department.department_name==row.post.post_department).select().first().department_type
+            #dept_t = db(db.department.department_name==row.post.post_department).select().first().department_type
             thumbs_up=len(db((db.thumb.post_id == row.post.id) & (db.thumb.thumb_state == "u")).select())
             thumbs_down=len(db((db.thumb.post_id == row.post.id) & (db.thumb.thumb_state == "d")).select())
             post_score=thumbs_up - thumbs_down
@@ -84,7 +87,8 @@ def get_post_list():
                 post_status=row.post.post_status,
                 thumb = None if row.thumb.id is None else row.thumb.thumb_state,
                 score=post_score,
-                dept_type=dept_t
+                dept_type=row.post.dept_type,
+                #dept_type=dept_t
             ))
     # For homogeneity, we always return a dictionary.
     return response.json(dict(post_list=results))
@@ -400,6 +404,7 @@ def submit_click():
         (db.post.id == post_id),
         post_title=request.vars.post_title,
         post_content=request.vars.post_content,
-        post_department=request.vars.post_department
+        post_department=request.vars.post_department,
+        dept_type=db(db.department.department_name==request.vars.post_department).select().first().department_type,
     )
     return response.json(dict(post_id=post_id))
