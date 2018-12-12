@@ -72,8 +72,8 @@ auth.define_tables(username=False, signature=False)
 # configure email
 mail = auth.settings.mailer
 mail.settings.server ='logging' if request.is_local else myconf.get('smtp.server')
-mail.settings.sender = myconf.get('smtp.sender')
-mail.settings.login = myconf.get('smtp.login')
+mail.settings.sender ='logging' if request.is_local else myconf.get('smtp.sender')
+mail.settings.login ='logging' if request.is_local else myconf.get('smtp.login')
 mail.settings.tls = True
 mail.settings.ssl = False
 
