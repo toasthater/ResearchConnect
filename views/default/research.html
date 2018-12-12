@@ -86,7 +86,7 @@
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
                         <li class="list-group-item px-0">
-                            <textarea class="description" v-model="post_content"></textarea>
+                            <textarea class="" v-model="post_content"></textarea>
                         </li>
                         <li class="list-group-item px-0 text-left">
                             <select class="department pt-1 px-3" v-model="post_department" id="exampleFormControlSelect1">
@@ -100,7 +100,7 @@
                                 {{ tags = post.post_tags.split(",") }}
                                 {{if len(tags):}}
                                 {{ for tag in tags: }}
-                                    <span class="label-info mr-1">
+                                    <span class="label label-info mr-1">
                                         {{=tag}}
                                     </span>
                                 {{pass}}
@@ -132,7 +132,7 @@
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
                         <li class="list-group-item px-0">
-                            <div class="description">
+                            <div class="">
                                 ${post_content}
                             </div>
                         </li>
@@ -144,7 +144,7 @@
                             {{ tags = post.post_tags.split(",") }}
                             {{if len(tags):}}
                             {{ for tag in tags: }}
-                                <span class="label-info mr-1">
+                                <span class="label label-info mr-1">
                                     {{=tag}}
                                 </span>
                             {{pass}}
