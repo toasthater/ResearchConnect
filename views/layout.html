@@ -34,7 +34,7 @@
               <div class="search-bar input-group justify-content-end" id="pass_form" style="height:50px;">
                 <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i id="search_icon" class="material-icons" style = "color: white;">search</i>
+                  <i id="search_icon" class="material-icons mt-2" style = "color: white;">search</i>
                 </button>
                   <div class = "px-0">
                     <div class="dropdown-menu dropdown-menu-right col" style="max-width: 420px; margin-right: 7px;">
@@ -100,7 +100,7 @@
             <div class = "col-2"></div>
           {{pass}}
           {{if auth.user is None:}}
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand offset-2" href="#">
             <img src="{{=URL('static','images/LogoHeader.svg')}}" width="50" height="50" alt="">
           </a>
         {{pass}}

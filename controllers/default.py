@@ -63,7 +63,7 @@ def research():
         if len(posts) > 0:
             post = posts[0]
             if (len(db((db.applicant.user_id == auth.user.id)&(db.applicant.post_id == post.id)).select()) > 0):
-                is_applicant = True 
+                is_applicant = True
             else:
                 is_applicant = False
         else:

@@ -1,3 +1,4 @@
+Vue.config.devtools = true;
 var widget = function() {
     self = {};
     // IO FUNCTIONS

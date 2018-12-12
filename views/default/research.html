@@ -10,10 +10,12 @@
     var get_participants_url = "{{=URL('api', 'get_participants')}}";
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
     var remove_post_url = "{{=URL('api', 'remove_post', user_signature=True)}}";
+    var toggle_post_url = "{{=URL('api', 'toggle_post', user_signature=True)}}";
 
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
     var can_apply = {{= 'false' if is_applicant is True else 'true'}}
+    var post_status = "{{=post.post_status}}";
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
 </script>
 {{end}}
@@ -39,10 +41,17 @@
                         <li class="list-group-item">{{=post.post_content}}</li>
                         <li class="list-group-item">{{=post.post_department}}</li>
                         <li class="list-group-item">{{=post.post_tags}}</li>
+                        <li class="list-group-item">Status: ${post_status}</li>
                     </ul>
                 </div>
                 <a class="btn" v-if="post_author !== logged_in_user_email && can_apply" v-on:click="add_applicant(post_id)">
                     <i class=""></i> Apply
+                </a>
+                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Closed'" v-on:click="toggle_post(post_id, post_status)">
+                    <i class=""></i> Open
+                </a>
+                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Open'" v-on:click="toggle_post(post_id, post_status)">
+                    <i class=""></i> Close
                 </a>
                 <a class="btn" v-if="post_author == logged_in_user_email" href="../main" v-on:click="remove_post(post_id)">
                     <i class=""></i> Remove
