@@ -68,7 +68,7 @@ def get_post_list():
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
                 post_status=row.post.post_status,
-                thumb = None if row.thumb.id is None else row.thumb.thumb_state,
+                thumb = None,
                 score=post_score,
                 dept_type=row.post.dept_type,
                 #dept_type=dept_t
@@ -100,15 +100,17 @@ def get_search_posts():
         
         for row in rows:
             results.append(dict(
-                id=row.id,
-                post_title=row.post_title,
-                post_content=row.post_content,
-                post_author=row.post_author,
+                id=row.post.id,
+                post_title=row.post.post_title,
+                post_content=row.post.post_content,
+                post_author=row.post.post_author,
+                post_author_name=row.post.post_author_name,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
                 post_status=row.post.post_status,
                 thumb = None,
-                score=0
+                score=post_score,
+                dept_type=row.post.dept_type,
             ))
     else:
         # Logged in.
@@ -152,11 +154,13 @@ def get_search_posts():
                 post_title=row.post.post_title,
                 post_content=row.post.post_content,
                 post_author=row.post.post_author,
+                post_author_name=row.post.post_author_name,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
                 post_status=row.post.post_status,
-                thumb = None if row.thumb.id is None else row.thumb.thumb_state,
-                score=post_score
+                thumb = None,
+                score=post_score,
+                dept_type=row.post.dept_type,
             ))
     # For homogeneity, we always return a dictionary.
     return response.json(dict(post_list=results))
@@ -170,15 +174,17 @@ def get_filtered_post_list():
         rows = db().select(db.post.ALL,orderby=~db.post.post_time)
         for row in rows:
             results.append(dict(
-                id=row.id,
-                post_title=row.post_title,
-                post_content=row.post_content,
-                post_author=row.post_author,
+                id=row.post.id,
+                post_title=row.post.post_title,
+                post_content=row.post.post_content,
+                post_author=row.post.post_author,
+                post_author_name=row.post.post_author_name,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
                 post_status=row.post.post_status,
                 thumb = None,
-                score=0
+                score=post_score,
+                dept_type=row.post.dept_type,
             ))
     else:
         # Logged in.
@@ -196,11 +202,13 @@ def get_filtered_post_list():
                 post_title=row.post.post_title,
                 post_content=row.post.post_content,
                 post_author=row.post.post_author,
+                post_author_name=row.post.post_author_name,
                 post_department=row.post.post_department,
                 post_tags=row.post.post_tags,
                 post_status=row.post.post_status,
-                thumb = None if row.thumb.id is None else row.thumb.thumb_state,
-                score=post_score
+                thumb = None,
+                score=post_score,
+                dept_type=row.post.dept_type,
             ))
     # For homogeneity, we always return a dictionary.
     return response.json(dict(post_list=results))

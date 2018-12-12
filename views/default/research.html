@@ -27,8 +27,13 @@
 </script>
 {{end}}
 {{ rows = db().select(db.department.ALL) }}
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
 
-<div id="vue-div" class="display:none">
+<div id="vue-div" class="display:none" v-cloak>
     <div class="row justify-content-center">
         <div class="col-4 mt-5">
             <div class="post card text-justify">
@@ -130,7 +135,7 @@
                         </h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
+                        <li class="list-group-item px-0">
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
                         <li class="list-group-item px-0">
@@ -163,7 +168,7 @@
                         </div>
                     </ul>
                 </div>
-                <div class = "row mx-3 justify-content-center">
+                <div class = "row mx-3 justify-content-center pb-2">
                     <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && is_editing" v-on:click="submit_click(post_id)">
                         <i class=""></i> Submit
                     </button>
