@@ -23,6 +23,8 @@ def main():
     return dict()
 
 def profile():
+    if(auth.user is None):
+        return redirect('../index')
     # To redirect to specific profile use the following:
     # href="{{=URL('default', 'profile',  args='desired_user_id')}}
     # We initialize the user at the current user
@@ -51,13 +53,13 @@ def profile():
 
         else:
             print "Error: user not found"
-
-
-
+            return redirect('../main')
     return dict(user=user)
 
 def research():
     if request.args(0) != None:
+        if(auth.user is None):
+                return redirect('../index')
         id = int(request.args(0))
         posts = db((db.post.id == id)).select()
         if len(posts) > 0:
@@ -70,8 +72,6 @@ def research():
             tags = tags.split(',')
         else:
             print "Error: post not found"
-            if(auth.user is None):
-                return redirect('../index')
             return redirect('../main')
     return dict(post=post, is_applicant=is_applicant, given_tags=tags)
 
