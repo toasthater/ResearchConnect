@@ -31,7 +31,7 @@
 <div id="vue-div" class="display:none">
     <div class="row justify-content-center">
         <div class="col-4 mt-5">
-            <div class="card text-justify">
+            <div class="post card text-justify">
                 <div class="card-img-top">
                     <div class="circle justify-content-center">
                         <div v-if="dept_type == 0">
@@ -72,11 +72,16 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="card-body" v-if="post_author == logged_in_user_email && is_editing">
-                    <textarea class="card-title text-center" v-model="post_title"></textarea>
+                    <div class="row justify-content-center">
+                        <h5 class="card-title text-center">
+                            <textarea class="title-box px-2 pt-1 text-center" v-model="post_title"></textarea>
+                            <div class="author pt-1">
+                                {{=post.post_author_name}}
+                            </div>
+                        </h5>
+                    </div>
                     <ul class="list-group list-group-flush">
-                        <i class="list-group-item">{{=post.post_author_name}}</i>
                         <li class="list-group-item">
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
@@ -105,11 +110,17 @@
                 </div>
 
                 <div class="card-body" v-if="!is_editing">
-                    <h5 class="card-title text-center">
-                        ${post_title}
-                    </h5>
+                    <div class="row justify-content-center">
+                        <h5 class="card-title text-center">
+                            <div class="title-box px-2 pt-1">
+                                ${post_title}
+                            </div>
+                            <div class="author pt-1">
+                                {{=post.post_author_name}}
+                            </div>
+                        </h5>
+                    </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{=post.post_author_name}}</li>
                         <li class="list-group-item">
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
