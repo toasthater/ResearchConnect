@@ -18,6 +18,8 @@ $searchbarspanBackground: #3B5E56;
 
 .post {
   color: $searchBarBackground;
+  display: block;
+  line-height: 1.5em;
   .card-title {
     .title-box {
       height:35px;
@@ -28,7 +30,20 @@ $searchbarspanBackground: #3B5E56;
     .author {
       font-size: 15px;
     }
-    display: block;
+  }
+  .description {
+    height: 5.7em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
+  }
+  .department {
+    display: block !important;
+    height:35px;
+    border-radius: 5px;
+    background-color: $primary;
+    color: white;
   }
 }
 

@@ -5,7 +5,7 @@ var app = function () {
     var self = {};
 
     Vue.config.silent = false; // show all warnings
-
+    Vue.config.devtools = true;
     // Extends an array
     self.extend = function (a, b) {
         for (var i = 0; i < b.length; i++) {
@@ -60,6 +60,7 @@ var app = function () {
                 self.vue.form_tags = "";
                 // Adds the post to the list of posts. 
                 var new_post = {
+                    post_author_name: user_name,
                     id: data.post_id,
                     post_title: sent_title,
                     post_content: sent_content,
@@ -224,7 +225,7 @@ var app = function () {
             form_title: "",
             form_content: "",
             form_department: "Academic Senate",
-            form_tags: "",
+            form_tags: [],
             post_list: [],
             showing_sign_up_form: false,
             showing_forgot_password_form: false

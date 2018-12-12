@@ -12,6 +12,7 @@
     // Score callback
     var get_score_url = "{{=URL('api', 'get_score')}}"
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
+    var user_name = "{{=get_user_name()}}";
 
     var is_professor = {{='true' if auth.has_membership(role='professor') else 'false'}};
 
@@ -100,9 +101,18 @@
                                 </h5>
                                 </div>
                                 <ul class="list-group list-group-flush">
-                                <li class="list-group-item">${post.post_content}</li>
-                                <li class="list-group-item">${post.post_department}</li>
-                                <li class="list-group-item">${post.post_tags}</li>
+                                <li class="list-group-item description">${post.post_content}</li>
+                                <li class="list-group-item row">
+                                    <div class = "department">
+                                        ${post.post_department}
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                <div v-for= "tag in post.post_tags">
+                                ${tag}
+                                </div>
+                                <!-- ${post.post_tags} -->
+                                </li>
                                 <li class="list-group-item">Status: ${post.post_status}</li>
                                 </ul>
                             </div>
