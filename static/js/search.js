@@ -45,6 +45,7 @@ var app = function () {
             // Replace it with the appropriate code for thumbs. 
             // // Did I like it? 
             // // If I do e._smile = e.like, then Vue won't see the changes to e._smile .
+            Vue.set(e, '_tags', e.post_tags.split(','));
             Vue.set(e, '_thumb', e.thumb);
             Vue.set(e, '_over_up', false);
             Vue.set(e, '_over_down', false);
