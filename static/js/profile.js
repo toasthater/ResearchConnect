@@ -20,13 +20,13 @@ var app = function() {
 
         $.getJSON(get_user_url,            
             function(data) {
-                self.vue._user_bio = self.vue.user_bio = data.user.user_bio;
-                self.vue._user_degree = self.vue.user_degree = data.user.user_degree;
-                self.vue._user_linkedin =  self.vue.user_linkedin= data.user.user_linkedin;
-                
-                self.vue.user = true;
-                console.log("user got");
-                
+                if(data.user != null) {
+                    self.vue._user_bio = self.vue.user_bio = data.user.user_bio;
+                    self.vue._user_degree = self.vue.user_degree = data.user.user_degree;
+                    self.vue._user_linkedin =  self.vue.user_linkedin= data.user.user_linkedin;
+                    
+                    self.vue.user = true;
+                }                
         });
         self.vue.user_bio = self.vue._user_bio;
         self.vue.user_degree = self.vue._user_degree;
@@ -38,6 +38,7 @@ var app = function() {
 
     self.submit_user = function() {
         self.vue.editing = false;
+        self.vue.user = true;
 
         $.post(edit_user_url, {
             user_first_name: self.vue.user_first_name,

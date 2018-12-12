@@ -13,14 +13,14 @@
     var get_score_url = "{{=URL('api', 'get_score')}}"
 
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
-    if (auth.user != None){
+    if (auth.user != None) {
         window.location.replace('main');
     }
 
-    $( document ).on( 'keydown', function ( e ) {
-    if ( e.keyCode === 27 ) { // ESC
-        $( "#signup" ).hide();
-    }
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) { // ESC
+            $("#signup").hide();
+        }
     });
 
 
@@ -34,15 +34,21 @@
             <div class="row">
                 <div class="col">
                     <div class="row big_logo">
-                        <img src="{{=URL('static', 'images', args='logo.svg')}}" class = "offset-2">
-                        <h2 class="col-4 logo_text">
-                            Research<br>Connect
-                        </h2>
+                        <img src="{{=URL('static', 'images', args='logo.svg')}}" class="offset-2">
+                        <div class="col-4">
+                            <h2 class="logo_text">
+                                Research<br>Connect
+                            </h2>
+                            
+                        </div>
+                        <p class="mx-auto pt-4">Connect with new and interesting resarch today!</p>
+                        
+                        
                     </div>
                 </div>
                 <div class="col">
-                    <div class = "row">
-                        <div class = "divider">
+                    <div class="row">
+                        <div class="divider">
                         </div>
                         <div class="login p-3">
                             <div id="web2py_user_form">
@@ -65,10 +71,19 @@
                                         {{form.custom.widget.password['_placeholder'] = 'Password'}}
                                         {{=form.custom.widget.password}}
                                     </div>
-                                    <button class="btn btn-lg btn-block connect">Connect</button>
+                                </div>
+                                <div class="input-group mb-1 pb-4" id="pass_form">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text black icon"><i class="material-icons">lock</i></span>
+                                    </div>
+                                    {{form.custom.widget.password['_placeholder'] = 'Password'}}
+                                    {{=form.custom.widget.password}}
+                                </div>
+                                <button class="btn btn-lg btn-block connect">Connect</button>
                                 {{=form.custom.end}}
-                                <a class="link"  v-on:click="show_forgot_password()">Forgot Password?</a>
-                                <a class="link" id="show_signup_form" v-on:click="show_sign_up()" style="float: right;">Sign Up</a>
+                                <a class="link" v-on:click="show_forgot_password()">Forgot Password?</a>
+                                <a class="link" id="show_signup_form" v-on:click="show_sign_up()" style="float: right;">Sign
+                                    Up</a>
                             </div>
                         </div>
                     </div>
@@ -77,19 +92,19 @@
                     <div id="signup">
                         <div class="signup_form_container" ></div>
                         <div id="web2py_signup_form" class="centered login p-3">
-                            <div class = "col px-0">
-                                <div class = "row justify-content-center py-3">
+                            <div class="col px-0">
+                                <div class="row justify-content-center py-3">
                                     <i class="material-icons" style="font-size: 64px; color: #fff">account_circle
                                     </i>
                                 </div>
-                                <div class = "row justify-content-center px-3">
-                                    <div class = " col register_line"></div>
-                                    <h2 class= "px-2"> Register</h2>
-                                    <div class = " col register_line"></div>
+                                <div class="row justify-content-center px-3">
+                                    <div class=" col register_line"></div>
+                                    <h2 class="px-2"> Register</h2>
+                                    <div class=" col register_line"></div>
                                 </div>
-                                <div class = "row justify-content-center">
-                                    <p class = "pt-0 pb-3" style = "font-size: 13px" >
-                                    Create your account. It's free and only takes a minute.
+                                <div class="row justify-content-center">
+                                    <p class="pt-0 pb-3" style="font-size: 13px">
+                                        Create your account. It's free and only takes a minute.
                                     </p>
                                 </div>
                                 {{form=auth.register()}}
@@ -120,24 +135,24 @@
                     </div>
                 </transition>
                 <transition name="fade">
-                    <div id="forgotpassword" v-cloak v-if="showing_forgot_password_form" >
-                        <div class="signup_form_container" ></div>
+                    <div id="forgotpassword" v-cloak v-if="showing_forgot_password_form">
+                        <div class="signup_form_container"></div>
                         <div id="web2py_forgot_password_form" class="centered login p-3">
-                            <div class = "col px-0">
-                                <div class = "row justify-content-center py-3">
+                            <div class="col px-0">
+                                <div class="row justify-content-center py-3">
                                     <i class="material-icons" style="font-size: 64px; color: #E74747">lock_outline
                                     </i>
                                 </div>
-                                <div class = "row justify-content-center px-3">
-                                    <div class = "col register_line"></div>
-                                    <h2 class ="px-2">
+                                <div class="row justify-content-center px-3">
+                                    <div class="col register_line"></div>
+                                    <h2 class="px-2">
                                         Reset Password
                                     </h2>
-                                    <div class = "col register_line"></div>
+                                    <div class="col register_line"></div>
                                 </div>
-                                <div class = "row justify-content-center">
-                                    <p class = "pt-0 pb-3" style = "font-size: 13px;">
-                                    We'll send you an email with a link to reset your password.
+                                <div class="row justify-content-center">
+                                    <p class="pt-0 pb-3" style="font-size: 13px;">
+                                        We'll send you an email with a link to reset your password.
                                     </p>
                                 </div>
                             </div>
@@ -163,9 +178,9 @@
 </div>
 
 <style>
-  [v-cloak] {
-    display: none;
-  }
+    [v-cloak] {
+        display: none;
+    }
 </style>
 
 <script src="{{=URL('static', 'js/default_index.js')}}"></script>

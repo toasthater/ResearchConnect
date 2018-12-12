@@ -91,6 +91,8 @@ def user():
     if request.args(0) == 'login':
         form = auth.login(next=auth.settings.login_next)
         return redirect('../index')
+    if request.args(0) == 'fixit':
+        return redirect('../')
     else:
         form = auth()
     return dict(form=auth())

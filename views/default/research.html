@@ -13,22 +13,27 @@
     var toggle_post_url = "{{=URL('api', 'toggle_post', user_signature=True)}}";
     var submit_click_url = "{{=URL('api', 'submit_click', user_signature=True)}}";
 
-    var post_content = "{{=post.post_content}}";
-    var post_title = "{{=post.post_title}}";
-    var post_department = "{{=post.post_department}}";
+    var post_content = $('<div>').html("{{=post.post_content}}").text();
+    var post_title = $('<div>').html("{{=post.post_title}}").text();
+    var post_department = $('<div>').html("{{=post.post_department}}").text();
     var post_tags = "{{=post.post_tags}}";
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
     var dept_type = "{{=post.dept_type}}";
-    var can_apply = {{= 'false' if is_applicant is True else 'true'}}
+    var can_apply = {{= 'false' if is_applicant is True else 'true'}};
     var post_status = "{{=post.post_status}}";
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
     var is_editing = {{='false'}};
 </script>
 {{end}}
 {{ rows = db().select(db.department.ALL) }}
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
 
-<div id="vue-div" class="display:none">
+<div id="vue-div" class="display:none" v-cloak>
     <div class="row justify-content-center">
         <div class="col-4 mt-5">
             <div class="post card text-justify">
@@ -86,7 +91,7 @@
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
                         <li class="list-group-item px-0">
-                            <textarea class="description" v-model="post_content"></textarea>
+                            <textarea class="" v-model="post_content"></textarea>
                         </li>
                         <li class="list-group-item px-0 text-left">
                             <select class="department pt-1 px-3" v-model="post_department" id="exampleFormControlSelect1">
@@ -100,18 +105,20 @@
                                 {{ tags = post.post_tags.split(",") }}
                                 {{if len(tags):}}
                                 {{ for tag in tags: }}
-                                    <span class="label-info mr-1">
+                                    <span class="label label-info mr-1">
                                         {{=tag}}
                                     </span>
                                 {{pass}}
                                 {{pass}}
                             </h5>
                         </li>
-                        <div v-if="post_status === 'Open'">
-                            <button class="btn btn-lg btn-block connect">Connect</button>
-                        </div>
-                        <div v-if="post_status === 'Closed'">
-                            <button class="btn btn-lg btn-block closed">Closed</button>
+                        <div v-if="logged_in_user_email !== post_author">
+                            <div v-if="post_status === 'Open'">
+                                <button class="btn btn-lg btn-block connect">Connect</button>
+                            </div>
+                            <div v-if="post_status === 'Closed'">
+                                <button class="btn btn-lg btn-block closed">Closed</button>
+                            </div>
                         </div>
                     </ul>
                 </div>
@@ -128,11 +135,11 @@
                         </h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
+                        <li class="list-group-item px-0">
                             <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
                         </li>
                         <li class="list-group-item px-0">
-                            <div class="description">
+                            <div class="">
                                 ${post_content}
                             </div>
                         </li>
@@ -144,41 +151,45 @@
                             {{ tags = post.post_tags.split(",") }}
                             {{if len(tags):}}
                             {{ for tag in tags: }}
-                                <span class="label-info mr-1">
+                                <span class="label label-info mr-1">
                                     {{=tag}}
                                 </span>
                             {{pass}}
                             {{pass}}
                             </h5>
                         </li>
-                        <div v-if="post_status === 'Open'">
-                            <button class="btn btn-lg btn-block connect">Connect</button>
-                        </div>
-                        <div v-if="post_status === 'Closed'">
-                            <button class="btn btn-lg btn-block closed">Closed</button>
+                        <div v-if="logged_in_user_email !== post_author">
+                            <div v-if="post_status === 'Open'">
+                                <button class="btn btn-lg btn-block connect">Connect</button>
+                            </div>
+                            <div v-if="post_status === 'Closed'">
+                                <button class="btn btn-lg btn-block closed">Closed</button>
+                            </div>
                         </div>
                     </ul>
                 </div>
-                <a class="btn" v-if="post_author == logged_in_user_email && is_editing" v-on:click="submit_click(post_id)">
-                    <i class=""></i> Submit
-                </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && !is_editing" v-on:click="toggle_edit()">
-                    <i class=""></i> Edit
-                </a>
-                <a class="btn" v-if="post_author !== logged_in_user_email && can_apply && !is_editing" v-on:click="add_applicant(post_id)">
-                    <i class=""></i> Apply
-                </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Closed' && !is_editing"
-                    v-on:click="toggle_post(post_id, post_status)">
-                    <i class=""></i> Open
-                </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Open' && !is_editing"
-                    v-on:click="toggle_post(post_id, post_status)">
-                    <i class=""></i> Close
-                </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && !is_editing" href="../main" v-on:click="remove_post(post_id)">
-                    <i class=""></i> Remove
-                </a>
+                <div class = "row mx-3 justify-content-center pb-2">
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && is_editing" v-on:click="submit_click(post_id)">
+                        <i class=""></i> Submit
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && !is_editing" v-on:click="toggle_edit()">
+                        <i class=""></i> Edit
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author !== logged_in_user_email && can_apply && !is_editing" v-on:click="add_applicant(post_id)">
+                        <i class=""></i> Apply
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && post_status == 'Closed' && !is_editing"
+                        v-on:click="toggle_post(post_id, post_status)">
+                        <i class=""></i> Open
+                    </button>
+                    <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && post_status == 'Open' && !is_editing"
+                        v-on:click="toggle_post(post_id, post_status)">
+                        <i class=""></i> Close
+                    </button>
+                    <a class="post-btn mx-1" v-if="post_author == logged_in_user_email && !is_editing" href="../main" v-on:click="remove_post(post_id)">
+                        <i class=""></i> Remove
+                    </a>
+                </div>
             </div>
 
             <div class="participants_box">

@@ -18,15 +18,15 @@ var app = function () {
 
     self.toggle_form = function () {
         $("#add_post").show();
-        $("#toggle_form_button").hide();
+        // $("#toggle_form_button").hide();
         $("#tags_in").hide();
         $("#tags_container").html(
-         '<input id="tags_in" style="display: none;" class="form-control" type="text" placeholder="Tags"'+
+         '<input id="tags_in" style="display: none;" class="form-control string form-dark clear-border" type="text" placeholder="Tags"'+
          'value="" '+
          'data-role="tagsinput" />'
             );
         $("input#tags_in").tagsinput();
-    }
+    };
 
     self.add_post = function () {
         // We disable the button, to prevent double submission.
