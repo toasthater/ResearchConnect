@@ -301,10 +301,7 @@ def edit_user():
         (db.users.user_id == user_id),
         user_degree = user_degree,
         user_bio = user_bio
-    )
-    
-    
-
+    ) 
 
 
 def get_applicants():
@@ -356,4 +353,10 @@ def get_participants():
                 user_id = participant.user_id
             ))
     return response.json(dict(participant_list = participant_list))
+
+def remove_post():
+    post_id = int(request.vars.post_id)
+    db(db.post.id == post_id).delete()
+    db(db.applicant.post_id == post_id).delete()
+    return response.json(dict(post_id=post_id))
     
