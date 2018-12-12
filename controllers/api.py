@@ -400,11 +400,12 @@ def toggle_post():
 
 def submit_click():
     post_id = int(request.vars.post_id)
+    post_dept_type=db(db.department.department_name==request.vars.post_department).select().first().department_type
     db.post.update_or_insert(
         (db.post.id == post_id),
         post_title=request.vars.post_title,
         post_content=request.vars.post_content,
         post_department=request.vars.post_department,
-        dept_type=db(db.department.department_name==request.vars.post_department).select().first().department_type,
+        dept_type=post_dept_type,
     )
-    return response.json(dict(post_id=post_id))
+    return response.json(dict(post_id=post_id, dept_type=post_dept_type))

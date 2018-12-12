@@ -19,6 +19,7 @@
     var post_tags = "{{=post.post_tags}}";
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
+    var dept_type = "{{=post.dept_type}}";
     var can_apply = {{= 'false' if is_applicant is True else 'true'}}
     var post_status = "{{=post.post_status}}";
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
@@ -33,7 +34,42 @@
             <div class="card text-justify">
                 <div class="card-img-top">
                     <div class="circle justify-content-center">
-                        <img class="post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
+                        <div v-if="dept_type == 0">
+                            <img class="post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 1">
+                            <img class="post-icon" src="{{=URL('static','images/globe.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 2">
+                            <img class="post-icon" src="{{=URL('static','images/hammer.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 3">
+                            <img class="post-icon" src="{{=URL('static','images/brain.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 4">
+                            <img class="post-icon" src="{{=URL('static','images/building.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 5">
+                            <img class="post-icon" src="{{=URL('static','images/graph.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 6">
+                            <img class="post-icon" src="{{=URL('static','images/paint.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 7">
+                            <img class="post-icon" src="{{=URL('static','images/atom.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 8">
+                            <img class="post-icon" src="{{=URL('static','images/computer.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 9">
+                            <img class="post-icon" src="{{=URL('static','images/leaf.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 10">
+                            <img class="post-icon" src="{{=URL('static','images/chemistry.png')}}" alt="">
+                        </div>
+                        <div v-if="dept_type == 11">
+                            <img class="post-icon" src="{{=URL('static','images/drama.png')}}" alt="">
+                        </div>
                     </div>
                 </div>
 
