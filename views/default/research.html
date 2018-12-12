@@ -107,11 +107,13 @@
                                 {{pass}}
                             </h5>
                         </li>
-                        <div v-if="post_status === 'Open'">
-                            <button class="btn btn-lg btn-block connect">Connect</button>
-                        </div>
-                        <div v-if="post_status === 'Closed'">
-                            <button class="btn btn-lg btn-block closed">Closed</button>
+                        <div v-if="logged_in_user_email !== post_author">
+                            <div v-if="post_status === 'Open'">
+                                <button class="btn btn-lg btn-block connect">Connect</button>
+                            </div>
+                            <div v-if="post_status === 'Closed'">
+                                <button class="btn btn-lg btn-block closed">Closed</button>
+                            </div>
                         </div>
                     </ul>
                 </div>
@@ -151,11 +153,13 @@
                             {{pass}}
                             </h5>
                         </li>
-                        <div v-if="post_status === 'Open'">
-                            <button class="btn btn-lg btn-block connect">Connect</button>
-                        </div>
-                        <div v-if="post_status === 'Closed'">
-                            <button class="btn btn-lg btn-block closed">Closed</button>
+                        <div v-if="logged_in_user_email !== post_author">
+                            <div v-if="post_status === 'Open'">
+                                <button class="btn btn-lg btn-block connect">Connect</button>
+                            </div>
+                            <div v-if="post_status === 'Closed'">
+                                <button class="btn btn-lg btn-block closed">Closed</button>
+                            </div>
                         </div>
                     </ul>
                 </div>
