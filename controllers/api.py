@@ -47,24 +47,7 @@ def add_post():
 
 def get_post_list():
     results = []
-    if auth.user is None:
-        # Not logged in.
-        rows = db().select(db.post.ALL,orderby=~db.post.post_time)
-        for row in rows:
-            results.append(dict(
-                id=row.id,
-                post_title=row.post_title,
-                post_content=row.post_content,
-                post_author=row.post_author,
-                post_author_name=row.post.post_author_name,
-                post_department=row.post.post_department,
-                post_tags=row.post.post_tags,
-                post_status=row.post.post_status,
-                dept_type=row.post.dept_type,
-                thumb = None,
-                score=0
-            ))
-    else:
+    if auth.user is not None:
         # Logged in.
         rows = db().select(db.post.ALL, db.thumb.ALL,
                             left=[
