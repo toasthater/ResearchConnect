@@ -70,6 +70,8 @@ def research():
             tags = tags.split(',')
         else:
             print "Error: post not found"
+            if(auth.user is None):
+                return redirect('../index')
             return redirect('../main')
     return dict(post=post, is_applicant=is_applicant, given_tags=tags)
 
