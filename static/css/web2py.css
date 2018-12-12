@@ -25,6 +25,8 @@ div.w2p_export_menu a, div.w2p_wiki_tags a, div.w2p_cloud a {margin-left:5px; pa
 div.w2p_flash {
     font-weight:bold;
     display:none;
+    position : absolute;
+    height: 77px;
     padding:20px 20px 20px 50px;
     width:100%;    
     opacity:0.95;
@@ -32,7 +34,6 @@ div.w2p_flash {
     cursor:pointer;
     color:#FFF;
     background-color:#2a363f;
-
     z-index:2000;
 }
 .navbar-custom {
