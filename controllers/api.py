@@ -313,11 +313,13 @@ def get_applicants():
     applicant_list = list()
     applicants = db(db.applicant.post_id == post_id).select(orderby=~db.applicant.apply_time)
     for applicant in applicants:
-        applicant_list.append(dict(
-            id = applicant.id,
-            name = applicant.name,
-            email = applicant.email,
-        ))
+        if(applicant.accepted == 0):
+            applicant_list.append(dict(
+                id = applicant.id,
+                name = applicant.name,
+                email = applicant.email,
+                user_id = applicant.user_id
+            ))
     return response.json(dict(applicant_list = applicant_list))
 
 #@auth.requires_signature()
@@ -326,4 +328,31 @@ def add_applicant():
     applicant_id = db.applicant.insert(
         post_id = pid,
     )
+    return response.json(dict(post_id=pid))
+
+def add_participant():
+    applicant_id = int(request.vars.applicant_id)
+    db.applicant.update_or_insert(
+            (db.applicant.id == applicant_id),
+            accepted = 1
+        )
     return response.json(dict(applicant_id=applicant_id))
+    
+def decline_participant():
+    applicant_id = int(request.vars.applicant_id)
+    db(db.applicant.id == applicant_id).delete()
+    return response.json(dict(applicant_id=applicant_id))
+
+def get_participants():
+    post_id = int(request.vars.post_id)
+    participant_list = list()
+    participants = db(db.applicant.post_id == post_id).select(orderby=~db.applicant.apply_time)
+    for participant in participants:
+        if(participant.accepted == 1):
+            participant_list.append(dict(
+                id = participant.id,
+                name = participant.name,
+                email = participant.email,
+            ))
+    return response.json(dict(participant_list = participant_list))
+    

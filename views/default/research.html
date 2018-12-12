@@ -5,59 +5,85 @@
 <script>
     var logged_in_user_email = "{{= None if auth.user is None else auth.user.email}}";
     var add_applicant_url = "{{=URL('api', 'add_applicant', user_signature=True)}}";
+    var add_participant_url = "{{=URL('api', 'add_participant', user_signature=True)}}";
+    var decline_participant_url = "{{=URL('api', 'decline_participant', user_signature=True)}}";
+    var get_participants_url = "{{=URL('api', 'get_participants')}}";
     var get_applicants_url = "{{=URL('api', 'get_applicants')}}";
-
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
-    console.log("post_id = " + post_id);
+    var can_apply = {{= 'false' if is_applicant is True else 'true'}}
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
-
 </script>
 {{end}}
 
 <div id="vue-div" class="display:none">
-    <div class = "row justify-content-center">
-        <div class = "col-4 mt-5">
-            <div class = "card text-justify">
-                <div class = "card-img-top">
-                    <div class = "circle justify-content-center">
-                    <img class = "post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
+    <div class="row justify-content-center">
+        <div class="col-4 mt-5">
+            <div class="card text-justify">
+                <div class="card-img-top">
+                    <div class="circle justify-content-center">
+                        <img class="post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
                     </div>
-                </div> 
-                <div class = "card-body">
+                </div>
+                <div class="card-body">
                     <h5 class="card-title text-center">
                         {{=post.post_title}}
                     </h5>
                     <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{=post.post_author_name}}</li>
-                    <li class="list-group-item">
-                        <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
-                    </li>
-                    <li class="list-group-item">{{=post.post_content}}</li>
-                    <li class="list-group-item">{{=post.post_department}}</li>
-                    <li class="list-group-item">{{=post.post_tags}}</li>
+                        <li class="list-group-item">{{=post.post_author_name}}</li>
+                        <li class="list-group-item">
+                            <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
+                        </li>
+                        <li class="list-group-item">{{=post.post_content}}</li>
+                        <li class="list-group-item">{{=post.post_department}}</li>
+                        <li class="list-group-item">{{=post.post_tags}}</li>
                     </ul>
                 </div>
-                <a class="btn" v-on:click="add_applicant(post_id)">
+                <a class="btn" v-if="post_author !== logged_in_user_email && can_apply" v-on:click="add_applicant(post_id)">
                     <i class=""></i> Apply
                 </a>
             </div>
 
-            <div>There are ${applicant_list.length} applicants:</div>
-            <div id="applicants_list">
-                <div id="applicants_container" class="container" v-for="applicant in applicant_list">
-                    <div class="applicant">
-                        <div class="applicant_author">Name: ${applicant.name}</div>
-                        <div class="applicant_content">Email:
-                            <a href="mailto:${applicant.email}">${applicant.email}</a>
+            <div class="participants_box">
+                <div>There are ${participants_list.length} participants:</div>
+                <div id="participants_list">
+                    <div id="participants_container" class="container" v-for="participant in participants_list">
+                        <div class="participant">
+                            <div class="participant_author">Name:
+                                <a v-bind:href="'../profile/' + participant.user_id">${participant.name}</a>
+                            </div>
+                            <div class="participant_email">Email:
+                                <a href="mailto:${applicant.email}">${participant.email}</a>
+                            </div>
+                            <div class="participant options" v-if="post_author === logged_in_user_email">
+                                <a class="btn" v-on:click="decline_participant(participant.id)">
+                                    <i class=""></i> Remove
+                                </a>
+                            </div>
                         </div>
-                        <div class="applicant options" v-if="post_author === logged_in_user_email">
-                            <a class="btn" v-on:click="accept_applicant_click(applicant)">
-                                <i class=""></i> Accept
-                            </a>
-                            <a class="btn" v-on:click="decline_applicant_click(applicant)">
-                                <i class=""></i> Decline
-                            </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="applicants_box">
+                <div>There are ${applicant_list.length} applicants:</div>
+                <div id="applicants_list">
+                    <div id="applicants_container" class="container" v-for="applicant in applicant_list">
+                        <div class="applicant" v-on:click="">
+                            <div class="applicant_author">Name:
+                                <a v-bind:href="'../profile/' + applicant.user_id">${applicant.name}</a>
+                            </div>
+                            <div class="applicant_content">Email:
+                                <a href="mailto:${applicant.email}">${applicant.email}</a>
+                            </div>
+                            <div class="applicant options" v-if="post_author === logged_in_user_email">
+                                <a class="btn" v-on:click="add_participant(applicant.id)">
+                                    <i class=""></i> Accept
+                                </a>
+                                <a class="btn" v-on:click="decline_participant(applicant.id)">
+                                    <i class=""></i> Decline
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

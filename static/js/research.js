@@ -29,22 +29,67 @@ var app = function () {
                 self.refresh_applicants();
             }
         );
-        console.log(self.vue.applicant_list.length);
     };
+
+    self.get_participants = function (pid) {
+        $.post(get_participants_url,
+            {
+                post_id: pid
+            },
+            function (data) {
+                // I am assuming here that the server gives me a nice list
+                // of posts, all ready for display.
+                self.vue.participants_list = data.participant_list;
+                // Post-processing.
+                self.refresh_participants();
+            }
+        );
+    }
+
+    self.refresh_participants = function (){
+        enumerate(self.vue.participants_list);
+        self.vue.participants_list.map(function (e) {});
+    }
+
     self.refresh_applicants = function (){
         enumerate(self.vue.applicant_list);
         self.vue.applicant_list.map(function (e) {});
     }
 
     self.add_applicant = function (pid) {
+        can_apply = false;
         //$.web2py.disableElement($("#apply"));
-        console.log("I'm in here");
         $.post(add_applicant_url,
             {
-                post_id: pid,
+                post_id: pid
             },
             function(data) {
-                //self.refresh_applicants(post_idx);
+                self.get_applicants(data.post_id);
+                //self.refresh_applicants();
+            }
+        );
+    };
+
+    self.add_participant = function (aid) {
+        $.post(add_participant_url,
+            {
+                applicant_id: aid
+            },
+            function(data) {
+                self.get_applicants(post_id);
+                self.get_participants(post_id);
+            }
+        );
+    };
+
+    self.decline_participant = function (aid) {
+        $.post(decline_participant_url,
+            {
+                applicant_id: aid
+            },
+            function(data) {
+                self.get_applicants(post_id);
+                self.get_participants(post_id);
             }
         );
     };
@@ -54,11 +99,15 @@ var app = function () {
         delimiters: ['${', '}'],
         unsafeDelimiters: ['!{', '}'],
         data: {
-            applicant_list: []
+            applicant_list: [],
+            participants_list: [],
         },
         methods: {
             refresh_applicants: self.refresh_applicants,
-            add_applicant: self.add_applicant
+            refresh_participants: self.refresh_participants,
+            add_applicant: self.add_applicant,
+            decline_participant: self.decline_participant,
+            add_participant: self.add_participant
         }
     });
 
@@ -67,6 +116,7 @@ var app = function () {
         $("#add_post").show();
     }
     
+    self.get_participants(post_id);
     self.get_applicants(post_id);
 
     return self;
