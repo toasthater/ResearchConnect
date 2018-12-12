@@ -54,7 +54,7 @@
                                 <a href="mailto:${applicant.email}">${participant.email}</a>
                             </div>
                             <div class="participant options" v-if="post_author === logged_in_user_email">
-                                <a class="btn" v-on:click="remove_participant_click(participant.id)">
+                                <a class="btn" v-on:click="decline_participant(participant.id)">
                                     <i class=""></i> Remove
                                 </a>
                             </div>

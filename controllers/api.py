@@ -290,10 +290,7 @@ def add_participant():
     
 def decline_participant():
     applicant_id = int(request.vars.applicant_id)
-    db.applicant.delete(
-            (db.applicant.id == applicant_id),
-            accepted = 1
-        )
+    db(db.applicant.id == applicant_id).delete()
     return response.json(dict(applicant_id=applicant_id))
 
 def get_participants():
