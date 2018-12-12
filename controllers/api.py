@@ -266,8 +266,6 @@ def get_resume():
 
 def get_user_pic():
     user_id = auth.user.id
-    print "------------------"
-
     row = db(db.prof_pics.user_id == user_id).select().first()
     
     file_str = None

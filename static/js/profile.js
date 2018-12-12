@@ -20,15 +20,19 @@ var app = function() {
 
         $.getJSON(get_user_url,            
             function(data) {
-                self.vue.user_bio = data.user.user_bio;
-                self.vue.user_degree = data.user.user_degree;
-                self.vue.user_linkedin = data.user.user_linkedin;
+                self.vue._user_bio = self.vue.user_bio = data.user.user_bio;
+                self.vue._user_degree = self.vue.user_degree = data.user.user_degree;
+                self.vue._user_linkedin =  self.vue.user_linkedin= data.user.user_linkedin;
                 
                 self.vue.user = true;
                 console.log("user got");
                 
-            }
-        );
+        });
+        self.vue.user_bio = self.vue._user_bio;
+        self.vue.user_degree = self.vue._user_degree;
+        self.vue.user_linkedin = self.vue._user_linkedin;
+        console.log("user got");
+
         $("#vue-div").show();
     };
 
@@ -44,6 +48,8 @@ var app = function() {
             user_linkedin: self.vue.user_linkedin,
             user_pic: self.vue.user_pic,
         });
+
+        self.vue._user_pic = null;
     };
 
     self.choose_image = function(event) {
@@ -53,7 +59,9 @@ var app = function() {
         if (file) {
             var reader = new FileReader();
             reader.addEventListener("load", function () {
+                self.vue._user_pic = self.vue.user_pic;
                 self.vue.user_pic = reader.result;
+
             }, false);
             reader.readAsDataURL(file);
         }
@@ -96,6 +104,17 @@ var app = function() {
 
 
     self.cancel_editing = function() {
+        self.vue.editing = false;
+
+        if(self.vue._user_pic != null) {
+            self.vue.user_pic = self.vue._user_pic;
+        }
+
+        self.vue.user_bio = self.vue._user_bio;
+        self.vue.user_degree = self.vue._user_degree;
+        self.vue.user_linkedin = self.vue._user_linkedin;
+        
+
 
     };
  
@@ -120,6 +139,7 @@ var app = function() {
             user_linkedin: null,
 
             user_pic: null,
+            _user_pic: null,
         },
 
         methods: {
@@ -127,6 +147,7 @@ var app = function() {
             download_resume: self.download_resume,
             submit_user: self.submit_user,
             choose_image: self.choose_image,
+            cancel_editing: self.cancel_editing,
             
         }
 

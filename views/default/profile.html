@@ -68,7 +68,7 @@
       <!-- Edit Button -->
       <div v-if="auth_is_user">
         <div v-if="editing">
-          <button v-on:click="editing = false">Cancel Editing</button>
+          <button v-on:click="cancel_editing">Cancel Editing</button>
         </div>
         <div v-else>
           <button v-on:click="editing = true">Edit</button>
@@ -99,7 +99,7 @@
 
       <!-- Cancel/Submit Buttons -->
       <div v-if="editing">
-        <button v-on:click="editing = false">Cancel</button>
+        <button v-on:click="cancel_editing()">Cancel</button>
         <button v-on:click="submit_user()">Submit</button>
       </div>
 
