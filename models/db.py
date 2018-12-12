@@ -89,6 +89,8 @@ auth.settings.login_next = URL('main')
 auth.settings.register_next = URL('index')
 auth.settings.create_user_groups = False
 auth.settings.registration_requires_approval = False
+auth.settings.reset_password_next = URL('../index')
+auth.settings.request_reset_password_next = URL('../index')
 auth.settings.reset_password_requires_verification = False
 auth.settings.register_verify_password = False
 auth.add_group('professor','professor permissions')
