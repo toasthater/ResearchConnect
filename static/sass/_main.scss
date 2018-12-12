@@ -19,11 +19,16 @@ $searchbarspanBackground: #3B5E56;
 .post {
   color: $searchBarBackground;
   .card-title {
+    .title-box {
+      height:35px;
+      border-radius: 5px;
+      background-color: $primary;
+      color: white;
+    }
+    .author {
+      font-size: 15px;
+    }
     display: block;
-    height:35px;
-    border-radius: 5px;
-    background-color: $primary;
-    color: white;
   }
 }
 

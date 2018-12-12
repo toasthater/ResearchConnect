@@ -11,8 +11,8 @@
     var set_thumb_url = "{{=URL('api', 'set_thumb', user_signature=True)}}";
     // Score callback
     var get_score_url = "{{=URL('api', 'get_score')}}"
-
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
+
     var is_professor = {{='true' if auth.has_membership(role='professor') else 'false'}};
 
 
@@ -88,10 +88,17 @@
                                 <img class = "post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
                                 </div>
                             </div> 
-                            <div class = "row justify-content-center card-body">
-                                <h5 class="card-title px-2 pt-1">
-                                    ${post.post_title}
+                            <div class = "card-body">
+                                <div class = "row justify-content-center">
+                                <h5 class="card-title text-center">
+                                    <div class = "title-box px-2 pt-1">
+                                        ${post.post_title}
+                                    </div>
+                                    <div class = "author pt-1">
+                                        ${post.post_author_name}
+                                    </div>
                                 </h5>
+                                </div>
                                 <ul class="list-group list-group-flush">
                                 <li class="list-group-item">${post.post_content}</li>
                                 <li class="list-group-item">${post.post_department}</li>
