@@ -353,7 +353,7 @@ def get_participants():
                 id = participant.id,
                 name = participant.name,
                 email = participant.email,
-                user_id = applicant.user_id
+                user_id = participant.user_id
             ))
     return response.json(dict(participant_list = participant_list))
     

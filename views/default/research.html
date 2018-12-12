@@ -53,7 +53,7 @@
                                 <a v-bind:href="'../profile/' + participant.user_id">${participant.name}</a>
                             </div>
                             <div class="participant_email">Email:
-                                <a href="mailto:${participant.email}">${participant.email}</a>
+                                <a v-bind:href="'mailto:' + participant.email">${participant.email}</a>
                             </div>
                             <div class="participant options" v-if="post_author === logged_in_user_email">
                                 <a class="btn" v-on:click="decline_participant(participant.id)">
@@ -74,7 +74,7 @@
                                 <a v-bind:href="'../profile/' + applicant.user_id">${applicant.name}</a>
                             </div>
                             <div class="applicant_content">Email:
-                                <a href="mailto:${applicant.email}">${applicant.email}</a>
+                                <a v-bind:href="'mailto:' + applicant.email">${applicant.email}</a>
                             </div>
                             <div class="applicant options" v-if="post_author === logged_in_user_email">
                                 <a class="btn" v-on:click="add_participant(applicant.id)">
