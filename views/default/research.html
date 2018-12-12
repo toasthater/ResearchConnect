@@ -44,7 +44,7 @@
                 <a class="btn" v-if="post_author !== logged_in_user_email && can_apply" v-on:click="add_applicant(post_id)">
                     <i class=""></i> Apply
                 </a>
-                <a class="btn" v-if="post_author == logged_in_user_email" href="../../default/main" v-on:click="remove_post(post_id)">
+                <a class="btn" v-if="post_author == logged_in_user_email" href="../main" v-on:click="remove_post(post_id)">
                     <i class=""></i> Remove
                 </a>
             </div>
