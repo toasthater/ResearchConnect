@@ -69,7 +69,7 @@ def get_post_list():
                             ],
                             orderby=~db.post.post_time)
         for row in rows:
-            dept_t = db(db.department.department_name==row.post.post_department).select(db.department.ALL)
+            dept_t = db(db.department.department_name==row.post.post_department).select().first().department_type
             thumbs_up=len(db((db.thumb.post_id == row.post.id) & (db.thumb.thumb_state == "u")).select())
             thumbs_down=len(db((db.thumb.post_id == row.post.id) & (db.thumb.thumb_state == "d")).select())
             post_score=thumbs_up - thumbs_down

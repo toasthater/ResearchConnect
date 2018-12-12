@@ -85,7 +85,42 @@
                         <div class="post card text-justify">
                             <div class="card-img-top">
                                 <div class="circle justify-content-center">
-                                    <img class="post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
+                                    <div v-if="post.dept_type == 0">
+                                        <img class="post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 1">
+                                        <img class="post-icon" src="{{=URL('static','images/globe.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 2">
+                                        <img class="post-icon" src="{{=URL('static','images/hammer.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 3">
+                                        <img class="post-icon" src="{{=URL('static','images/brain.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 4">
+                                        <img class="post-icon" src="{{=URL('static','images/building.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 5">
+                                        <img class="post-icon" src="{{=URL('static','images/graph.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 6">
+                                        <img class="post-icon" src="{{=URL('static','images/paint.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 7">
+                                        <img class="post-icon" src="{{=URL('static','images/atom.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 8">
+                                        <img class="post-icon" src="{{=URL('static','images/computer.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 9">
+                                        <img class="post-icon" src="{{=URL('static','images/leaf.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 10">
+                                        <img class="post-icon" src="{{=URL('static','images/chemistry.png')}}" alt="">
+                                    </div>
+                                    <div v-if="post.dept_type == 11">
+                                        <img class="post-icon" src="{{=URL('static','images/drama.png')}}" alt="">
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -105,23 +140,24 @@
                                             ${post.post_content}
                                         </div>
                                     </li>
-                                    <li class="list-group-item px-0">
+                                    <li class="list-group-item px-0 text-left">
                                         <div class="department pt-1 px-3">
                                             ${post.post_department}
                                         </div>
-                                    <span class="tag label label-info" v-for="tag in post._tags">
-                                        ${tag}
-                                    </span>
+                                        <h5 class = "mt-2" style = "display: inline-block;" v-for="tag in post._tags">
+                                        <span class="tag label label-info mr-1">
+                                            ${tag}
+                                        </span>
+                                        </h5>
+                                   
                                         <!-- ${post.post_tags} -->
                                     </li>
-                                    <li class="list-group-item px-0 pb-0">
-                                        <div v-if="post.post_status === 'Open'">
-                                            <button class="btn btn-lg btn-block connect">Connect</button>
-                                        </div>
-                                        <div v-if="post.post_status === 'Closed'">
-                                            <button class="btn btn-lg btn-block closed">Closed</button>
-                                        </div>
-                                    </li>
+                                    <div v-if="post.post_status === 'Open'">
+                                        <button class="btn btn-lg btn-block connect">Connect</button>
+                                    </div>
+                                    <div v-if="post.post_status === 'Closed'">
+                                        <button class="btn btn-lg btn-block closed">Closed</button>
+                                    </div>
                                 </ul>
                             </div>
                         </div>

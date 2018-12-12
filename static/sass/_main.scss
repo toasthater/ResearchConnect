@@ -24,7 +24,7 @@ $searchbarspanBackground: #3B5E56;
     .title-box {
       height:35px;
       border-radius: 5px;
-      background-color: $searchBarBackground;
+      background-color: $primary;
       color: white;
     }
     .author {
@@ -42,12 +42,13 @@ $searchbarspanBackground: #3B5E56;
     display: inline-block;
     height:35px;
     border-radius: 5px;
-    background-color: $primary;
+    background-color: $searchBarBackground;
     color: white;
   }
-  .tag {
-    height:40px;
-  }
+}
+
+.label-info {
+  background-color: $primary;
 }
 
 @mixin placeholder {
