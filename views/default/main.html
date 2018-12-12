@@ -15,8 +15,9 @@
     var user_name = "{{=get_user_name()}}";
 
     var is_professor = {{='true' if auth.has_membership(role = 'professor') else 'false'}};
-
-
+    if (!is_logged_in){
+        window.location.replace('index');
+    }
 </script>
 <link rel="stylesheet" type="text/css" href="{{=URL('static', 'tagsinput/bootstrap-tagsinput.css')}}">
 <style>
