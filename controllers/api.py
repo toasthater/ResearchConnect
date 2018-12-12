@@ -69,6 +69,7 @@ def get_post_list():
                             ],
                             orderby=~db.post.post_time)
         for row in rows:
+            dept_t = db(db.department.department_name==row.post.post_department).select(db.department.ALL)
             thumbs_up=len(db((db.thumb.post_id == row.post.id) & (db.thumb.thumb_state == "u")).select())
             thumbs_down=len(db((db.thumb.post_id == row.post.id) & (db.thumb.thumb_state == "d")).select())
             post_score=thumbs_up - thumbs_down
@@ -82,7 +83,8 @@ def get_post_list():
                 post_tags=row.post.post_tags,
                 post_status=row.post.post_status,
                 thumb = None if row.thumb.id is None else row.thumb.thumb_state,
-                score=post_score
+                score=post_score,
+                dept_type=dept_t
             ))
     # For homogeneity, we always return a dictionary.
     return response.json(dict(post_list=results))
