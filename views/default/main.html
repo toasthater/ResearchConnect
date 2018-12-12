@@ -109,7 +109,7 @@
                                         <div class="department pt-1 px-3">
                                             ${post.post_department}
                                         </div>
-                                        <div v-for="tag in post.post_tags">
+                                        <div v-for="tag in post._tags">
                                             ${tag}
                                         </div>
                                         <!-- ${post.post_tags} -->
@@ -122,14 +122,6 @@
                                             <button class="btn btn-lg btn-block closed">Closed</button>
                                         </div>
                                     </li>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item description">${post.post_content}</li>
-                                        <li class="list-group-item">${post.post_department}</li>
-                                        <div v-for="tag in post._tags">
-                                            ${tag}
-                                        </div>
-                                        <li class="list-group-item">Status: ${post.post_status}</li>
-                                    </ul>
                             </div>
                         </div>
                     </a>
