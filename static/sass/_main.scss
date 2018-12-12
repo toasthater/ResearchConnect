@@ -28,6 +28,24 @@ $searchbarspanBackground: #3B5E56;
     font-weight:100;
 }
 
+.nav-btn-box {
+  border-radius: 5px;
+  height:50px;
+  width:50px;
+  background-color: $searchBarBackground;
+  color: white;
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  &:hover {
+    background-color: $searchbarspanBackground;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white !important;
+  }
+}
+
 .circle{
   border-radius: 50%;
   width: 165px;

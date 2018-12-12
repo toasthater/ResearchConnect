@@ -25,7 +25,7 @@
 </style>
 {{end}}
 {{ rows = db().select(db.department.ALL) }}
-<div class="col-8 offset-2 px-4">
+<div class="col-8 offset-2">
     <div id="vue-div" class="display:none" v-cloak>
         <!-- ELSE SHOW HOME PAGE -->
         <div v-if="is_logged_in">
