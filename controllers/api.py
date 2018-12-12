@@ -303,9 +303,9 @@ def get_participants():
     for participant in participants:
         if(participant.accepted == 1):
             participant_list.append(dict(
-                id = applicant.id,
-                name = applicant.name,
-                email = applicant.email,
+                id = participant.id,
+                name = participant.name,
+                email = participant.email,
             ))
     return response.json(dict(participant_list = participant_list))
     

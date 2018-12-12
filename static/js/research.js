@@ -39,7 +39,7 @@ var app = function () {
             function (data) {
                 // I am assuming here that the server gives me a nice list
                 // of posts, all ready for display.
-                self.vue.participants_list = data.participants_list;
+                self.vue.participants_list = data.participant_list;
                 // Post-processing.
                 self.refresh_participants();
             }
