@@ -66,9 +66,11 @@ def research():
                 is_applicant = True
             else:
                 is_applicant = False
+            tags = post.post_tags
+            tags = tags.split(',')
         else:
             print "Error: post not found"
-    return dict(post=post, is_applicant=is_applicant)
+    return dict(post=post, is_applicant=is_applicant, given_tags=tags)
 
 def settings():
     # We just want to expand the template.

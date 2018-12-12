@@ -124,6 +124,15 @@
                                         </div>
                                         
                                     </li>
+=======
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item description">${post.post_content}</li>
+                                    <li class="list-group-item">${post.post_department}</li>
+                                    <div v-for="tag in post._tags">
+                                        ${tag}
+                                    </div>
+                                    <li class="list-group-item">Status: ${post.post_status}</li>
+>>>>>>> something_funny
                                 </ul>
                             </div>
                         </div>

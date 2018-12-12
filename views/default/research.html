@@ -12,13 +12,19 @@
     var remove_post_url = "{{=URL('api', 'remove_post', user_signature=True)}}";
     var toggle_post_url = "{{=URL('api', 'toggle_post', user_signature=True)}}";
 
+    var post_content = "{{=post.post_content}}";
+    var post_title = "{{=post.post_title}}";
+    var post_department = "{{=post.post_department}}";
+    var post_tags = "{{=post.post_tags}}";
     var post_id = "{{=post.id }}";
     var post_author = "{{=post.post_author}}";
     var can_apply = {{= 'false' if is_applicant is True else 'true'}}
     var post_status = "{{=post.post_status}}";
     var is_logged_in = {{='false' if auth.user is None else 'true'}};
+    var is_editing = {{='false'}};
 </script>
 {{end}}
+{{ rows = db().select(db.department.ALL) }}
 
 <div id="vue-div" class="display:none">
     <div class="row justify-content-center">
@@ -29,7 +35,39 @@
                         <img class="post-icon" src="{{=URL('static','images/defaultPost.png')}}" alt="">
                     </div>
                 </div>
-                <div class="card-body">
+
+                <div class="card-body" v-if="post_author == logged_in_user_email && is_editing">
+                    <textarea class="card-title text-center" v-model="post_title"></textarea>
+                    <ul class="list-group list-group-flush">
+                        <i class="list-group-item">{{=post.post_author_name}}</i>
+                        <li class="list-group-item">
+                            <a href="mailto:{{=post.post_author}}">{{=post.post_author}}</a>
+                        </li>
+                        <textarea class="list-group-item" v-model="post_content"></textarea>
+                        <li class="list-group-item">
+                            <select class="form-control" v-model="post_department" id="exampleFormControlSelect1">
+                                {{if len(rows):}}
+                                {{ for r in rows: }}
+                                <option>{{=r.department_name}}</option>
+                                {{pass}}
+                                {{pass}}
+                            </select>
+                        </li>
+                        <div id="tags_container" class="container form_row">
+                        </div>
+                        {{ tags = post.post_tags.split(",") }}
+                        {{if len(tags):}}
+                        {{ for tag in tags: }}
+                        <span class="tag" label="label-info">
+                            {{=tag}}
+                        </span>
+                        {{pass}}
+                        {{pass}}
+                        <i class="list-group-item">Status: ${post_status}</i>
+                    </ul>
+                </div>
+
+                <div class="card-body" v-if="!is_editing">
                     <h5 class="card-title text-center">
                         {{=post.post_title}}
                     </h5>
@@ -40,20 +78,35 @@
                         </li>
                         <li class="list-group-item">{{=post.post_content}}</li>
                         <li class="list-group-item">{{=post.post_department}}</li>
-                        <li class="list-group-item">{{=post.post_tags}}</li>
+                        {{ tags = post.post_tags.split(",") }}
+                        {{if len(tags):}}
+                        {{ for tag in tags: }}
+                        <span class="tag" label="label-info">
+                            {{=tag}}
+                        </span>
+                        {{pass}}
+                        {{pass}}
                         <li class="list-group-item">Status: ${post_status}</li>
                     </ul>
                 </div>
-                <a class="btn" v-if="post_author !== logged_in_user_email && can_apply" v-on:click="add_applicant(post_id)">
+                <a class="btn" v-if="post_author == logged_in_user_email && is_editing" v-on:click="toggle_edit(); submit_click()">
+                    <i class=""></i> Submit
+                </a>
+                <a class="btn" v-if="post_author == logged_in_user_email && !is_editing" v-on:click="toggle_edit()">
+                    <i class=""></i> Edit
+                </a>
+                <a class="btn" v-if="post_author !== logged_in_user_email && can_apply && !is_editing" v-on:click="add_applicant(post_id)">
                     <i class=""></i> Apply
                 </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Closed'" v-on:click="toggle_post(post_id, post_status)">
+                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Closed' && !is_editing"
+                    v-on:click="toggle_post(post_id, post_status)">
                     <i class=""></i> Open
                 </a>
-                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Open'" v-on:click="toggle_post(post_id, post_status)">
+                <a class="btn" v-if="post_author == logged_in_user_email && post_status == 'Open' && !is_editing"
+                    v-on:click="toggle_post(post_id, post_status)">
                     <i class=""></i> Close
                 </a>
-                <a class="btn" v-if="post_author == logged_in_user_email" href="../main" v-on:click="remove_post(post_id)">
+                <a class="btn" v-if="post_author == logged_in_user_email && !is_editing" href="../main" v-on:click="remove_post(post_id)">
                     <i class=""></i> Remove
                 </a>
             </div>

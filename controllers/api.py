@@ -21,11 +21,12 @@ def register_student():
 
 @auth.requires_signature()
 def add_post():
+    our_tags=request.vars.get('post_tags',"")
     post_id = db.post.insert(
         post_title=request.vars.post_title,
         post_content=request.vars.post_content,
         post_department=request.vars.post_department,
-        post_tags=request.vars.get('post_tags[]',None),
+        post_tags=our_tags,
         thumb=None,
         score=0
     )
@@ -389,4 +390,14 @@ def toggle_post():
             (db.post.id == post_id),
             post_status = post_status
         )
+    return response.json(dict(post_id=post_id))
+
+def edit_post():
+    db.post.update_or_insert(
+        (db.post.id == post_id),
+        post_title=request.vars.post_title,
+        post_content=request.vars.post_content,
+        thumb=request.vars.post_thumb,
+        score=0
+    )
     return response.json(dict(post_id=post_id))

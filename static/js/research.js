@@ -120,6 +120,11 @@ var app = function () {
         );
     };
 
+    self.toggle_edit = function (pid) {
+        is_editing = !is_editing;
+        self.get_applicants(post_id);
+    };
+
 
     self.vue = new Vue({
         el: "#vue-div",
@@ -136,7 +141,8 @@ var app = function () {
             decline_participant: self.decline_participant,
             add_participant: self.add_participant,
             remove_post: self.remove_post,
-            toggle_post: self.toggle_post
+            toggle_post: self.toggle_post,
+            toggle_edit: self.toggle_edit
         }
     });
 

@@ -39,15 +39,23 @@ var app = function () {
         var sent_title = self.vue.form_title; // Makes a copy 
         var sent_content = self.vue.form_content; // 
         var sent_department = self.vue.form_department; // 
-        var sent_tags = tags// 
-        console.log(sent_tags);
+        
+        var newtags = "";
+        for (var i = 0; i < tags.length; i++) {
+            if (i==0)
+                newtags = tags[i];
+            else
+                newtags = newtags + "," + tags[i];
+        }
+        var sent_tags = newtags// 
+        console.log(newtags);
         $.post(add_post_url,
             // Data we are sending.
             {
                 post_title: self.vue.form_title,
                 post_content: self.vue.form_content,
                 post_department: self.vue.form_department,
-                post_tags: $("input#tags_in").val().split(',')
+                post_tags: newtags
             },
             // What do we do when the post succeeds?
             function (data) {
@@ -57,7 +65,7 @@ var app = function () {
                 self.vue.form_title = "";
                 self.vue.form_content = "";
                 self.vue.form_department = ""; // 
-                self.vue.form_tags = "";
+                self.vue.form_tags = [];
                 // Adds the post to the list of posts. 
                 var new_post = {
                     post_author_name: user_name,
@@ -65,7 +73,7 @@ var app = function () {
                     post_title: sent_title,
                     post_content: sent_content,
                     post_department: sent_department,
-                    post_tags: sent_tags,
+                    post_tags: newtags,
                     post_status: 'Open',
                     score: 0
                 };
@@ -103,6 +111,7 @@ var app = function () {
             // Replace it with the appropriate code for thumbs. 
             // // Did I like it? 
             // // If I do e._smile = e.like, then Vue won't see the changes to e._smile .
+            Vue.set(e, '_tags', e.post_tags.split(','));
             Vue.set(e, '_thumb', e.thumb);
             Vue.set(e, '_over_up', false);
             Vue.set(e, '_over_down', false);
