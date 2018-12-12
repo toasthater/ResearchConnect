@@ -303,7 +303,8 @@ def edit_user():
     # Auth table (names)
     row = db(db.auth_user.id == user_id).select().first()
     row.update_record(first_name = first_name, last_name = last_name)
-
+    print row
+    # Profile Pictures
     db.prof_pics.update_or_insert(
         (db.prof_pics.user_id == user_id),
         user_id = user_id,

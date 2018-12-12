@@ -31,28 +31,13 @@ def profile():
     # href="{{=URL('default', 'profile',  args='desired_user_id')}}
     # We initialize the user at the current user
     user = auth.user
-    #foo = api.get_user()
-    # URL('api', 'get_user', args=request.args(0))
-    #print(foo.user_degree)
 
     # If a user id is specified -> we set the user to the requested user
     if request.args(0) != None:
         id = int(request.args(0))
-
         users = db((db.auth_user.id == id)).select()
         if len(users) > 0:
             user = users[0]
-
-            # attach the other data
-            # user_data = db(db.users.user_id == id).select().first()
-            # if user_data is not None:
-            #     print "hullo"
-            #     # user.append(dict(
-                #     user_degree = user_data.user_degree,
-                #     user_bio = user_data.user_bio,
-                #     user_links = user_data.user_links
-                # ))
-
         else:
             print "Error: user not found"
             return redirect('../main')

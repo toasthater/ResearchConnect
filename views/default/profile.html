@@ -14,7 +14,7 @@
 
   var is_logged_in = {{='false' if auth.user is None else 'true'}};
   var auth_is_user = {{='true' if auth.user.id == user.id else 'false'}};
-  var user_email = "{{= None if auth.user is None else auth.user.email}}";
+  var user_email = "{{=None if auth.user is None else auth.user.email}}";
 
   var user_id = {{=user.id}};
   var user_first_name = "{{=user.first_name}}";
@@ -47,8 +47,8 @@
 
       <!-- Name -->
       <div v-if="editing">
-        <textarea v-model="user_first_name"></textarea>
-        <textarea v-model="user_last_name"></textarea>
+        <input v-model="user_first_name"></input>
+        <input v-model="user_last_name"></input>
       </div>
       <div v-else>
         <div v-if="user && user_first_name">${user_first_name}</div>
@@ -90,7 +90,7 @@
       <a href="{{=user.email}}">{{=user.email}}</a>
       <div v-if="editing">
         www.linkedin.com/in/
-        <textarea v-model="user_linkedin"></textarea>
+        <input v-model="user_linkedin"></input>
       </div>
       <div v-else>
         <a v-if="user && user_linkedin" v-bind:href="'https://www.linkedin.com/in/' + user_linkedin">www.linkedin.com/in/${user_linkedin}</a>
