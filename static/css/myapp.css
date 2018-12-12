@@ -396,14 +396,80 @@ button.closed:active {
   color: #2a363f;
 }
 
-/* line 347, ../sass/_main.scss */
+/* line 345, ../sass/_main.scss */
+.form-dark {
+  background-color: #4D575E;
+  border-radius: 3px 3px 3px 3px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
+/* line 355, ../sass/_main.scss */
+.form-dark:focus {
+  background-color: white;
+  color: #2a363f;
+}
+
+/* line 362, ../sass/_main.scss */
+textarea.form-dark {
+  padding-top: 16px;
+  border-color: rgba(255, 255, 255, 0);
+}
+
+/* line 367, ../sass/_main.scss */
+.clear-border {
+  border-color: rgba(255, 255, 255, 0);
+}
+
+/* line 371, ../sass/_main.scss */
+.bootstrap-tagsinput {
+  background-color: #4D575E;
+  border-radius: 3px 3px 3px 3px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  width: 100%;
+  border-color: rgba(255, 255, 255, 0);
+}
+/* line 378, ../sass/_main.scss */
+.bootstrap-tagsinput:focus {
+  background-color: white;
+  color: #2a363f;
+}
+/* line 67, ../sass/_main.scss */
+.bootstrap-tagsinput ::-webkit-input-placeholder {
+  color: #7A7F84;
+}
+/* line 68, ../sass/_main.scss */
+.bootstrap-tagsinput :-moz-placeholder {
+  color: #7A7F84;
+}
+/* line 69, ../sass/_main.scss */
+.bootstrap-tagsinput ::-moz-placeholder {
+  color: #7A7F84;
+}
+/* line 70, ../sass/_main.scss */
+.bootstrap-tagsinput :-ms-input-placeholder {
+  color: #7A7F84;
+}
+/* line 386, ../sass/_main.scss */
+.bootstrap-tagsinput input {
+  color: white;
+  width: 80px;
+}
+
+/* line 394, ../sass/_main.scss */
 div.register_line {
   height: 3px;
   background-color: #4D575E;
   margin-top: 20px;
 }
 
-/* line 353, ../sass/_main.scss */
+/* line 400, ../sass/_main.scss */
 div.signup_form_container {
   position: fixed;
   top: 0;
@@ -414,7 +480,7 @@ div.signup_form_container {
   opacity: 0.6;
 }
 
-/* line 363, ../sass/_main.scss */
+/* line 410, ../sass/_main.scss */
 .centered {
   position: fixed;
   top: 50%;
@@ -424,48 +490,48 @@ div.signup_form_container {
   max-width: 400px;
 }
 
-/* line 374, ../sass/_main.scss */
+/* line 421, ../sass/_main.scss */
 div.form_row {
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
-/* line 379, ../sass/_main.scss */
+/* line 426, ../sass/_main.scss */
 div.post_div {
   border: 1px black solid;
   background-color: #ffffff;
   border-radius: 5px;
   padding: 10px;
 }
-/* line 384, ../sass/_main.scss */
+/* line 431, ../sass/_main.scss */
 div.post_div .post_title {
   font-size: 120%;
   font-weight: bold;
   text-align: center;
 }
 
-/* line 397, ../sass/_main.scss */
+/* line 444, ../sass/_main.scss */
 i {
   cursor: pointer;
 }
 
-/* line 401, ../sass/_main.scss */
+/* line 448, ../sass/_main.scss */
 i.changed {
   color: #777777;
 }
 
-/* line 405, ../sass/_main.scss */
+/* line 452, ../sass/_main.scss */
 span.likers_list {
   color: #7777cc;
 }
 
-/* line 409, ../sass/_main.scss */
+/* line 456, ../sass/_main.scss */
 .section-header {
   position: relative;
   text-align: center;
 }
 
-/* line 414, ../sass/_main.scss */
+/* line 461, ../sass/_main.scss */
 .section-header:before {
   content: "";
   z-index: 1;
@@ -478,7 +544,7 @@ span.likers_list {
   background: #dddddd;
 }
 
-/* line 429, ../sass/_main.scss */
+/* line 476, ../sass/_main.scss */
 .section-header__title {
   position: relative;
   z-index: 2;
@@ -491,7 +557,7 @@ span.likers_list {
   color: #174750;
 }
 
-/* line 444, ../sass/_main.scss */
+/* line 491, ../sass/_main.scss */
 .section-header__subtitle {
   position: relative;
   z-index: 2;
@@ -504,7 +570,7 @@ span.likers_list {
   color: #174750;
 }
 
-/* line 459, ../sass/_main.scss */
+/* line 506, ../sass/_main.scss */
 .section-header__container {
   position: relative;
   z-index: 2;
@@ -513,7 +579,7 @@ span.likers_list {
   background: #67c896;
 }
 
-/* line 470, ../sass/_main.scss */
+/* line 517, ../sass/_main.scss */
 .text {
   font-family: raleway;
   font-size: 40px;
@@ -524,7 +590,7 @@ span.likers_list {
   margin-top: 43px;
 }
 
-/* line 480, ../sass/_main.scss */
+/* line 527, ../sass/_main.scss */
 .text1 {
   font-family: raleway;
   font-size: 21px;
@@ -533,7 +599,7 @@ span.likers_list {
   color: #000;
 }
 
-/* line 488, ../sass/_main.scss */
+/* line 535, ../sass/_main.scss */
 .image {
   text-align: center;
   width: 200px;
@@ -550,14 +616,14 @@ span.likers_list {
   align-content: center;
 }
 
-/* line 505, ../sass/_main.scss */
+/* line 552, ../sass/_main.scss */
 .trick {
   display: inline-block;
   vertical-align: middle;
   height: 150px;
 }
 
-/* line 512, ../sass/_main.scss */
+/* line 559, ../sass/_main.scss */
 .image:hover {
   -webkit-transform: scale(1.12);
   transform: scale(1.12);
@@ -565,13 +631,13 @@ span.likers_list {
   transition: 1.6s ease-in-out;
 }
 
-/* line 521, ../sass/_main.scss */
+/* line 568, ../sass/_main.scss */
 .trick:hover img {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
 
-/* line 526, ../sass/_main.scss */
+/* line 573, ../sass/_main.scss */
 #overlay {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -581,24 +647,24 @@ span.likers_list {
   -moz-transition: opacity 10.25s ease;
 }
 
-/* line 535, ../sass/_main.scss */
+/* line 582, ../sass/_main.scss */
 #box:hover #overlay {
   opacity: 1;
 }
 
-/* line 540, ../sass/_main.scss */
+/* line 587, ../sass/_main.scss */
 .panel-group {
   width: 350px;
   margin: auto;
   max-width: 100%;
 }
 
-/* line 546, ../sass/_main.scss */
+/* line 593, ../sass/_main.scss */
 .panel-heading {
   background-color: transparent !important;
 }
 
-/* line 550, ../sass/_main.scss */
+/* line 597, ../sass/_main.scss */
 .title {
   text-align: center;
   background-color: transparent;
@@ -609,7 +675,7 @@ span.likers_list {
   max-width: 100%;
 }
 
-/* line 560, ../sass/_main.scss */
+/* line 607, ../sass/_main.scss */
 #accordion {
   background-color: transparent;
   max-width: 100%;

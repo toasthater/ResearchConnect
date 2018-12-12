@@ -342,6 +342,53 @@ button.closed {
   }
 }
 
+.form-dark {
+  background-color: $loginInputBackground;
+  border-radius: 3px 3px 3px 3px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+  &:focus {
+    background-color: white;
+    color: $dark;
+  }
+
+}
+
+textarea.form-dark {
+  padding-top: 16px;
+  border-color: rgba(255, 255, 255, 0);
+}
+
+.clear-border {
+  border-color: rgba(255, 255, 255, 0);
+}
+
+.bootstrap-tagsinput {
+  background-color: $loginInputBackground;
+  border-radius: 3px 3px 3px 3px;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  width: 100%;
+  &:focus {
+    background-color: white;
+    color: $dark;
+  }
+  border-color: rgba(255, 255, 255, 0);
+  @include placeholder {
+    color: $loginPHColor;
+  }
+  input {
+    color: white;
+    width: 80px;
+  }
+}
+
 // Signup 
 
 div.register_line {
