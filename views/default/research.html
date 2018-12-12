@@ -49,7 +49,9 @@
                 <div id="participants_list">
                     <div id="participants_container" class="container" v-for="participant in participants_list">
                         <div class="participant">
-                            <div class="participant_author">Name: ${participant.name}</div>
+                            <div class="participant_author">Name:
+                                <a v-bind:href="'../profile/' + participant.user_id">${participant.name}</a>
+                            </div>
                             <div class="participant_email">Email:
                                 <a href="mailto:${applicant.email}">${participant.email}</a>
                             </div>
@@ -67,8 +69,10 @@
                 <div>There are ${applicant_list.length} applicants:</div>
                 <div id="applicants_list">
                     <div id="applicants_container" class="container" v-for="applicant in applicant_list">
-                        <div class="applicant">
-                            <div class="applicant_author">Name: ${applicant.name}</div>
+                        <div class="applicant" v-on:click="">
+                            <div class="applicant_author">Name:
+                                <a v-bind:href="'../profile/' + applicant.user_id">${applicant.name}</a>
+                            </div>
                             <div class="applicant_content">Email:
                                 <a href="mailto:${applicant.email}">${applicant.email}</a>
                             </div>

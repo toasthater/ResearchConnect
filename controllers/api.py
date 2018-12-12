@@ -269,6 +269,7 @@ def get_applicants():
                 id = applicant.id,
                 name = applicant.name,
                 email = applicant.email,
+                user_id = applicant.user_id
             ))
     return response.json(dict(applicant_list = applicant_list))
 
