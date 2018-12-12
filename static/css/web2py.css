@@ -32,8 +32,8 @@ div.w2p_flash {
     cursor:pointer;
     color:#FFF;
     background-color:#2a363f;
+    z-index:1;
 
-    z-index:2000;
 }
 .navbar-custom {
     background-color: #67c896 !important;
