@@ -109,9 +109,9 @@
                                         <div class="department pt-1 px-3">
                                             ${post.post_department}
                                         </div>
-                                        <div v-for="tag in post._tags">
-                                            ${tag}
-                                        </div>
+                                    <span class="tag label label-info" v-for="tag in post._tags">
+                                        ${tag}
+                                    </span>
                                         <!-- ${post.post_tags} -->
                                     </li>
                                     <li class="list-group-item px-0 pb-0">

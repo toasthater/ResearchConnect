@@ -45,6 +45,9 @@ $searchbarspanBackground: #3B5E56;
     background-color: $primary;
     color: white;
   }
+  .tag {
+    height:40px;
+  }
 }
 
 @mixin placeholder {
