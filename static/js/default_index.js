@@ -65,6 +65,7 @@ var app = function () {
                     post_content: sent_content,
                     post_department: sent_department,
                     post_tags: sent_tags,
+                    post_status: 'Open',
                     score: 0
                 };
                 self.vue.post_list.unshift(new_post);
