@@ -225,7 +225,7 @@ var app = function () {
             form_title: "",
             form_content: "",
             form_department: "Academic Senate",
-            form_tags: "",
+            form_tags: [],
             post_list: [],
             showing_sign_up_form: false,
             showing_forgot_password_form: false

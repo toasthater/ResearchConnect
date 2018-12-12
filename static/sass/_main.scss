@@ -38,6 +38,13 @@ $searchbarspanBackground: #3B5E56;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical; 
   }
+  .department {
+    display: block !important;
+    height:35px;
+    border-radius: 5px;
+    background-color: $primary;
+    color: white;
+  }
 }
 
 @mixin placeholder {
