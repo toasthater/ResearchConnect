@@ -26,22 +26,21 @@
 {{end}}
 
 <div id="vue-div" class="display:none">
-  <div class="box">
-    <div id="overlay">
-      <div class="image">
-        <img v-bind:src="user_pic" class="post-icon">
-        <div class="trick">
-          
-          
+  <div class="card post col-4 offset-4 text-justify mt-5">
+    <div class = "card-img-top">
+      <div class = "circle justify-content-center">
+        <div class="image">
+          <img v-bind:src="user_pic" class="post-icon">
         </div>
       </div>
-      <ul class="text">{{=user.first_name + " " + user.last_name}}</ul>
-      <div class="text1" v-if="user != null && user.user_degree != null">${user.user_degree}</div>
-      
-      <!-- Photo -->
-      <img v-bind:src="user_pic">
-
-       
+    </div>
+      <div class="card-title">
+        <div class="title-box text-center pt-1">
+          {{=user.first_name + " " + user.last_name}}
+        </div>
+      </div>
+      <div class="department px-2 pt-1" v-if="user != null && user.user_degree != null">${user.user_degree}</div>
+   
       <!-- Change Photo -->
       <div v-if="auth_is_user && editing">
         Upload a new profile picture
@@ -59,37 +58,31 @@
       </div>
 
       <!-- Major -->
-      <h2>Major: </h2>
-      <div v-if="editing">
-        <textarea v-model="user_degree"></textarea>     
-      </div>
-      <div v-else>
-        <div v-if="user && user_degree">${user_degree}</div>
-        <div v-else>This user has no major</div>
+      <div class = "department px-2 pt-1">
+        <div v-if="editing">
+          <textarea v-model="user_degree"></textarea>     
+        </div>
+        <div v-else>
+          <div v-if="user && user_degree">${user_degree}</div>
+          <div v-else>No Major</div>
+        </div>
       </div>
 
       <!-- Edit Button -->
-      <div v-if="auth_is_user">
-        <div v-if="editing">
-          <button v-on:click="cancel_editing">Cancel Editing</button>
-        </div>
-        <div v-else>
-          <button v-on:click="editing = true">Edit</button>
-        </div>
-      </div>
+      
 
       <!-- Bio -->
-      <h2>Biography</h2>
-      <div v-if="editing">
-        <textarea v-model="user_bio"></textarea>
-      </div>
-      <div v-else>
-        <div v-if="user && user_bio">${user_bio}</div>
-        <div v-else>This user's bio is blank</div>
+      <div class = "description">
+        <div v-if="editing">
+          <textarea v-model="user_bio"></textarea>
+        </div>
+        <div v-else>
+          <div v-if="user && user_bio">${user_bio}</div>
+          <div v-else>This user's bio is blank</div>
+        </div>
       </div>
 
       <!-- Links -->
-      <h2>Links</h2>
       <a v-bind:href="'mailto:'  + '{{=user.email}}'">{{=user.email}}</a>
       <div v-if="editing">
         www.linkedin.com/in/
@@ -98,14 +91,6 @@
       <div v-else>
         <a v-if="user && user_linkedin" v-bind:href="'https://www.linkedin.com/in/' + user_linkedin">www.linkedin.com/in/${user_linkedin}</a>
       </div>
-      
-
-      <!-- Cancel/Submit Buttons -->
-      <div v-if="editing">
-        <button v-on:click="cancel_editing()">Cancel</button>
-        <button v-on:click="submit_user()">Submit</button>
-      </div>
-
       <!-- Resume -->
       <div v-if="auth_is_user">
         Upload Resume
@@ -114,54 +99,14 @@
       <div v-if="resume">
         <a v-bind:href="resume" download><button>Download Resume</button></a>
       </div>
-
-      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-          <div class="panel-heading " role="tab" id="headingOne">
-            <h4 class="panel-title ">
-              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded=""
-                aria-controls="collapseOne">
-                <div class="btn btn-lg btn-block connect">ABOUT {{=user.first_name}}</div>
-              </a>
-            </h4>
+      <div class = "row justify-content-center">
+        <div v-if="auth_is_user">
+          <div v-if="editing">
+            <button v-on:click="cancel_editing">Cancel</button>
+            <button v-on:click="submit_user()">Submit</button>
           </div>
-          <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-              <div class="text1" v-if="user != null && user.user_degree != null">${user.user_bio}</div>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
-                aria-expanded="false" aria-controls="collapseTwo">
-                <div class="btn btn-lg btn-block connect">SOCIAL</div>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-              Walter has been building websites for years. He enjoys making unique websites and web projects. His
-              hobbies include photography, woodworking, leatherworking, fishing, and mid century modern furniture.
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="headingThree">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                aria-expanded="false" aria-controls="collapseThree">
-                <div class="btn btn-lg btn-block connect">CONTACT</div>
-              </a>
-            </h4>
-          </div>
-          <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-            <div class="panel-body">
-              <form id="form" class="topBefore">
-
-              </form>
-            </div>
+          <div v-else>
+            <button v-on:click="editing = true">Edit</button>
           </div>
         </div>
       </div>
