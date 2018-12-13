@@ -33,7 +33,6 @@
           <img v-bind:src="user_pic" class="post-icon">
         </div>
       </div>
-<<<<<<< Updated upstream
     </div>
       <div class="card-title">
         <div class="title-box text-center pt-1">
@@ -42,16 +41,6 @@
       </div>
       <div class="department px-2 pt-1" v-if="user != null && user.user_degree != null">${user.user_degree}</div>
    
-=======
-      <ul class="text">{{=user.first_name + " " + user.last_name}}</ul>
-      <div class="text1" v-if="user != null && user.user_degree != null">${user.user_degree}</div>
-      
-      
-      <!-- Photo -->
-      <img v-bind:src="user_pic">
-
-       
->>>>>>> Stashed changes
       <!-- Change Photo -->
       <div v-if="auth_is_user && editing">
         Upload a new profile picture
