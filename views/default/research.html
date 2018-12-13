@@ -175,7 +175,7 @@
                     <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && !is_editing" v-on:click="toggle_edit()">
                         <i class=""></i> Edit
                     </button>
-                    <button class="post-btn mx-1" v-if="post_author !== logged_in_user_email && can_apply && !is_editing" v-on:click="add_applicant(post_id)">
+                    <button class="post-btn mx-1" v-if="post_author !== logged_in_user_email && can_apply && !is_editing && post_status == 'Open'" v-on:click="add_applicant(post_id)">
                         <i class=""></i> Apply
                     </button>
                     <button class="post-btn mx-1" v-if="post_author == logged_in_user_email && post_status == 'Closed' && !is_editing"

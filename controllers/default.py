@@ -102,7 +102,6 @@ def register():
    return dict(form=auth.register())
 
 
-
 @cache.action()
 def download():
     """
