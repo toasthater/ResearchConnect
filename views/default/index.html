@@ -9,6 +9,7 @@
     var get_filtered_post_list_url = "{{=URL('api', 'get_filtered_post_list')}}";
     // Thumbs callbacks.
     var set_thumb_url = "{{=URL('api', 'set_thumb', user_signature=True)}}";
+    var check_cruzid_url = "{{=URL('api', 'check_cruzid')}}";
     // Score callback
     var get_score_url = "{{=URL('api', 'get_score')}}"
 
@@ -153,7 +154,7 @@
                             {{=form.custom.begin}}
                             <div class="input-group my-2" id="email_form">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text black"><i class="material-icons">perm_identity</i></span>
+                                    <span class="input-group-text black icon"><i class="material-icons">perm_identity</i></span>
                                 </div>
                                 {{form.custom.widget.email['_placeholder'] = 'Email'}}
                                 {{=form.custom.widget.email}}

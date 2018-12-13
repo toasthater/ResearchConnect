@@ -291,7 +291,37 @@ jQuery(function () {
         $("#auth_user_email").val($("#login_cruzid").val()+"@ucsc.edu");
          });
     $("#signup").hide();
-    $("#signup_cruzid").focusout( function(){ console.log("loldddddd");$("#auth_signup_user_email").val($("#signup_cruzid").val()+"@ucsc.edu");});  
+    $("#signup_cruzid").focusout( function(){
+            $.post(check_cruzid_url,
+            // Data we are sending.
+            {
+                id: $("#signup_cruzid").val()
+            },
+            function (data) {
+                if (!data.found){
+                    $("#signup_cruzid").addClass('border border-danger');
+                }
+                else{
+                    $("#signup_cruzid").addClass('border border-success');
+                }
+
+            });
+        // If you put code here, it is run BEFORE the call comes back.
+    
+
+            $("#auth_signup_user_email").val($("#signup_cruzid").val()+"@ucsc.edu");
+
+        });  
+});
+
+$(document).mouseup(function(e) 
+{
+    var container = $("#signup");
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        container.hide();
+    }
 });
 
 $(document).on('keydown', function (e) {

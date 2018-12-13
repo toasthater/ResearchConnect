@@ -376,6 +376,13 @@ def remove_post():
     db(db.post.id == post_id).delete()
     db(db.applicant.post_id == post_id).delete()
     return response.json(dict(post_id=post_id))
+
+def check_cruzid():
+    found = False
+    ucsc_users = db((db.ucsc_user.cruzid == request.vars.id)).select()
+    if len(ucsc_users) > 0:
+        found = True
+    return response.json(dict(found=found))
     
 def toggle_post():
     post_id = int(request.vars.post_id)
