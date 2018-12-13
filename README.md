@@ -10,6 +10,10 @@ Make sure to import files from "DATABASES TO IMPORT INTO web2py" folder into the
 * import db_cruzids_2018.csv into ucsc_user
 * import departments.csv into department
 
+Alternatively, use the packed version of the project in EXTRAS: web2py.app.ResearchConnect.w2p
+* Install the application in web2py
+* The sample accounts are located in "Sample Accounts.txt" in the same folder
+
 ## Relevant Links
 
 * [Trello](https://trello.com/b/osXUNhol/researchconnect-backlog)

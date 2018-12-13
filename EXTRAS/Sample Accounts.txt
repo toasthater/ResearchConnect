@@ -1,0 +1,17 @@
+ACCOUNTS:
+	PROF:
+		Username: aginther
+		Password: 123456
+		
+		Username: tdl
+		Password: 123456
+		
+	STUDENT:
+		Username: ahalomar
+		Password: 123456
+		
+
+Note:  
+	You must register using a valid ucsc email so it can grab the name from the ucsc_user database or the faculty database.  
+	Also, we currently have verification required for registration.  
+	If the project is run locally in web2py, the email verification link should be sent to the web2py console as well.
