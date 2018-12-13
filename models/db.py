@@ -91,7 +91,7 @@ auth.settings.create_user_groups = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_next = URL('../index')
 auth.settings.request_reset_password_next = URL('../index')
-auth.settings.reset_password_requires_verification = False
+auth.settings.reset_password_requires_verification = True
 auth.settings.register_verify_password = False
 auth.add_group('professor','professor permissions')
 auth.add_group('student','student permissions')
