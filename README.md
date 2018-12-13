@@ -3,8 +3,12 @@
 Finding university research made easy
 
 ### Prerequisites
-In order to create an account, you must have an "@ucsc.edu" email
-* Make sure to import files from "DATABASES TO IMPORT INTO web2py" folder into their respective databases in web2py.
+In order to create an account, you must have an "@ucsc.edu" email.
+
+Make sure to import files from "DATABASES TO IMPORT INTO web2py" folder into their respective databases in web2py:
+* import db_ucsc_faculty_member.csv into ucsc_faculty_member
+* import db_cruzids_2018.csv into ucsc_user
+* import departments.csv into department
 
 ## Relevant Links
 
