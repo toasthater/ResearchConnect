@@ -66,6 +66,7 @@ def research():
 
 def settings():
     # We just want to expand the template.
+    return redirect('user/change_password')
     return dict()
 
 def user():
